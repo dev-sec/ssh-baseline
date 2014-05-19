@@ -1,0 +1,15 @@
+{
+    "name": "ssh",
+    "default_attributes": { },
+    "override_attributes": { },
+    "json_class": "Chef::Role",
+    "description": "Centos Security Role",
+    "chef_type": "role",
+    "default_attributes" : {
+    },
+    "run_list": [
+        "recipe[chef-solo-search]",
+        "recipe[ssh-hardening::server]",
+        "recipe[ssh-hardening::client]"
+    ]
+}
