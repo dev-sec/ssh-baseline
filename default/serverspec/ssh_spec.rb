@@ -211,11 +211,11 @@ describe 'check sshd_config' do
     end
 
     describe file('/etc/ssh/sshd_config') do
-        its(:content) { should match /^AllowTcpForwarding yes$/}
+        its(:content) { should match /^AllowTcpForwarding no$/}
     end
 
     describe file('/etc/ssh/sshd_config') do
-        its(:content) { should match /^AllowAgentForwarding yes$/}
+        its(:content) { should match /^AllowAgentForwarding no$/}
     end
 
     describe file('/etc/ssh/sshd_config') do
