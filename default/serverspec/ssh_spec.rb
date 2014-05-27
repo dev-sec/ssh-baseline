@@ -239,7 +239,7 @@ describe 'check sshd_config' do
   end
 
   describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^#Banner \/etc\/ssh\/banner\.txt$/) }
+    its(:content) { should match(%r(^#Banner /etc/ssh/banner\.txt$)) }
   end
 
   describe file('/etc/ssh/sshd_config') do
@@ -247,7 +247,7 @@ describe 'check sshd_config' do
   end
 
   describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^#PidFile \/var\/run\/sshd\.pid$/) }
+    its(:content) { should match(%r(^#PidFile /var/run/sshd\.pid$)) }
   end
 
   describe file('/etc/ssh/sshd_config') do
@@ -259,7 +259,7 @@ describe 'check sshd_config' do
   end
 
   describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^#ChrootDirectory \/home\/\%u$/) }
+    its(:content) { should match(%r(^#ChrootDirectory /home/\%u$)) }
   end
 
   describe file('/etc/ssh/sshd_config') do
@@ -275,7 +275,7 @@ describe 'check sshd_config' do
   end
 
   describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^#ChrootDirectory \/sftpchroot\/home\/\%u$/) }
+    its(:content) { should match(%r(^#ChrootDirectory /sftpchroot/home/\%u$)) }
   end
 
   describe file('/etc/ssh/sshd_config') do
