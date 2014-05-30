@@ -47,7 +47,7 @@ describe 'check sshd_config' do
   end
 
   describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^ListenAddress*/) }
+    its(:content) { should match(/^ListenAddress .*/) }
   end
 
   describe file('/etc/ssh/sshd_config') do
