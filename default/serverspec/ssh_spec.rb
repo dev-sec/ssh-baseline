@@ -196,22 +196,6 @@ describe 'check sshd_config' do
   end
 
   describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^#DenyUsers \*$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^#AllowUsers user1$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^#DenyGroups \*$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^#AllowGroups group1$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^TCPKeepAlive no$/) }
   end
 
@@ -253,62 +237,6 @@ describe 'check sshd_config' do
 
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^PrintLastLog no$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(%r(^#Banner /etc/ssh/banner\.txt$)) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^#UseDNS yes$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(%r(^#PidFile /var/run/sshd\.pid$)) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^#MaxStartups 10$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^#ChrootDirectory none$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(%r(^#ChrootDirectory /home/\%u$)) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^#Subsystem sftp internal-sftp -l VERBOSE$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^#Match Group sftponly$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^#ForceCommand internal-sftp -l VERBOSE$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(%r(^#ChrootDirectory /sftpchroot/home/\%u$)) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^#AllowTcpForwarding no$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^#PasswordAuthentication no$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^#PermitRootLogin no$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^#X11Forwarding no$/) }
   end
 
 end
