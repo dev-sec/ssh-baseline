@@ -101,16 +101,24 @@ describe 'check sshd_config' do
     its(:content) do
 
       # define a set of default MACs
-      macs = 'hmac-sha2-512,hmac-sha2-256,hmac-ripemd160'
+      macs66 = 'hmac-sha2-512-etm@openssh.com,hmac-sha2-512,hmac-sha2-256-etm@openssh.com,hmac-sha2-256,umac-128-etm@openssh.com,hmac-ripemd160-etm@openssh.com,hmac-ripemd160'
+      macs59 = 'hmac-sha2-512,hmac-sha2-256,hmac-ripemd160'
+      macs53 = 'hmac-ripemd160,hmac-sha1'
+      macs = macs59
 
       # adjust MACs based on OS + release
       case os[:family]
       when 'Ubuntu'
         case os[:release]
         when '12.04'
-          macs = 'hmac-sha2-512,hmac-sha2-256,hmac-ripemd160'
+          macs = macs59
         when '14.04'
-          macs = 'hmac-sha2-512-etm@openssh.com,hmac-sha2-512,hmac-sha2-256-etm@openssh.com,hmac-sha2-256,umac-128-etm@openssh.com,hmac-ripemd160-etm@openssh.com,hmac-ripemd160'
+          macs = macs66
+        end
+      when 'RedHat'
+        case os[:release]
+        when '6.4', '6.5'
+          ciphers = macs53
         end
       end
 
