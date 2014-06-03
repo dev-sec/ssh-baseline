@@ -119,7 +119,7 @@ describe 'check sshd_config' do
       when 'RedHat'
         case os[:release]
         when '6.4', '6.5'
-          ciphers = macs53
+          macs = macs53
         end
       end
 
