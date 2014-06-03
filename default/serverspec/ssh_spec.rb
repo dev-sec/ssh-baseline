@@ -81,9 +81,9 @@ describe 'check sshd_config' do
       when 'Ubuntu'
         case os[:release]
         when '12.04'
-          ciphers = 'aes128-ctr,aes192-ctr,aes256-ctr'
+          ciphers = 'aes256-ctr,aes192-ctr,aes128-ctr'
         when '14.04'
-          ciphers = 'chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr'
+          ciphers = 'chacha20-poly1305@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr'
         end
       end
 
