@@ -91,6 +91,7 @@ describe 'check sshd_config' do
         case os[:release]
         when '6.4', '6.5'
           ciphers = ciphers53
+        end
       end
 
       should match(/^Ciphers #{ciphers}$/)
