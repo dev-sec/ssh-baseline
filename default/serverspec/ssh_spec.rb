@@ -74,7 +74,7 @@ describe 'check sshd_config' do
     its(:content) do
 
       # define a set of default ciphers
-      ciphers53 = 'aes128-ctr,aes256-ctr,aes192-ctr'
+      ciphers53 = 'aes256-ctr,aes192-ctr,aes128-ctr'
       ciphers66 = 'chacha20-poly1305@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr'
       ciphers = ciphers53
 
