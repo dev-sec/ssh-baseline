@@ -130,20 +130,28 @@ describe 'check sshd_config' do
     its(:content) do
 
       # define a set of default KEXs
-      kex = 'diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1'
+      kex66 = 'curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1'
+      kex59 = 'diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1'
+      kex = kex59
 
       # adjust KEXs based on OS + release
       case os[:family]
       when 'Ubuntu'
         case os[:release]
         when '12.04'
-          kex = 'diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1'
+          kex = kex59
         when '14.04'
-          kex = 'curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1'
+          kex = kex66
+        end
+      when 'RedHat'
+        case os[:release]
+        when '6.4', '6.5'
+          should_not match(/^KexAlgorithms/)
+          kex = nil
         end
       end
 
-      should match(/^KexAlgorithms #{kex}$/)
+      should match(/^KexAlgorithms #{kex}$/) unless kex.nil?
     end
   end
 
