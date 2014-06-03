@@ -113,7 +113,24 @@ describe 'check sshd_config' do
   end
 
   describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^KexAlgorithms (diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1)|(diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1,diffie-hellman-group1-sha1)$/) }
+    its(:content) do
+
+      # define a set of default KEXs
+      kex = 'diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1'
+
+      # adjust KEXs based on OS + release
+      case os[:family]
+      when 'Ubuntu'
+        case os[:release]
+        when '12.04'
+          kex = 'diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1'
+        when '14.04'
+          kex = 'curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1'
+        end
+      end
+
+      should match(/^KexAlgorithms #{kex}$/)
+    end
   end
 
   describe file('/etc/ssh/sshd_config') do
