@@ -74,17 +74,23 @@ describe 'check sshd_config' do
     its(:content) do
 
       # define a set of default ciphers
-      ciphers = 'aes128-ctr,aes256-ctr,aes192-ctr'
+      ciphers53 = 'aes128-ctr,aes256-ctr,aes192-ctr'
+      ciphers66 = 'chacha20-poly1305@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr'
+      ciphers = ciphers53
 
       # adjust ciphers based on OS + release
       case os[:family]
       when 'Ubuntu'
         case os[:release]
         when '12.04'
-          ciphers = 'aes256-ctr,aes192-ctr,aes128-ctr'
+          ciphers = ciphers53
         when '14.04'
-          ciphers = 'chacha20-poly1305@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr'
+          ciphers = ciphers66
         end
+      when 'RedHat'
+        case os[:release]
+        when '6.4', '6.5'
+          ciphers = ciphers53
       end
 
       should match(/^Ciphers #{ciphers}$/)
