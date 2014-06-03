@@ -218,10 +218,6 @@ describe 'check sshd_config' do
   end
 
   describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^#KerberosGetAFSToken no$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^GSSAPIAuthentication no$/) }
   end
 
@@ -359,14 +355,6 @@ describe 'check ssh_config' do
 
   describe file('/etc/ssh/ssh_config') do
     its(:content) { should match(/^Compression yes$/) }
-  end
-
-  describe file('/etc/ssh/ssh_config') do
-    its(:content) { should match(/^#EscapeChar ~$/) }
-  end
-
-  describe file('/etc/ssh/ssh_config') do
-    its(:content) { should match(/^#VisualHostKey yes$/) }
   end
 
 end
