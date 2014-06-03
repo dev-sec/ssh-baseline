@@ -92,7 +92,24 @@ describe 'check sshd_config' do
   end
 
   describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^(MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-ripemd160)|(MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-ripemd160,hmac-sha1)|(MACs hmac-ripemd160$)/) }
+    its(:content) do
+
+      # define a set of default MACs
+      macs = 'hmac-sha2-512,hmac-sha2-256,hmac-ripemd160'
+
+      # adjust MACs based on OS + release
+      case os[:family]
+      when 'Ubuntu'
+        case os[:release]
+        when '12.04'
+          macs = 'hmac-sha2-512,hmac-sha2-256,hmac-ripemd160'
+        when '14.04'
+          macs = 'hmac-sha2-512-etm@openssh.com,hmac-sha2-512,hmac-sha2-256-etm@openssh.com,hmac-sha2-256,umac-128-etm@openssh.com,hmac-ripemd160-etm@openssh.com,hmac-ripemd160'
+        end
+      end
+
+      should match(/^MACs #{macs}$/)
+    end
   end
 
   describe file('/etc/ssh/sshd_config') do
