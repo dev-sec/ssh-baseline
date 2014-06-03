@@ -15,7 +15,7 @@ describe 'SSH owner, group and permissions' do
   end
 
   describe file('/etc/ssh') do
-    it { should be_mode 555 }
+    it { should be_mode 755 }
   end
 
   describe file('/etc/ssh/sshd_config') do
@@ -23,11 +23,11 @@ describe 'SSH owner, group and permissions' do
   end
 
   describe file('/etc/ssh/sshd_config') do
-    it { should be_mode 400 }
+    it { should be_mode 600 }
   end
 
   describe file('/etc/ssh/ssh_config') do
-    it { should be_mode 444 }
+    it { should be_mode 644 }
   end
 
 end
