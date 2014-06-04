@@ -83,6 +83,11 @@ describe 'check sshd_config' do
         when '14.04'
           ciphers = ciphers66
         end
+      when 'Debian'
+        case os[:release]
+        when /6\./, /7\./
+          ciphers = ciphers53
+        end
       when 'RedHat'
         case os[:release]
         when '6.4', '6.5'
@@ -112,6 +117,13 @@ describe 'check sshd_config' do
         when '14.04'
           macs = macs66
         end
+      when 'Debian'
+        case os[:release]
+        when /6\./
+          macs = macs53
+        when /7\./
+          macs = macs59
+        end
       when 'RedHat'
         case os[:release]
         when '6.4', '6.5'
@@ -139,6 +151,14 @@ describe 'check sshd_config' do
           kex = kex59
         when '14.04'
           kex = kex66
+        end
+      when 'Debian'
+        case os[:release]
+        when /6\./
+          should_not match(/^KexAlgorithms/)
+          kex = nil
+        when /7\./
+          kex = kex59
         end
       when 'RedHat'
         case os[:release]
