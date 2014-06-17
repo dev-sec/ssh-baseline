@@ -70,14 +70,13 @@ RSpec::Matchers.define :valid_kex do
       end
     end
 
-    if (kex.nil?)
+    if kex.nil?
       expect(actual).to should_not match_regex(/^KexAlgorithms/)
     else
       expect(actual).to match_regex(/^KexAlgorithms #{kex}$/)
     end
   end
 end
-
 
 RSpec::Matchers.define :valid_mac do
   match do |actual|
