@@ -6,6 +6,115 @@ RSpec.configure do |c|
   c.filter_run_excluding skipOn: backend(Serverspec::Commands::Base).check_os[:family]
 end
 
+RSpec::Matchers.define :valid_cipher do
+  match do |actual|
+
+    # define a set of default ciphers
+    ciphers53 = 'aes256-ctr,aes192-ctr,aes128-ctr'
+    ciphers66 = 'chacha20-poly1305@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr'
+    ciphers = ciphers53
+
+    # adjust ciphers based on OS + release
+    case os[:family]
+    when 'Ubuntu'
+      case os[:release]
+      when '12.04'
+        ciphers = ciphers53
+      when '14.04'
+        ciphers = ciphers66
+      end
+    when 'Debian'
+      case os[:release]
+      when /6\./, /7\./
+        ciphers = ciphers53
+      end
+    when 'RedHat'
+      case os[:release]
+      when '6.4', '6.5'
+        ciphers = ciphers53
+      end
+    end
+
+    expect(actual).to match_regex(/^Ciphers #{ciphers}$/)
+  end
+end
+
+RSpec::Matchers.define :valid_kex do
+  match do |actual|
+
+    # define a set of default KEXs
+    kex66 = 'curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1'
+    kex59 = 'diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1'
+    kex = kex59
+
+    # adjust KEXs based on OS + release
+    case os[:family]
+    when 'Ubuntu'
+      case os[:release]
+      when '12.04'
+        kex = kex59
+      when '14.04'
+        kex = kex66
+      end
+    when 'Debian'
+      case os[:release]
+      when /6\./
+        kex = nil
+      when /7\./
+        kex = kex59
+      end
+    when 'RedHat'
+      case os[:release]
+      when '6.4', '6.5'
+        kex = nil
+      end
+    end
+
+    if (kex.nil?)
+      expect(actual).to should_not match_regex(/^KexAlgorithms/)
+    else
+      expect(actual).to match_regex(/^KexAlgorithms #{kex}$/)
+    end
+  end
+end
+
+
+RSpec::Matchers.define :valid_mac do
+  match do |actual|
+
+    # define a set of default MACs
+    macs66 = 'hmac-sha2-512-etm@openssh.com,hmac-sha2-512,hmac-sha2-256-etm@openssh.com,hmac-sha2-256,umac-128-etm@openssh.com,hmac-ripemd160-etm@openssh.com,hmac-ripemd160'
+    macs59 = 'hmac-sha2-512,hmac-sha2-256,hmac-ripemd160'
+    macs53 = 'hmac-ripemd160,hmac-sha1'
+    macs = macs59
+
+    # adjust MACs based on OS + release
+    case os[:family]
+    when 'Ubuntu'
+      case os[:release]
+      when '12.04'
+        macs = macs59
+      when '14.04'
+        macs = macs66
+      end
+    when 'Debian'
+      case os[:release]
+      when /6\./
+        macs = macs53
+      when /7\./
+        macs = macs59
+      end
+    when 'RedHat'
+      case os[:release]
+      when '6.4', '6.5'
+        macs = macs53
+      end
+    end
+
+    expect(actual).to match_regex(/^MACs #{macs}$/)
+  end
+end
+
 describe 'SSH owner, group and permissions' do
 
   describe file('/etc/ssh') do
@@ -75,107 +184,19 @@ describe 'check sshd_config' do
   # GIS: Req 3.04-2
   describe file('/etc/ssh/sshd_config') do
     its(:content) do
-
-      # define a set of default ciphers
-      ciphers53 = 'aes256-ctr,aes192-ctr,aes128-ctr'
-      ciphers66 = 'chacha20-poly1305@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr'
-      ciphers = ciphers53
-
-      # adjust ciphers based on OS + release
-      case os[:family]
-      when 'Ubuntu'
-        case os[:release]
-        when '12.04'
-          ciphers = ciphers53
-        when '14.04'
-          ciphers = ciphers66
-        end
-      when 'Debian'
-        case os[:release]
-        when /6\./, /7\./
-          ciphers = ciphers53
-        end
-      when 'RedHat'
-        case os[:release]
-        when '6.4', '6.5'
-          ciphers = ciphers53
-        end
-      end
-
-      should match(/^Ciphers #{ciphers}$/)
+      should valid_cipher
     end
   end
 
   describe file('/etc/ssh/sshd_config') do
     its(:content) do
-
-      # define a set of default MACs
-      macs66 = 'hmac-sha2-512-etm@openssh.com,hmac-sha2-512,hmac-sha2-256-etm@openssh.com,hmac-sha2-256,umac-128-etm@openssh.com,hmac-ripemd160-etm@openssh.com,hmac-ripemd160'
-      macs59 = 'hmac-sha2-512,hmac-sha2-256,hmac-ripemd160'
-      macs53 = 'hmac-ripemd160,hmac-sha1'
-      macs = macs59
-
-      # adjust MACs based on OS + release
-      case os[:family]
-      when 'Ubuntu'
-        case os[:release]
-        when '12.04'
-          macs = macs59
-        when '14.04'
-          macs = macs66
-        end
-      when 'Debian'
-        case os[:release]
-        when /6\./
-          macs = macs53
-        when /7\./
-          macs = macs59
-        end
-      when 'RedHat'
-        case os[:release]
-        when '6.4', '6.5'
-          macs = macs53
-        end
-      end
-
-      should match(/^MACs #{macs}$/)
+      should valid_mac
     end
   end
 
   describe file('/etc/ssh/sshd_config') do
     its(:content) do
-
-      # define a set of default KEXs
-      kex66 = 'curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1'
-      kex59 = 'diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1'
-      kex = kex59
-
-      # adjust KEXs based on OS + release
-      case os[:family]
-      when 'Ubuntu'
-        case os[:release]
-        when '12.04'
-          kex = kex59
-        when '14.04'
-          kex = kex66
-        end
-      when 'Debian'
-        case os[:release]
-        when /6\./
-          should_not match(/^KexAlgorithms/)
-          kex = nil
-        when /7\./
-          kex = kex59
-        end
-      when 'RedHat'
-        case os[:release]
-        when '6.4', '6.5'
-          should_not match(/^KexAlgorithms/)
-          kex = nil
-        end
-      end
-
-      should match(/^KexAlgorithms #{kex}$/) unless kex.nil?
+      should valid_kex
     end
   end
 
@@ -363,15 +384,21 @@ describe 'check ssh_config' do
   end
 
   describe file('/etc/ssh/ssh_config') do
-    its(:content) { should match(/^Ciphers (aes128-ctr,aes256-ctr,aes192-ctr)|(aes128-ctr,aes256-ctr,aes192-ctr,aes128-cbc,aes256-cbc,aes192-cbc)$/) }
+    its(:content) do
+      should valid_cipher
+    end
   end
 
   describe file('/etc/ssh/ssh_config') do
-    its(:content) { should match(/^MACs (hmac-sha2-256,hmac-sha2-512,hmac-ripemd160)|(hmac-sha2-256,hmac-sha2-512,hmac-ripemd160,hmac-sha1)|(hmac-ripemd160$)/) }
+    its(:content) do
+      should valid_mac
+    end
   end
 
   describe file('/etc/ssh/ssh_config') do
-    its(:content) { should match(/^KexAlgorithms (ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256)|(ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1)$/) }
+    its(:content) do
+      should valid_kex
+    end
   end
 
   describe file('/etc/ssh/ssh_config') do
