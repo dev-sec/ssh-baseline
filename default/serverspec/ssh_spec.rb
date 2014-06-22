@@ -162,7 +162,7 @@ describe 'check sshd_config' do
     its(:content) { should match(/^ListenAddress .*/) }
   end
 
-   # GIS: Req 3.04-1
+  # GIS: Req 3.04-1
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^Protocol 2$/) }
   end
