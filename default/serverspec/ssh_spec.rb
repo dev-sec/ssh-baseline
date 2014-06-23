@@ -35,7 +35,7 @@ RSpec::Matchers.define :valid_cipher do
       end
     end
 
-    expect(actual).to match_regex(/^Ciphers #{ciphers}$/)
+    actual =~ /^Ciphers #{ciphers}$/
   end
 end
 
@@ -71,9 +71,9 @@ RSpec::Matchers.define :valid_kex do
     end
 
     if kex.nil?
-      expect(actual).to should_not match_regex(/^KexAlgorithms/)
+      actual !~ /^KexAlgorithms/
     else
-      expect(actual).to match_regex(/^KexAlgorithms #{kex}$/)
+      actual =~ /^KexAlgorithms #{kex}$/
     end
   end
 end
@@ -110,7 +110,7 @@ RSpec::Matchers.define :valid_mac do
       end
     end
 
-    expect(actual).to match_regex(/^MACs #{macs}$/)
+    actual =~ /^MACs #{macs}$/
   end
 end
 
