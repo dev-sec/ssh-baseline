@@ -71,7 +71,7 @@ RSpec::Matchers.define :valid_kex do
     end
 
     if kex.nil?
-      expect(actual).to should_not match(/^KexAlgorithms/)
+      expect(actual).to_not match(/^KexAlgorithms/)
     else
       expect(actual).to match(/^KexAlgorithms #{kex}$/)
     end
