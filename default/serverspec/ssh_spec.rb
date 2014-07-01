@@ -264,6 +264,10 @@ describe 'check sshd_config' do
     its(:content) { should match(/^HostbasedAuthentication no$/) }
   end
 
+  describe file('/etc/ssh/sshd_config') do
+    its(:content) { should match(/^UsePAM no$/) }
+  end
+
   # GIS: Req 3.04-13 ; GIS: Req 3.04-14
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^PasswordAuthentication no$/) }
