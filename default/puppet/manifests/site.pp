@@ -5,7 +5,7 @@
 # but still get an impossible password - so the aim of locking
 # is still present, while SSH login is possible.
 exec { "unlock users":
-  command => "sed 's/^\\([^:]*:\\)\\!/\\1*/' -i /etc/shadow"
+  command => "/usr/bin/sed 's/^\\([^:]*:\\)\\!/\\1*/' -i /etc/shadow"
 }
 
 class { 'ssh_hardening': }
