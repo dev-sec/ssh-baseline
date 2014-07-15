@@ -9,6 +9,7 @@
     },
     "run_list": [
         "recipe[chef-solo-search]",
+        "recipe[ssh-hardening::unlock]",
         "recipe[ssh-hardening::server]",
         "recipe[ssh-hardening::client]"
     ]
