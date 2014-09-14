@@ -159,7 +159,7 @@ end
 
 describe 'check sshd_config' do
 
-  # GIS: Req 3.04-13
+  # DTAG SEC: Req 3.04-13
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^PermitRootLogin no$|^PermitRootLogin without-password$/) }
   end
@@ -172,12 +172,12 @@ describe 'check sshd_config' do
     its(:content) { should match(/^AddressFamily inet|any$/) }
   end
 
-  # GIS: Req 3.04-3
+  # DTAG SEC: Req 3.04-3
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^ListenAddress .*/) }
   end
 
-  # GIS: Req 3.04-1
+  # DTAG SEC: Req 3.04-1
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^Protocol 2$/) }
   end
@@ -190,12 +190,12 @@ describe 'check sshd_config' do
     its(:content) { should match(/^SyslogFacility AUTH$/) }
   end
 
-  # GIS: Req 3.04-12
+  # DTAG SEC: Req 3.04-12
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^LogLevel VERBOSE$/) }
   end
 
-  # GIS: Req 3.04-2
+  # DTAG SEC: Req 3.04-2
   describe file('/etc/ssh/sshd_config') do
     its(:content) do
       should valid_cipher
@@ -250,17 +250,17 @@ describe 'check sshd_config' do
     its(:content) { should match(/^MaxStartups 10:30:100$/) }
   end
 
-  # GIS: Req 3.04-13 ; GIS: Req 3.04-14
+  # DTAG SEC: Req 3.04-13 ; DTAG SEC: Req 3.04-14
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^RSAAuthentication yes$/) }
   end
 
-  # GIS: Req 3.04-13 ; GIS: Req 3.04-14
+  # DTAG SEC: Req 3.04-13 ; DTAG SEC: Req 3.04-14
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^PubkeyAuthentication yes$/) }
   end
 
-  # GIS: Req 3.04-17
+  # DTAG SEC: Req 3.04-17
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^IgnoreRhosts yes$/) }
   end
@@ -269,12 +269,12 @@ describe 'check sshd_config' do
     its(:content) { should match(/^IgnoreUserKnownHosts yes$/) }
   end
 
-  # GIS: Req 3.04-17
+  # DTAG SEC: Req 3.04-17
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^RhostsRSAAuthentication no$/) }
   end
 
-  # GIS: Req 3.04-17
+  # DTAG SEC: Req 3.04-17
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^HostbasedAuthentication no$/) }
   end
@@ -283,17 +283,17 @@ describe 'check sshd_config' do
     its(:content) { should match(/^UsePAM no$/) }
   end
 
-  # GIS: Req 3.04-13 ; GIS: Req 3.04-14
+  # DTAG SEC: Req 3.04-13 ; DTAG SEC: Req 3.04-14
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^PasswordAuthentication no$/) }
   end
 
-  # GIS: Req 3.04-13 ; GIS: Req 3.04-14
+  # DTAG SEC: Req 3.04-13 ; DTAG SEC: Req 3.04-14
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^PermitEmptyPasswords no$/) }
   end
 
-  # GIS: Req 3.04-13 ; GIS: Req 3.04-14
+  # DTAG SEC: Req 3.04-13 ; DTAG SEC: Req 3.04-14
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^ChallengeResponseAuthentication no$/) }
   end
@@ -330,32 +330,32 @@ describe 'check sshd_config' do
     its(:content) { should match(/^ClientAliveCountMax 3$/) }
   end
 
-  # GIS: Req 3.04-10
+  # DTAG SEC: Req 3.04-10
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^PermitTunnel no$/) }
   end
 
-  # GIS: Req 3.04-6
+  # DTAG SEC: Req 3.04-6
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^AllowTcpForwarding no$/) }
   end
 
-  # GIS: Req 3.04-9
+  # DTAG SEC: Req 3.04-9
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^AllowAgentForwarding no$/) }
   end
 
-  # GIS: Req 3.04-7
+  # DTAG SEC: Req 3.04-7
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^GatewayPorts no$/) }
   end
 
-  # GIS: Req 3.04-8
+  # DTAG SEC: Req 3.04-8
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^X11Forwarding no$/) }
   end
 
-  # GIS: Req 3.04-8
+  # DTAG SEC: Req 3.04-8
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^X11UseLocalhost yes$/) }
   end
@@ -396,7 +396,7 @@ describe 'check ssh_config' do
     its(:content) { should match(/^CheckHostIP yes$/) }
   end
 
-  # GIS: Req 3.04-19
+  # DTAG SEC: Req 3.04-19
   describe file('/etc/ssh/ssh_config') do
     its(:content) { should match(/^StrictHostKeyChecking ask$/) }
   end
@@ -435,7 +435,7 @@ describe 'check ssh_config' do
     its(:content) { should match(/^RhostsRSAAuthentication no$/) }
   end
 
-  # GIS: Req 3.04-13 ; GIS: Req 3.04-14
+  # DTAG SEC: Req 3.04-13 ; DTAG SEC: Req 3.04-14
   describe file('/etc/ssh/ssh_config') do
     its(:content) { should match(/^RSAAuthentication yes$/) }
   end
