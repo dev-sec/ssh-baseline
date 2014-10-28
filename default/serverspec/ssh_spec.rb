@@ -211,14 +211,6 @@ describe 'check sshd_config' do
   end
 
   describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^KeyRegenerationInterval 1h$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^ServerKeyBits 2048$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^UseLogin no$/) }
   end
 
@@ -248,11 +240,6 @@ describe 'check sshd_config' do
 
   # DTAG SEC: Req 3.04-13 ; DTAG SEC: Req 3.04-14
   describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^RSAAuthentication yes$/) }
-  end
-
-  # DTAG SEC: Req 3.04-13 ; DTAG SEC: Req 3.04-14
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^PubkeyAuthentication yes$/) }
   end
 
@@ -263,11 +250,6 @@ describe 'check sshd_config' do
 
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^IgnoreUserKnownHosts yes$/) }
-  end
-
-  # DTAG SEC: Req 3.04-17
-  describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^RhostsRSAAuthentication no$/) }
   end
 
   # DTAG SEC: Req 3.04-17
