@@ -25,19 +25,19 @@ def valid_ciphers
 
   # adjust ciphers based on OS + release
   case os[:family]
-  when 'Ubuntu'
+  when 'ubuntu'
     case os[:release]
     when '12.04'
       ciphers = ciphers53
     when '14.04'
       ciphers = ciphers66
     end
-  when 'Debian'
+  when 'debian'
     case os[:release]
     when /6\./, /7\./
       ciphers = ciphers53
     end
-  when 'RedHat'
+  when 'redhat'
     case os[:release]
     when '6.4', '6.5'
       ciphers = ciphers53
@@ -55,21 +55,21 @@ def valid_kexs
 
   # adjust KEXs based on OS + release
   case os[:family]
-  when 'Ubuntu'
+  when 'ubuntu'
     case os[:release]
     when '12.04'
       kex = kex59
     when '14.04'
       kex = kex66
     end
-  when 'Debian'
+  when 'debian'
     case os[:release]
     when /6\./
       kex = nil
     when /7\./
       kex = kex59
     end
-  when 'RedHat'
+  when 'redhat'
     case os[:release]
     when '6.4', '6.5'
       kex = nil
@@ -88,21 +88,21 @@ def valid_macs
 
   # adjust MACs based on OS + release
   case os[:family]
-  when 'Ubuntu'
+  when 'ubuntu'
     case os[:release]
     when '12.04'
       macs = macs59
     when '14.04'
       macs = macs66
     end
-  when 'Debian'
+  when 'debian'
     case os[:release]
     when /6\./
       macs = macs53
     when /7\./
       macs = macs59
     end
-  when 'RedHat'
+  when 'redhat'
     case os[:release]
     when '6.4', '6.5'
       macs = macs53
