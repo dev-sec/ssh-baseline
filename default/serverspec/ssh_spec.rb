@@ -44,7 +44,7 @@ def valid_ciphers
     end
   end
 
-  return ciphers
+  ciphers
 end
 
 def valid_kexs
@@ -76,7 +76,7 @@ def valid_kexs
     end
   end
 
-  return kex
+  kex
 end
 
 def valid_macs
@@ -109,17 +109,17 @@ def valid_macs
     end
   end
 
-  return macs
+  macs
 end
 
 def it_should_define(field, values)
-  its(:content) {
+  its(:content) do
     if values.nil?
       should_not match(/^#{field} .*$/)
     else
       should match(/^#{field} #{values}$/)
     end
-  }
+  end
 end
 
 describe 'SSH owner, group and permissions' do
@@ -190,15 +190,15 @@ describe 'check sshd_config' do
 
   # DTAG SEC: Req 3.04-2
   describe file('/etc/ssh/sshd_config') do
-    it_should_define("Ciphers", valid_ciphers)
+    it_should_define('Ciphers', valid_ciphers)
   end
 
   describe file('/etc/ssh/sshd_config') do
-    it_should_define("MACs", valid_macs)
+    it_should_define('MACs', valid_macs)
   end
 
   describe file('/etc/ssh/sshd_config') do
-    it_should_define("KexAlgorithms", valid_kexs)
+    it_should_define('KexAlgorithms', valid_kexs)
   end
 
   describe file('/etc/ssh/sshd_config') do
@@ -371,15 +371,15 @@ describe 'check ssh_config' do
   end
 
   describe file('/etc/ssh/ssh_config') do
-    it_should_define("Ciphers", valid_ciphers)
+    it_should_define('Ciphers', valid_ciphers)
   end
 
   describe file('/etc/ssh/ssh_config') do
-    it_should_define("MACs", valid_macs)
+    it_should_define('MACs', valid_macs)
   end
 
   describe file('/etc/ssh/ssh_config') do
-    it_should_define("KexAlgorithms", valid_kexs)
+    it_should_define('KexAlgorithms', valid_kexs)
   end
 
   describe file('/etc/ssh/ssh_config') do
