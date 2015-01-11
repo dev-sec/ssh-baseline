@@ -20,7 +20,7 @@ require 'spec_helper'
 def valid_ciphers
   # define a set of default ciphers
   ciphers53 = 'aes256-ctr,aes192-ctr,aes128-ctr'
-  ciphers66 = 'chacha20-poly1305@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr'
+  ciphers66 = 'chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr'
   ciphers = ciphers53
 
   # adjust ciphers based on OS + release
