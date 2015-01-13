@@ -81,7 +81,7 @@ end
 
 def valid_macs
   # define a set of default MACs
-  macs66 = 'hmac-sha2-512-etm@openssh.com,hmac-sha2-512,hmac-sha2-256-etm@openssh.com,hmac-sha2-256,umac-128-etm@openssh.com,hmac-ripemd160-etm@openssh.com,hmac-ripemd160'
+  macs66 = 'hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-ripemd160-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,hmac-ripemd160'
   macs59 = 'hmac-sha2-512,hmac-sha2-256,hmac-ripemd160'
   macs53 = 'hmac-ripemd160,hmac-sha1'
   macs = macs59
