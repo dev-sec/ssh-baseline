@@ -49,8 +49,8 @@ end
 
 def valid_kexs
   # define a set of default KEXs
-  kex66 = 'curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1'
-  kex59 = 'diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1'
+  kex66 = 'curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256'
+  kex59 = 'diffie-hellman-group-exchange-sha256'
   kex = kex59
 
   # adjust KEXs based on OS + release
