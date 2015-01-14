@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.1
+
+* reprioritize EtM-based MACs
+* remove SHA1 KEX algos from default
+* feature: add output option for json
+
 ## 1.1.0
 
 * feature: updated to serverspec v2
