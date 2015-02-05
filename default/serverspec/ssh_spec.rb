@@ -112,6 +112,32 @@ def valid_macs
   macs
 end
 
+def use_privilege_separation
+  ps59 = 'sandbox'
+  ps53 = 'yes'
+  ps = ps59
+
+  # adjust UsePrivilegeSeparation based on OS + release
+  case os[:family]
+  when 'ubuntu'
+    ps = ps59
+  when 'debian'
+    case os[:release]
+    when /6\./
+      ps = ps53
+    when /7\./
+      ps = ps59
+    end
+  when 'redhat'
+    case os[:release]
+    when '6.4', '6.5'
+      ps = ps53
+    end
+  end
+
+  ps
+end
+
 def it_should_define(field, values)
   its(:content) do
     if values.nil?
@@ -206,7 +232,7 @@ describe 'check sshd_config' do
   end
 
   describe file('/etc/ssh/sshd_config') do
-    its(:content) { should match(/^UsePrivilegeSeparation yes$/) }
+    it_should_define('UsePrivilegeSeparation', use_privilege_separation)
   end
 
   describe file('/etc/ssh/sshd_config') do
