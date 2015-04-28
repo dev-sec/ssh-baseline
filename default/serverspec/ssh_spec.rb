@@ -36,6 +36,8 @@ def valid_ciphers
     case os[:release]
     when /6\./, /7\./
       ciphers = ciphers53
+    when /8\./
+      ciphers = ciphers66
     end
   when 'redhat'
     case os[:release]
@@ -68,6 +70,8 @@ def valid_kexs
       kex = nil
     when /7\./
       kex = kex59
+    when /8\./
+      kex = kex66
     end
   when 'redhat'
     case os[:release]
@@ -101,6 +105,8 @@ def valid_macs
       macs = macs53
     when /7\./
       macs = macs59
+    when /8\./
+      macs = macs66
     end
   when 'redhat'
     case os[:release]
