@@ -1,5 +1,5 @@
 ---
-- name: wrapper playbook for kitchen testing "ansible-ssh-hardening"
+- name: wrapper playbook for kitchen testing "ansible-ssh-hardening" with custom settings
   hosts: localhost
   roles:
     - ansible-ssh-hardening
@@ -11,7 +11,7 @@
     ssh_server_weak_hmac: true
     ssh_client_weak_kex: true
 
-- name: wrapper playbook for kitchen testing "ansible-ssh-hardening"
+- name: wrapper playbook for kitchen testing "ansible-ssh-hardening" with default settings
   hosts: localhost
   roles:
     - ansible-ssh-hardening
