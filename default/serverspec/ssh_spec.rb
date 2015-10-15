@@ -158,25 +158,13 @@ describe 'SSH owner, group and permissions' do
 
   describe file('/etc/ssh') do
     it { should be_directory }
-  end
-
-  describe file('/etc/ssh') do
     it { should be_owned_by 'root' }
-  end
-
-  describe file('/etc/ssh') do
     it { should be_mode 755 }
   end
 
   describe file('/etc/ssh/sshd_config') do
     it { should be_owned_by 'root' }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     it { should be_mode 600 }
-  end
-
-  describe file('/etc/ssh/ssh_config') do
     it { should be_mode 644 }
   end
 
@@ -184,188 +172,48 @@ end
 
 describe 'check sshd_config' do
 
-  
   describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^PermitRootLogin no$|^PermitRootLogin without-password$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^Port [0-9]?/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^AddressFamily inet|any$/) }
-  end
-
-  
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^ListenAddress .*/) }
-  end
-
-  
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^Protocol 2$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^StrictModes yes$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^SyslogFacility AUTH$/) }
-  end
-
-  2
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^LogLevel VERBOSE$/) }
-  end
-
-  
-  describe file('/etc/ssh/sshd_config') do
     it_should_define('Ciphers', valid_ciphers)
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     it_should_define('MACs', valid_macs)
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     it_should_define('KexAlgorithms', valid_kexs)
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^UseLogin no$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     it_should_define('UsePrivilegeSeparation', use_privilege_separation)
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^PermitUserEnvironment no$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^LoginGraceTime 30s$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^MaxAuthTries 2$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^MaxSessions 10$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^MaxStartups 10:30:100$/) }
-  end
-
-  
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^PubkeyAuthentication yes$/) }
-  end
-
-  7
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^IgnoreRhosts yes$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^IgnoreUserKnownHosts yes$/) }
-  end
-
-  7
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^HostbasedAuthentication no$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^UsePAM no$/) }
-  end
-
-  
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^PasswordAuthentication no$/) }
-  end
-
-  
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^PermitEmptyPasswords no$/) }
-  end
-
-  
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^ChallengeResponseAuthentication no$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^KerberosAuthentication no$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^KerberosOrLocalPasswd no$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^KerberosTicketCleanup yes$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^GSSAPIAuthentication no$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^GSSAPICleanupCredentials yes$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^TCPKeepAlive no$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^ClientAliveInterval 600$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^ClientAliveCountMax 3$/) }
-  end
-
-  0
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^PermitTunnel no$/) }
-  end
-
-  
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^AllowTcpForwarding no$/) }
-  end
-
-  
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^AllowAgentForwarding no$/) }
-  end
-
-  
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^GatewayPorts no$/) }
-  end
-
-  
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^X11Forwarding no$/) }
-  end
-
-  
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^X11UseLocalhost yes$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^PrintMotd no$/) }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
     its(:content) { should match(/^PrintLastLog no$/) }
   end
 
@@ -375,87 +223,25 @@ describe 'check ssh_config' do
 
   describe file('/etc/ssh/ssh_config') do
     its(:content) { should match(/^AddressFamily inet|any$/) }
-  end
-
-  describe file('/etc/ssh/ssh_config') do
     its(:content) { should match(/^Host/) }
-  end
-
-  describe file('/etc/ssh/ssh_config') do
     its(:content) { should match(/^Port [0-9]?/) }
-  end
-
-  describe file('/etc/ssh/ssh_config') do
     its(:content) { should match(/^Protocol 2$/) }
-  end
-
-  describe file('/etc/ssh/ssh_config') do
     its(:content) { should match(/^BatchMode no$/) }
-  end
-
-  describe file('/etc/ssh/ssh_config') do
     its(:content) { should match(/^CheckHostIP yes$/) }
-  end
-
-  9
-  describe file('/etc/ssh/ssh_config') do
     its(:content) { should match(/^StrictHostKeyChecking ask$/) }
-  end
-
-  describe file('/etc/ssh/ssh_config') do
     it_should_define('Ciphers', valid_ciphers)
-  end
-
-  describe file('/etc/ssh/ssh_config') do
     it_should_define('MACs', valid_macs)
-  end
-
-  describe file('/etc/ssh/ssh_config') do
     it_should_define('KexAlgorithms', valid_kexs)
-  end
-
-  describe file('/etc/ssh/ssh_config') do
     its(:content) { should match(/^ForwardAgent no$/) }
-  end
-
-  describe file('/etc/ssh/ssh_config') do
     its(:content) { should match(/^ForwardX11 no$/) }
-  end
-
-  describe file('/etc/ssh/ssh_config') do
     its(:content) { should match(/^HostbasedAuthentication no$/) }
-  end
-
-  describe file('/etc/ssh/ssh_config') do
     its(:content) { should match(/^RhostsRSAAuthentication no$/) }
-  end
-
-  
-  describe file('/etc/ssh/ssh_config') do
     its(:content) { should match(/^RSAAuthentication yes$/) }
-  end
-
-  describe file('/etc/ssh/ssh_config') do
     its(:content) { should match(/^PasswordAuthentication no$/) }
-  end
-
-  describe file('/etc/ssh/ssh_config') do
     its(:content) { should match(/^GSSAPIAuthentication no$/) }
-  end
-
-  describe file('/etc/ssh/ssh_config') do
     its(:content) { should match(/^GSSAPIDelegateCredentials no$/) }
-  end
-
-  describe file('/etc/ssh/ssh_config') do
     its(:content) { should match(/^Tunnel no$/) }
-  end
-
-  describe file('/etc/ssh/ssh_config') do
     its(:content) { should match(/^PermitLocalCommand no$/) }
-  end
-
-  describe file('/etc/ssh/ssh_config') do
     its(:content) { should match(/^Compression yes$/) }
   end
 
