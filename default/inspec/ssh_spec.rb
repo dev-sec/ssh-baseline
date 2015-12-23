@@ -18,78 +18,17 @@
 # author: Dominik Richter
 # author: Patrick Muench
 
-def valid_ciphers
-  ciphers53 = 'aes256-ctr,aes192-ctr,aes128-ctr'
-  return ciphers53
-end
+title 'SSH client config'
 
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'libraries'))
+require 'ssh_crypto'
 
-control '01' do
+ssh_crypto = SshCrypto.new(os)
+
+control 'ssh-01' do
   impact 1.0
-  title 'Check ssh ciphers'
-  desc 'Check ssh ciphers'
-  ciphers53 = 'aes256-ctr,aes192-ctr,aes128-ctr'
-  ciphers66 = 'chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr'
-  #puts chiphers53
-  #puts valid_ciphers
-  case os[:family]
-    when 'ubuntu'
-      case os[:release]
-      when '12.04'
-        describe sshd_config do
-          #its('Ciphers') { should eq chiphers66 }
-          its('Ciphers') { should eq('aes256-ctr,aes192-ctr,aes128-ctr') }
-        end
-      when '14.04'
-      end
-    when 'debian'
-      case os[:release]
-      when /6\./, /7\./
-        ciphers = ciphers53
-      when /8\./
-        ciphers = ciphers66
-      end
-    when 'redhat'
-      case os[:release]
-      when '6.4', '6.5'
-        ciphers = ciphers53
-      end
-  end
-end
-
-control '04' do
-  impact 1.0
-  title 'Check ssh owner, group and permissions'
-  desc 'ssh owner, group and permissions'
-
-  describe file('/etc/ssh') do
-    it { should exist }
-    it { should be_directory }
-    it { should be_owned_by 'root' }
-    it { should be_grouped_into 'root' }
-    it { should be_executable }
-    it { should be_readable.by('owner') }
-    it { should be_readable.by('group') }
-    it { should be_readable.by('other') }
-    it { should be_writable.by('owner') }
-    it { should_not be_writable.by('group') }
-    it { should_not be_writable.by('other') }
-    its('mode') { should eq 00755 }
-  end
-
-  describe file('/etc/ssh/sshd_config') do
-    it { should exist }
-    it { should be_file }
-    it { should be_owned_by 'root' }
-    it { should be_grouped_into 'root' }
-    it { should_not be_executable }
-    it { should be_readable.by('owner') }
-    it { should_not be_readable.by('group') }
-    it { should_not be_readable.by('other') }
-    it { should be_writable.by('owner') }
-    it { should_not be_writable.by('group') }
-    it { should_not be_writable.by('other') }
-  end
+  title 'client: Check ssh_config owner, group and permissions.'
+  desc 'The ssh_config should owned by root, only be writable by owner and readable to all.'
 
   describe file('/etc/ssh/ssh_config') do
     it { should exist }
@@ -106,387 +45,173 @@ control '04' do
   end
 end
 
-control '05' do
+control 'ssh-02' do
   impact 1.0
-  title 'PermitRoot Login without-password or no'
-  desc 'PermitRoot Login without-password or no'
-  describe sshd_config do
-    its('PermitRootLogin') { should eq 'no' }
+  title 'Client: Specify the AddressFamily to your need'
+  desc 'OpenSSH should be configured to the network family. Set it to inet if you use IPv4 only. For IPv6 only set it to inet6.'
+  describe ssh_config do
+    its('AddressFamily') { should match(/inet|inet6|any/) }
   end
 end
 
-control '06' do
+control 'ssh-03' do
   impact 1.0
-  title 'Specify ssh Port'
-  desc 'Specify ssh Port'
-  describe sshd_config do
-    its('Port') { should eq '22' }
+  title 'Client: Specify expected ssh port'
+  desc 'Always specify which port the SSH client should connect. Prevent unexpected settings.'
+  describe ssh_config do
+    its('Port') { should eq('22') }
   end
 end
 
-control '07' do
+control 'ssh-04' do
   impact 1.0
-  title 'Specify AddressFamily'
-  desc 'Specify AddressFamily'
-  describe sshd_config do
-    its('AddressFamily') { should eq 'inet' }
+  title 'Client: Specify protocol version 2'
+  desc "Only SSH protocol version 2 connections should be permitted. Version 1 of the protocol contains security vulnerabilities. Don't use legacy insecure SSHv1 connections anymore."
+  describe ssh_config do
+    its('Protocol') { should eq('2') }
   end
 end
 
-control '08' do
+control 'ssh-05' do
   impact 1.0
-  title 'Specify ListenAddress'
-  desc 'Specify ListenAddress'
-  describe sshd_config do
-    its('ListenAddress') { should eq '0.0.0.0' }
+  title 'Client: Disable batch mode'
+  desc 'Avoid batch mode in the default configuration.'
+  describe ssh_config do
+    its('BatchMode') { should eq('no') }
   end
 end
 
-control '09' do
+control 'ssh-06' do
   impact 1.0
-  title 'Specify Protocol'
-  desc 'Specify Protocol'
-  describe sshd_config do
-    its('Protocol') { should eq '2' }
+  title 'Client: Check Host IPs'
+  desc 'Make sure that SSH checks the host IP address in the known_hosts file, to avoid DNS spoofing effects.'
+  describe ssh_config do
+    its('CheckHostIP') { should eq('yes') }
   end
 end
 
-control '10' do
+control 'ssh-07' do
   impact 1.0
-  title 'Specify StrictModes'
-  desc 'Specify StrictModes'
-  describe sshd_config do
-    its('StrictModes') { should eq 'yes' }
+  title 'Client: Ask when checking host keys'
+  desc "Don't automatically add new hosts keys to the list of known hosts."
+  describe ssh_config do
+    its('StrictHostKeyChecking') { should match(/ask|yes/) }
   end
 end
 
-control '11' do
+control 'ssh-08' do
   impact 1.0
-  title 'Specify SyslogFacility'
-  desc 'Specify SyslogFacility'
-  describe sshd_config do
-    its('SyslogFacility') { should eq 'AUTH' }
+  title 'Client: Check for secure ssh ciphers'
+  desc 'Configure a list of ciphers to the best secure ciphers (avoid older and weaker ciphers)'
+  describe ssh_config do
+    its('Ciphers') { should eq(ssh_crypto.valid_ciphers) }
   end
 end
 
-control '12' do
+control 'ssh-09' do
   impact 1.0
-  title 'Specify LogLevel'
-  desc 'Specify LogLevel'
-  describe sshd_config do
-    its('LogLevel') { should eq 'VERBOSE' }
+  title 'Client: Check for secure ssh Key-Exchange Algorithm'
+  desc 'Configure a list of Key-Exchange Algorithms (Kexs) to the best secure Kexs (avoid older and weaker Key-Exchange Algorithm)'
+  describe ssh_config do
+    its('KexAlgorithms') { should eq(ssh_crypto.valid_kexs) }
   end
 end
 
-control '13' do
+control 'ssh-10' do
   impact 1.0
-  title 'Specify HostKey'
-  desc 'Specify HostKey'
-  describe sshd_config do
-    its('HostKey') { should eq [
-        '/etc/ssh/ssh_host_rsa_key',
-        '/etc/ssh/ssh_host_dsa_key',
-        '/etc/ssh/ssh_host_ecdsa_key',
-      ] }
+  title 'Client: Check for secure ssh Message Authentication Codes'
+  desc 'Configure a list of Message Authentication Codes (MACs) to the best secure MACs (avoid older and weaker Message Authentication Codes)'
+  describe ssh_config do
+    its('MACs') { should eq(ssh_crypto.valid_macs) }
   end
 end
 
-control '14' do
+control 'ssh-11' do
   impact 1.0
-  title 'Specify UseLogin'
-  desc 'Specify UseLogin'
-  describe sshd_config do
-    its('UseLogin') { should eq 'no' }
+  title 'Client: Disable agent forwarding'
+  desc 'Prevent agent forwarding by default, as it can be used in a limited way to enable attacks.'
+  describe ssh_config do
+    its('ForwardAgent') { should eq('no') }
   end
 end
 
-control '15' do
+control 'ssh-12' do
   impact 1.0
-  title 'Specify UsePrivilegeSeparation'
-  desc 'Specify UsePrivilegeSeparation'
-    case os[:family]
-    when 'ubuntu'
-      describe sshd_config do
-        its('UsePrivilegeSeparation') { should eq 'sandbox' }
-      end
-    when 'debian'
-      case os[:release]
-      when /6\./
-        describe sshd_config do
-          its('UsePrivilegeSeparation') { should eq 'yes' }
-        end
-      when /7\./
-        describe sshd_config do
-          its('UsePrivilegeSeparation') { should eq 'sandbox' }
-        end
-      end
-    when 'redhat'
-      case os[:release]
-      when '6.4', '6.5'
-        describe sshd_config do
-          its('UsePrivilegeSeparation') { should eq 'yes' }
-        end
-      end
-    end
-end
-
-control '16' do
-  impact 1.0
-  title 'Specify PermitUserEnvironment'
-  desc 'Specify PermitUserEnvironment'
-  describe sshd_config do
-    its('PermitUserEnvironment') { should eq 'no' }
+  title 'Client: Disable X11Forwarding'
+  desc 'Prevent X11 forwarding by default, as it can be used in a limited way to enable attacks.'
+  describe ssh_config do
+    its('ForwardX11') { should eq('no') }
   end
 end
 
-control '17' do
+control 'ssh-13' do
   impact 1.0
-  title 'Specify LoginGraceTime'
-  desc 'Specify LoginGraceTime'
-  describe sshd_config do
-    its('LoginGraceTime') { should eq '30s' }
+  title 'Client: Disable HostbasedAuthentication'
+  desc 'This option is a weak way for authentication and provide attacker more ways to enter the system.'
+  describe ssh_config do
+    its('HostbasedAuthentication') { should eq('no') }
   end
 end
 
-control '18' do
+control 'ssh-14' do
   impact 1.0
-  title 'Specify MaxAuthTries'
-  desc 'Specify MaxAuthTries'
-  describe sshd_config do
-    its('MaxAuthTries') { should eq '2' }
+  title 'Client: Disable rhosts-based authentication'
+  desc 'Avoid rhosts-based authentication, as it opens more ways for an attacker to enter a system.'
+  describe ssh_config do
+    its('RhostsRSAAuthentication') { should eq('no') }
   end
 end
 
-control '19' do
+control 'ssh-15' do
   impact 1.0
-  title 'Specify MaxSessions'
-  desc 'Specify MaxSessions'
-  describe sshd_config do
-    its('MaxSessions') { should eq '10' }
+  title 'Client: Enable RSA authentication'
+  desc 'Make sure RSA authentication is used by default.'
+  describe ssh_config do
+    its('RSAAuthentication') { should eq('yes') }
   end
 end
 
-control '20' do
+control 'ssh-16' do
   impact 1.0
-  title 'Specify MaxStartups'
-  desc 'Specify MaxStartups'
-  describe sshd_config do
-    its('MaxStartups') { should eq '10:30:100' }
+  title 'Client: Disable password-based authentication'
+  desc 'Avoid password-based authentications.'
+  describe ssh_config do
+    its('PasswordAuthentication') { should eq('no') }
   end
 end
 
-control '21' do
+control 'ssh-17' do
   impact 1.0
-  title 'Specify PubkeyAuthentication'
-  desc 'Specify PubkeyAuthentication'
-  describe sshd_config do
-    its('PubkeyAuthentication') { should eq 'yes' }
+  title 'Client: Disable GSSAPIAuthentication'
+  desc 'If you do not use GSSAPI authentication then disable it.'
+  describe ssh_config do
+    its('GSSAPIAuthentication') { should eq('no') }
   end
 end
 
-control '22' do
+control 'ssh-18' do
   impact 1.0
-  title 'Specify IgnoreRhosts'
-  desc 'Specify IgnoreRhosts'
-  describe sshd_config do
-    its('IgnoreRhosts') { should eq 'yes' }
+  title 'Client: Disable GSSAPIDelegateCredentials'
+  desc 'If you do not use GSSAPI authentication then disable it.'
+  describe ssh_config do
+    its('GSSAPIDelegateCredentials') { should eq('no') }
   end
 end
 
-control '23' do
+control 'ssh-19' do
   impact 1.0
-  title 'Specify IgnoreUserKnownHosts'
-  desc 'Specify IgnoreUserKnownHosts'
-  describe sshd_config do
-    its('IgnoreUserKnownHosts') { should eq 'yes' }
+  title 'Client: Disable tunnels'
+  desc 'Avoid using SSH tunnels.'
+  describe ssh_config do
+    its('Tunnel') { should eq('no') }
   end
 end
 
-control '24' do
+control 'ssh-20' do
   impact 1.0
-  title 'Specify HostbasedAuthentication'
-  desc 'Specify HostbasedAuthentication'
-  describe sshd_config do
-    its('HostbasedAuthentication') { should eq 'no' }
-  end
-end
-
-control '25' do
-  impact 1.0
-  title 'Specify UsePAM'
-  desc 'Specify UsePAM'
-  describe sshd_config do
-    its('UsePAM') { should eq 'no' }
-  end
-end
-
-control '26' do
-  impact 1.0
-  title 'Specify PasswordAuthentication'
-  desc 'Specify PasswordAuthentication'
-  describe sshd_config do
-    its('PasswordAuthentication') { should eq 'no' }
-  end
-end
-
-control '27' do
-  impact 1.0
-  title 'Specify PermitEmptyPasswords'
-  desc 'Specify PermitEmptyPasswords'
-  describe sshd_config do
-    its('PermitEmptyPasswords') { should eq 'no' }
-  end
-end
-
-control '28' do
-  impact 1.0
-  title 'Specify ChallengeResponseAuthentication'
-  desc 'Specify ChallengeResponseAuthentication'
-  describe sshd_config do
-    its('ChallengeResponseAuthentication') { should eq 'no' }
-  end
-end
-
-control '29' do
-  impact 1.0
-  title 'Specify KerberosAuthentication'
-  desc 'Specify KerberosAuthentication'
-  describe sshd_config do
-    its('KerberosAuthentication') { should eq 'no' }
-  end
-end
-
-control '30' do
-  impact 1.0
-  title 'Specify KerberosOrLocalPasswd'
-  desc 'Specify KerberosOrLocalPasswd'
-  describe sshd_config do
-    its('KerberosOrLocalPasswd') { should eq 'no' }
-  end
-end
-
-control '31' do
-  impact 1.0
-  title 'Specify KerberosTicketCleanup'
-  desc 'Specify KerberosTicketCleanup'
-  describe sshd_config do
-    its('KerberosTicketCleanup') { should eq 'yes' }
-  end
-end
-
-control '32' do
-  impact 1.0
-  title 'Specify GSSAPIAuthentication'
-  desc 'Specify GSSAPIAuthentication'
-  describe sshd_config do
-    its('GSSAPIAuthentication') { should eq 'no' }
-  end
-end
-
-control '33' do
-  impact 1.0
-  title 'Specify GSSAPICleanupCredentials'
-  desc 'Specify GSSAPICleanupCredentials'
-  describe sshd_config do
-    its('GSSAPICleanupCredentials') { should eq 'yes' }
-  end
-end
-
-control '34' do
-  impact 1.0
-  title 'Specify TCPKeepAlive'
-  desc 'Specify TCPKeepAlive'
-  describe sshd_config do
-    its('TCPKeepAlive') { should eq 'no' }
-  end
-end
-
-control '35' do
-  impact 1.0
-  title 'Specify ClientAliveInterval'
-  desc 'Specify ClientAliveInterval'
-  describe sshd_config do
-    its('ClientAliveInterval') { should eq '600' }
-  end
-end
-
-control '36' do
-  impact 1.0
-  title 'Specify ClientAliveCountMax'
-  desc 'Specify ClientAliveCountMax'
-  describe sshd_config do
-    its('ClientAliveCountMax') { should eq '3' }
-  end
-end
-
-control '37' do
-  impact 1.0
-  title 'Specify PermitTunnel'
-  desc 'Specify PermitTunnel'
-  describe sshd_config do
-    its('PermitTunnel') { should eq 'no' }
-  end
-end
-
-control '38' do
-  impact 1.0
-  title 'Specify AllowTcpForwarding'
-  desc 'Specify AllowTcpForwarding'
-  describe sshd_config do
-    its('AllowTcpForwarding') { should eq 'no' }
-  end
-end
-
-control '39' do
-  impact 1.0
-  title 'Specify AllowAgentForwarding'
-  desc 'Specify AllowAgentForwarding'
-  describe sshd_config do
-    its('AllowAgentForwarding') { should eq 'no' }
-  end
-end
-
-control '40' do
-  impact 1.0
-  title 'Specify GatewayPorts'
-  desc 'Specify GatewayPorts'
-  describe sshd_config do
-    its('GatewayPorts') { should eq 'no' }
-  end
-end
-
-control '41' do
-  impact 1.0
-  title 'Specify X11Forwarding'
-  desc 'Specify X11Forwarding'
-  describe sshd_config do
-    its('X11Forwarding') { should eq 'no' }
-  end
-end
-
-control '42' do
-  impact 1.0
-  title 'Specify X11UseLocalhost'
-  desc 'Specify X11UseLocalhost'
-  describe sshd_config do
-    its('X11UseLocalhost') { should eq 'yes' }
-  end
-end
-
-control '43' do
-  impact 1.0
-  title 'Specify PrintMotd'
-  desc 'Specify PrintMotd'
-  describe sshd_config do
-    its('PrintMotd') { should eq 'no' }
-  end
-end
-
-control '44' do
-  impact 1.0
-  title 'Specify PrintLastLog'
-  desc 'Specify PrintLastLog'
-  describe sshd_config do
-    its('PrintLastLog') { should eq 'no' }
+  title 'Client: Do not permit local commands'
+  desc 'Do not permit any local command execution.'
+  describe ssh_config do
+    its('PermitLocalCommand') { should eq('no') }
   end
 end
