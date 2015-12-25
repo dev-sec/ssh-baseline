@@ -32,19 +32,21 @@ class SshCrypto
 
     # adjust ciphers based on OS + release
     case os[:family]
-    when 'Ubuntu'
+    when 'ubuntu'
       case os[:release]
       when '12.04'
         ciphers = ciphers53
       when '14.04'
         ciphers = ciphers66
       end
-    when 'Debian'
+    when 'debian'
       case os[:release]
       when /6\./, /7\./
         ciphers = ciphers53
+      when /8\./
+        ciphers = ciphers66
       end
-    when 'RedHat'
+    when 'redhat'
       case os[:release]
       when '6.4', '6.5'
         ciphers = ciphers53
@@ -62,23 +64,25 @@ class SshCrypto
 
     # adjust KEXs based on OS + release
     case os[:family]
-    when 'Ubuntu'
+    when 'ubuntu'
       case os[:release]
       when '12.04'
         kex = kex59
       when '14.04'
         kex = kex66
       end
-    when 'Debian'
+    when 'debian'
       case os[:release]
       when /6\./
         kex = nil
       when /7\./
         kex = kex59
+      when /8\./
+        kex = kex66
       end
-    when 'RedHat'
+    when 'redhat', 'centos'
       case os[:release]
-      when '6.4', '6.5'
+      when '6.4', '6.5', /7\./
         kex = nil
       end
     end
@@ -88,30 +92,32 @@ class SshCrypto
 
   def valid_macs
     # define a set of default MACs
-    macs66 = 'hmac-sha2-512-etm@openssh.com,hmac-sha2-512,hmac-sha2-256-etm@openssh.com,hmac-sha2-256,umac-128-etm@openssh.com,hmac-ripemd160-etm@openssh.com,hmac-ripemd160'
+    macs66 = 'hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-ripemd160-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,hmac-ripemd160'
     macs59 = 'hmac-sha2-512,hmac-sha2-256,hmac-ripemd160'
     macs53 = 'hmac-ripemd160,hmac-sha1'
     macs = macs59
 
     # adjust MACs based on OS + release
     case os[:family]
-    when 'Ubuntu'
+    when 'ubuntu'
       case os[:release]
       when '12.04'
         macs = macs59
       when '14.04'
         macs = macs66
       end
-    when 'Debian'
+    when 'debian'
       case os[:release]
       when /6\./
         macs = macs53
       when /7\./
         macs = macs59
+      when /8\./
+        macs = macs66
       end
-    when 'RedHat'
+    when 'redhat', 'centos'
       case os[:release]
-      when '6.4', '6.5'
+      when '6.4', '6.5', /7\./
         macs = macs53
       end
     end
@@ -134,10 +140,10 @@ class SshCrypto
       when /6\./
         ps = ps53
       end
-    when 'redhat'
+    when 'redhat', 'centos'
       case os[:release]
       # redhat/centos/oracle 6.x has ssh 5.3
-      when /6\./
+      when /6\./, /7\./
         ps = ps53
       end
     end
