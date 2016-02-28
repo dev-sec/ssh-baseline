@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 source 'https://rubygems.org'
 
 # pin dependency for Ruby 1.9.3 since bundler is not
