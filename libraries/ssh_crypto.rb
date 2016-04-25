@@ -18,7 +18,7 @@
 # author: Dominik Richter
 # author: Patrick Muench
 
-class SshCrypto
+class SshCrypto # rubocop:disable Metrics/ClassLength
   attr_reader :os
   def initialize(os)
     @os = os
@@ -150,5 +150,4 @@ class SshCrypto
 
     ps
   end
-
 end

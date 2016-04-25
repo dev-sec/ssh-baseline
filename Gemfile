@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 source 'https://rubygems.org'
 
 # pin dependency for Ruby 1.9.3 since bundler is not
@@ -9,7 +10,7 @@ end
 
 gem 'rake'
 gem 'inspec', '~> 0.9'
-gem 'rubocop',    '~> 0.23'
+gem 'rubocop', '~> 0.36.0'
 gem 'highline', '~> 1.6.0'
 
 group :tools do
