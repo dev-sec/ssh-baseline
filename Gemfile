@@ -10,7 +10,7 @@ end
 
 gem 'rake'
 gem 'inspec', '~> 0.9'
-gem 'rubocop',    '~> 0.23'
+gem 'rubocop', '~> 0.36.0'
 gem 'highline', '~> 1.6.0'
 
 group :tools do
