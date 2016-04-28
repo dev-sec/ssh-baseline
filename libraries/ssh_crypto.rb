@@ -18,11 +18,8 @@
 # author: Dominik Richter
 # author: Patrick Muench
 
-class SshCrypto # rubocop:disable Metrics/ClassLength
-  attr_reader :os
-  def initialize(os)
-    @os = os
-  end
+class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
+  name 'ssh_crypto'
 
   def valid_ciphers
     # define a set of default ciphers
@@ -31,23 +28,23 @@ class SshCrypto # rubocop:disable Metrics/ClassLength
     ciphers = ciphers53
 
     # adjust ciphers based on OS + release
-    case os[:family]
+    case inspec.os[:family]
     when 'ubuntu'
-      case os[:release]
+      case inspec.os[:release]
       when '12.04'
         ciphers = ciphers53
       when '14.04'
         ciphers = ciphers66
       end
     when 'debian'
-      case os[:release]
+      case inspec.os[:release]
       when /6\./, /7\./
         ciphers = ciphers53
       when /8\./
         ciphers = ciphers66
       end
     when 'redhat'
-      case os[:release]
+      case inspec.os[:release]
       when '6.4', '6.5'
         ciphers = ciphers53
       end
@@ -63,16 +60,16 @@ class SshCrypto # rubocop:disable Metrics/ClassLength
     kex = kex59
 
     # adjust KEXs based on OS + release
-    case os[:family]
+    case inspec.os[:family]
     when 'ubuntu'
-      case os[:release]
+      case inspec.os[:release]
       when '12.04'
         kex = kex59
       when '14.04'
         kex = kex66
       end
     when 'debian'
-      case os[:release]
+      case inspec.os[:release]
       when /6\./
         kex = nil
       when /7\./
@@ -81,7 +78,7 @@ class SshCrypto # rubocop:disable Metrics/ClassLength
         kex = kex66
       end
     when 'redhat', 'centos'
-      case os[:release]
+      case inspec.os[:release]
       when '6.4', '6.5', /7\./
         kex = nil
       end
@@ -98,16 +95,16 @@ class SshCrypto # rubocop:disable Metrics/ClassLength
     macs = macs59
 
     # adjust MACs based on OS + release
-    case os[:family]
+    case inspec.os[:family]
     when 'ubuntu'
-      case os[:release]
+      case inspec.os[:release]
       when '12.04'
         macs = macs59
       when '14.04'
         macs = macs66
       end
     when 'debian'
-      case os[:release]
+      case inspec.os[:release]
       when /6\./
         macs = macs53
       when /7\./
@@ -116,7 +113,7 @@ class SshCrypto # rubocop:disable Metrics/ClassLength
         macs = macs66
       end
     when 'redhat', 'centos'
-      case os[:release]
+      case inspec.os[:release]
       when '6.4', '6.5', /7\./
         macs = macs53
       end
@@ -134,14 +131,14 @@ class SshCrypto # rubocop:disable Metrics/ClassLength
     # debian 7.x and newer has ssh 5.9+
     # ubuntu 12.04 and newer has ssh 5.9+
 
-    case os[:family]
+    case inspec.os[:family]
     when 'debian'
-      case os[:release]
+      case inspec.os[:release]
       when /6\./
         ps = ps53
       end
     when 'redhat', 'centos'
-      case os[:release]
+      case inspec.os[:release]
       # redhat/centos/oracle 6.x has ssh 5.3
       when /6\./, /7\./
         ps = ps53

@@ -20,10 +20,9 @@
 
 title 'SSH client config'
 
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'libraries'))
-require 'ssh_crypto'
-
-ssh_crypto = SshCrypto.new(os)
+only_if do
+  command('ssh').exist?
+end
 
 control 'ssh-01' do
   impact 1.0
