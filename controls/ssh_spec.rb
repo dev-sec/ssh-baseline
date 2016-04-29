@@ -214,3 +214,12 @@ control 'ssh-20' do
     its('PermitLocalCommand') { should eq('no') }
   end
 end
+
+control 'ssh-21' do
+  impact 1.0
+  title 'Client: Do not allow Roaming'
+  desc 'Workaround for SSH Client Bug CVE-2016-0777 and CVE-2016-0778'
+  describe ssh_config do
+    its('UseRoaming') { should eq('no') }
+  end
+end
