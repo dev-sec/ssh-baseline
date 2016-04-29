@@ -3,28 +3,28 @@ tests-ssh-hardening
 
 This Compliance Profile ensures, that all hardening projects keep the same quality.
 
-- https://github.com/hardening-io/puppet-ssh-hardening
-- https://github.com/hardening-io/chef-ssh-hardening
-- https://github.com/hardening-io/ansible-ssh-hardening
+- https://github.com/dev-sec/puppet-ssh-hardening
+- https://github.com/dev-sec/chef-ssh-hardening
+- https://github.com/dev-sec/ansible-ssh-hardening
 
 ## Standalone Usage
 
 This Compliance Profile requires [InSpec](https://github.com/chef/inspec) for execution:
 
 ```
-$ git clone https://github.com/hardening-io/tests-ssh-hardening
-$ inspec exec tests-os-hardening
+$ git clone https://github.com/dev-sec/tests-ssh-hardening
+$ inspec exec tests-ssh-hardening
 ```
 
 You can also execute the profile directly from Github:
 
 ```
-$ inspec exec https://github.com/hardening-io/tests-ssh-hardening
+$ inspec exec https://github.com/dev-sec/tests-ssh-hardening
 ```
 
 ## License and Author
 
-* Author:: Patrick Muench <patrick.meier111@googlemail.com>
+* Author:: Patrick Muench <patrick.muench1111@googlemail.com>
 * Author:: Dominik Richter <dominik.richter@googlemail.com>
 * Author:: Christoph Hartmann <chris@lollyrock.com>
 * Author:: Edmund Haselwanter <me@ehaselwanter.com>
