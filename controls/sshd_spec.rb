@@ -122,7 +122,7 @@ control 'sshd-09' do
   title 'Server: Specify ListenAddress'
   desc "Limit the SSH server to listen to a specific address. Don't let it listen on all interfaces to avoid logins from unexpected sources."
   describe sshd_config do
-    its('ListenAddress') { should eq('0.0.0.0') }
+    its('ListenAddress') { should match(/.*/) }
   end
 end
 
