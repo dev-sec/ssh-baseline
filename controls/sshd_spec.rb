@@ -179,7 +179,7 @@ end
 
 control 'sshd-15' do
   impact 1.0
-  title 'Server: Speciy UseLogin to NO'
+  title 'Server: Specify UseLogin to NO'
   desc 'Disable legacy login mechanism and do not use login for interactive login sessions.'
   describe sshd_config do
     its('UseLogin') { should eq('no') }
