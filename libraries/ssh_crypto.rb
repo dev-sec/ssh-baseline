@@ -43,10 +43,12 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /8\./
         ciphers = ciphers66
       end
-    when 'redhat'
+    when 'redhat', 'centos'
       case inspec.os[:release]
-      when '6.4', '6.5'
+      when /6\./
         ciphers = ciphers53
+      when /7\./
+        ciphers = ciphers66
       end
     end
 
