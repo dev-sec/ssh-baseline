@@ -118,8 +118,10 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       end
     when 'redhat', 'centos'
       case inspec.os[:release]
-      when '6.4', '6.5', '6.6', '6.7', /7\./
+      when /6\./
         macs = macs53
+      when /7\./
+        macs = macs66
       end
     end
 
