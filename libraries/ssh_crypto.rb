@@ -43,10 +43,12 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /8\./
         ciphers = ciphers66
       end
-    when 'redhat'
+    when 'redhat', 'centos'
       case inspec.os[:release]
-      when '6.4', '6.5'
+      when /6\./
         ciphers = ciphers53
+      when /7\./
+        ciphers = ciphers66
       end
     end
 
@@ -79,8 +81,10 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       end
     when 'redhat', 'centos'
       case inspec.os[:release]
-      when '6.4', '6.5', '6.6', '6.7', /7\./
+      when /6\./
         kex = nil
+      when /7\./
+        kex = kex66
       end
     end
 
@@ -114,8 +118,10 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       end
     when 'redhat', 'centos'
       case inspec.os[:release]
-      when '6.4', '6.5', '6.6', '6.7', /7\./
+      when /6\./
         macs = macs53
+      when /7\./
+        macs = macs66
       end
     end
 
@@ -140,8 +146,10 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     when 'redhat', 'centos'
       case inspec.os[:release]
       # redhat/centos/oracle 6.x has ssh 5.3
-      when /6\./, /7\./
+      when /6\./
         ps = ps53
+      when /7\./
+        ps = ps59
       end
     end
 
