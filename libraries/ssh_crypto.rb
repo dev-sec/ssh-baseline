@@ -146,8 +146,10 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     when 'redhat', 'centos'
       case inspec.os[:release]
       # redhat/centos/oracle 6.x has ssh 5.3
-      when /6\./, /7\./
+      when /6\./
         ps = ps53
+      when /7\./
+        ps = ps59
       end
     end
 
