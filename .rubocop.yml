@@ -21,7 +21,7 @@ MethodLength:
 NumericLiterals:
   MinDigits: 10
 Metrics/CyclomaticComplexity:
-  Max: 10
+  Max: 11
 Metrics/PerceivedComplexity:
   Max: 10
 Metrics/AbcSize:
