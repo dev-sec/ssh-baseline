@@ -314,7 +314,7 @@ end
 
 control 'sshd-30' do
   impact 1.0
-  title 'Server: Disable Kerberos or Local Password'
+  title 'Server: Disable Kerberos'
   desc 'Avoid kerberos authentication.'
   describe sshd_config do
     its('KerberosAuthentication') { should eq('no') }
