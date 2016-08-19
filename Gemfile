@@ -9,6 +9,7 @@ if Gem::Version.new(RUBY_VERSION) <= Gem::Version.new('1.9.3')
 end
 
 gem 'rake'
+gem 'rack', '1.6.4'
 gem 'inspec', '~> 0.9'
 gem 'rubocop', '~> 0.36.0'
 gem 'highline', '~> 1.6.0'
