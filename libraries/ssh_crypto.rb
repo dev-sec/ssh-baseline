@@ -28,7 +28,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     ciphers = ciphers53
 
     # adjust ciphers based on OS + release
-    case inspec.os[:family]
+    case inspec.os[:name]
     when 'ubuntu'
       case inspec.os[:release]
       when '12.04'
@@ -62,7 +62,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     kex = kex59
 
     # adjust KEXs based on OS + release
-    case inspec.os[:family]
+    case inspec.os[:name]
     when 'ubuntu'
       case inspec.os[:release]
       when '12.04'
@@ -99,7 +99,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     macs = macs59
 
     # adjust MACs based on OS + release
-    case inspec.os[:family]
+    case inspec.os[:name]
     when 'ubuntu'
       case inspec.os[:release]
       when '12.04'
@@ -137,7 +137,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     # debian 7.x and newer has ssh 5.9+
     # ubuntu 12.04 and newer has ssh 5.9+
 
-    case inspec.os[:family]
+    case inspec.os[:name]
     when 'debian'
       case inspec.os[:release]
       when /6\./
