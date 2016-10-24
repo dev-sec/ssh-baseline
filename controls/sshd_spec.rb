@@ -453,3 +453,28 @@ control 'sshd-45' do
     its('PrintLastLog') { should eq('no') }
   end
 end
+
+control 'sshd-46' do
+  impact 1.0
+  title 'Server: Banner'
+  desc 'Specifies a banner file to serve before authentication succeeds'
+  describe sshd_config do
+    its('Banner') { should eq('none') }
+  end
+end
+
+control 'sshd-47' do
+  impact 1.0
+  title 'Server: DebianBanner'
+  desc 'Specifies whether to include OS distribution in version information'
+  case os[:family]
+  when 'debian' then
+    describe sshd_config do
+      its('DebianBanner') { should eq('no') }
+    end
+  else
+    describe file(sshd_config.path) do
+      its('content') { should_not match(/DebianBanner/) }
+    end
+  end
+end
