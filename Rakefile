@@ -27,7 +27,7 @@ end
 
 # Automatically generate a changelog for this project. Only loaded if
 # the necessary gem is installed. By default its picking up the version from
-# inspec.yml. You can override that behavior with s`rake changelog to=1.2.0`
+# inspec.yml. You can override that behavior with `rake changelog to=1.2.0`
 begin
   require 'yaml'
   metadata = YAML.load_file('inspec.yml')
