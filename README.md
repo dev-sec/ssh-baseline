@@ -1,4 +1,4 @@
-tests-ssh-hardening
+DevSec SSH Baseline
 ===================
 
 This Compliance Profile ensures, that all hardening projects keep the same quality.
@@ -12,14 +12,14 @@ This Compliance Profile ensures, that all hardening projects keep the same quali
 This Compliance Profile requires [InSpec](https://github.com/chef/inspec) for execution:
 
 ```
-$ git clone https://github.com/dev-sec/tests-ssh-hardening
-$ inspec exec tests-ssh-hardening
+$ git clone https://github.com/dev-sec/ssh-baseline
+$ inspec exec ssh-baseline
 ```
 
 You can also execute the profile directly from Github:
 
 ```
-$ inspec exec https://github.com/dev-sec/tests-ssh-hardening
+$ inspec exec https://github.com/dev-sec/ssh-baseline
 ```
 
 ## License and Author
