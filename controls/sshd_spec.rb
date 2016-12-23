@@ -274,15 +274,6 @@ control 'sshd-25' do
   end
 end
 
-control 'sshd-26' do
-  impact 1.0
-  title 'Server: Disable PAM'
-  desc 'Avoid challenge-response and password-based authentications.'
-  describe sshd_config do
-    its('UsePAM') { should eq('no') }
-  end
-end
-
 control 'sshd-27' do
   impact 1.0
   title 'Server: Disable password-based authentication'
