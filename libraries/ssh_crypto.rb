@@ -19,7 +19,7 @@
 class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
   name 'ssh_crypto'
 
-  def valid_ciphers
+  def valid_ciphers # rubocop:disable Metrics/CyclomaticComplexity
     # define a set of default ciphers
     ciphers53 = 'aes256-ctr,aes192-ctr,aes128-ctr'
     ciphers66 = 'chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr'
@@ -46,6 +46,13 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /6\./
         ciphers = ciphers53
       when /7\./
+        ciphers = ciphers66
+      end
+    when 'mac_os_x'
+      case inspec.os[:release]
+      when /10.9\./
+        ciphers = ciphers53
+      when /10.10\./, /10.11\./, /10.12\./
         ciphers = ciphers66
       end
     end
@@ -84,6 +91,13 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /7\./
         kex = kex66
       end
+    when 'mac_os_x'
+      case inspec.os[:release]
+      when /10.9\./
+        kex = kex59
+      when /10.10\./, /10.11\./, /10.12\./
+        kex = kex66
+      end
     end
 
     kex
@@ -119,6 +133,13 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /6\./
         macs = macs53
       when /7\./
+        macs = macs66
+      end
+    when 'mac_os_x'
+      case inspec.os[:release]
+      when /10.9\./
+        macs = macs59
+      when /10.10\./, /10.11\./, /10.12\./
         macs = macs66
       end
     end
