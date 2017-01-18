@@ -168,7 +168,6 @@ control 'sshd-14' do
     its('HostKey') do
       should eq [
         '/etc/ssh/ssh_host_rsa_key',
-        '/etc/ssh/ssh_host_dsa_key',
         '/etc/ssh/ssh_host_ecdsa_key'
       ]
     end
