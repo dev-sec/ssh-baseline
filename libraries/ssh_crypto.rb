@@ -48,6 +48,8 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /7\./
         ciphers = ciphers66
       end
+    when 'fedora'
+      ciphers = ciphers66
     when 'mac_os_x'
       case inspec.os[:release]
       when /10.9\./
@@ -91,6 +93,8 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /7\./
         kex = kex66
       end
+    when 'fedora'
+      kex = kex66
     when 'mac_os_x'
       case inspec.os[:release]
       when /10.9\./
@@ -135,6 +139,8 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /7\./
         macs = macs66
       end
+    when 'fedora'
+      macs = macs66
     when 'mac_os_x'
       case inspec.os[:release]
       when /10.9\./
@@ -204,6 +210,8 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /7\./
         alg = alg66
       end
+    when 'fedora'
+      alg = alg66
     when 'mac_os_x'
       case inspec.os[:release]
       when /10.9\./
