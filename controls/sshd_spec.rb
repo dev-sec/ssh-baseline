@@ -165,12 +165,7 @@ control 'sshd-14' do
   title 'Server: Specify SSH HostKeys'
   desc 'Specify HostKey for protection against Man-In-The-Middle Attacks'
   describe sshd_config do
-    its('HostKey') do
-      should eq [
-        '/etc/ssh/ssh_host_rsa_key',
-        '/etc/ssh/ssh_host_ecdsa_key'
-      ]
-    end
+    its('HostKey') { should cmp ssh_crypto.valid_hostkeys }
   end
 end
 
