@@ -57,7 +57,7 @@ control 'sshd-04' do
     it { should exist }
     it { should be_directory }
     it { should be_owned_by 'root' }
-    it { should be_grouped_into os[:family] == 'darwin' ? 'wheel' : 'root' }
+    it { should be_grouped_into os.darwin ? 'wheel' : 'root' }
     it { should be_executable }
     it { should be_readable.by('owner') }
     it { should be_readable.by('group') }
@@ -77,7 +77,7 @@ control 'sshd-05' do
     it { should exist }
     it { should be_file }
     it { should be_owned_by 'root' }
-    it { should be_grouped_into os[:family] == 'darwin' ? 'wheel' : 'root' }
+    it { should be_grouped_into os.darwin ? 'wheel' : 'root' }
     it { should_not be_executable }
     it { should be_readable.by('owner') }
     it { should_not be_readable.by('group') }

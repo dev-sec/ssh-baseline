@@ -31,7 +31,7 @@ control 'ssh-01' do
     it { should exist }
     it { should be_file }
     it { should be_owned_by 'root' }
-    it { should be_grouped_into os[:family] == 'darwin' ? 'wheel' : 'root' }
+    it { should be_grouped_into os.darwin ? 'wheel' : 'root' }
     it { should_not be_executable }
     it { should be_readable.by('owner') }
     it { should be_readable.by('group') }
