@@ -204,9 +204,9 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
 
   # return a list of valid algoriths for a current platform
   def valid_algorithms # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
-    alg53 = %w(rsa)
-    alg60 = %w(rsa ecdsa)
-    alg66 = %w(rsa ecdsa ed25519)
+    alg53 = %w[rsa]
+    alg60 = %w[rsa ecdsa]
+    alg66 = %w[rsa ecdsa ed25519]
     alg = alg66 # probably its a best suitable set for everything unknown
 
     case inspec.os[:name]
