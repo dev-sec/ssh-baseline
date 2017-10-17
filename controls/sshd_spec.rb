@@ -19,7 +19,7 @@
 title 'SSH server config'
 
 only_if do
-  command('sshd').exist?
+  command('/usr/sbin/sshd').exist?
 end
 
 control 'sshd-01' do
