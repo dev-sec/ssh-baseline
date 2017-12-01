@@ -1,5 +1,19 @@
 # Change Log
 
+## [2.3.0](https://github.com/dev-sec/ssh-baseline/tree/2.3.0) (2017-12-01)
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.2.0...2.3.0)
+
+**Closed issues:**
+
+- OpenSSH 7.6 deprecated MACs [\#93](https://github.com/dev-sec/ssh-baseline/issues/93)
+
+**Merged pull requests:**
+
+- remove ripemd160 MAC from the macs66 list [\#94](https://github.com/dev-sec/ssh-baseline/pull/94) ([atomic111](https://github.com/atomic111))
+- use recommended spdx license identifier [\#90](https://github.com/dev-sec/ssh-baseline/pull/90) ([chris-rock](https://github.com/chris-rock))
+- CI: update to ruby 2.4.1 and rubocop 0.49 [\#89](https://github.com/dev-sec/ssh-baseline/pull/89) ([artem-sidorenko](https://github.com/artem-sidorenko))
+- Support of OpenSuse Leap 42.2 [\#88](https://github.com/dev-sec/ssh-baseline/pull/88) ([artem-sidorenko](https://github.com/artem-sidorenko))
+
 ## [2.2.0](https://github.com/dev-sec/ssh-baseline/tree/2.2.0) (2017-05-08)
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.1.1...2.2.0)
 
