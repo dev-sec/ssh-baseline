@@ -354,7 +354,7 @@ control 'sshd-36' do
   title 'Server: Set a client alive interval'
   desc 'ClientAlive messages are sent over encrypted connection and are not spoofable.'
   describe sshd_config do
-    its('ClientAliveInterval') { should eq('600') }
+    its('ClientAliveInterval') { should eq('300') }
   end
 end
 
