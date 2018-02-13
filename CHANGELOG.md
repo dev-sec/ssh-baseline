@@ -1,5 +1,17 @@
 # Change Log
 
+## [2.3.1](https://github.com/dev-sec/ssh-baseline/tree/2.3.1) (2018-02-13)
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.3.0...2.3.1)
+
+**Closed issues:**
+
+- No git tag for 2.3.0 [\#96](https://github.com/dev-sec/ssh-baseline/issues/96)
+
+**Merged pull requests:**
+
+- Modified the client\_alive\_interval default to suggested value [\#98](https://github.com/dev-sec/ssh-baseline/pull/98) ([iennae](https://github.com/iennae))
+- Support Amazon Linux [\#97](https://github.com/dev-sec/ssh-baseline/pull/97) ([woneill](https://github.com/woneill))
+
 ## [2.3.0](https://github.com/dev-sec/ssh-baseline/tree/2.3.0) (2017-12-01)
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.2.0...2.3.0)
 
