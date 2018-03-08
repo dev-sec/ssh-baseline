@@ -458,7 +458,7 @@ control 'sshd-47' do
       its('DebianBanner') { should eq('no') }
     end
   else
-    describe file(sshd_config.path) do
+    describe sshd_config do
       its('content') { should_not match(/DebianBanner/) }
     end
   end
