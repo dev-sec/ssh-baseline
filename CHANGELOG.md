@@ -1,5 +1,12 @@
 # Change Log
 
+## [2.3.2](https://github.com/dev-sec/ssh-baseline/tree/2.3.2) (2018-04-20)
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.3.1...2.3.2)
+
+**Merged pull requests:**
+
+- Fix bogus success of sshd-47 on non Debian [\#100](https://github.com/dev-sec/ssh-baseline/pull/100) ([eramoto](https://github.com/eramoto))
+
 ## [2.3.1](https://github.com/dev-sec/ssh-baseline/tree/2.3.1) (2018-02-13)
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.3.0...2.3.1)
 
