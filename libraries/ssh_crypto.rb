@@ -48,7 +48,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /7\./
         ciphers = ciphers66
       end
-    when 'amazon', 'fedora'
+    when 'amazon', 'fedora', 'alpine'
       ciphers = ciphers66
     when 'opensuse'
       case inspec.os[:release]
@@ -100,7 +100,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /7\./
         kex = kex66
       end
-    when 'amazon', 'fedora'
+    when 'amazon', 'fedora', 'alpine'
       kex = kex66
     when 'opensuse'
       case inspec.os[:release]
@@ -153,7 +153,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /7\./
         macs = macs66
       end
-    when 'amazon', 'fedora'
+    when 'amazon', 'fedora', 'alpine'
       macs = macs66
     when 'opensuse'
       case inspec.os[:release]
@@ -178,6 +178,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     # define privilege separation set
     ps53 = 'yes'
     ps59 = 'sandbox'
+    ps75 = nil
     ps = ps59
 
     # debian 7.x and newer has ssh 5.9+
@@ -197,6 +198,8 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /7\./
         ps = ps59
       end
+    when 'alpine'
+      ps = ps75
     end
 
     ps
@@ -231,7 +234,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /7\./
         alg = alg66
       end
-    when 'amazon', 'fedora'
+    when 'amazon', 'fedora', 'alpine'
       alg = alg66
     when 'opensuse'
       case inspec.os[:release]
