@@ -71,7 +71,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
 
   def valid_kexs # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
     # define a set of default KEXs
-    kex66 = 'curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256'
+    kex66 = 'curve25519-sha256@libssh.org,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256'
     kex59 = 'diffie-hellman-group-exchange-sha256'
     kex = kex59
 
@@ -123,7 +123,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
 
   def valid_macs # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
     # define a set of default MACs
-    macs66 = 'hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256'
+    macs66 = 'hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com'
     macs59 = 'hmac-sha2-512,hmac-sha2-256,hmac-ripemd160'
     macs53 = 'hmac-ripemd160,hmac-sha1'
     macs = macs59
