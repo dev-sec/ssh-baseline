@@ -150,24 +150,6 @@ control 'ssh-13' do
   end
 end
 
-control 'ssh-14' do
-  impact 1.0
-  title 'Client: Disable rhosts-based authentication'
-  desc 'Avoid rhosts-based authentication, as it opens more ways for an attacker to enter a system.'
-  describe ssh_config do
-    its('RhostsRSAAuthentication') { should eq('no') }
-  end
-end
-
-control 'ssh-15' do
-  impact 1.0
-  title 'Client: Enable RSA authentication'
-  desc 'Make sure RSA authentication is used by default.'
-  describe ssh_config do
-    its('RSAAuthentication') { should eq('yes') }
-  end
-end
-
 control 'ssh-16' do
   impact 1.0
   title 'Client: Disable password-based authentication'
