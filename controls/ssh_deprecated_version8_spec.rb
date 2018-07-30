@@ -26,7 +26,6 @@
 #
 # https://salsa.debian.org/ssh-team/openssh/commit/fb87db8aa47d3508be8e5bb1d21897fa1f2eca90
 
-
 title 'SSH deprecated client config (version < 8)'
 
 only_if { command('ssh -V').stdout match(/^OpenSSH_[0-7]/) }
