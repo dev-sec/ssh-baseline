@@ -18,6 +18,16 @@
 
 title 'SSH server config'
 
+sshd_valid_ciphers = attribute('sshd_valid_ciphers', default: ssh_crypto.valid_ciphers, description: 'Expected value for sshd_config ciphers')
+sshd_valid_kexs = attribute('sshd_valid_kexs', default: ssh_crypto.valid_kexs, description: 'Expected value for sshd_config kexs')
+sshd_valid_macs = attribute('sshd_valid_macs', default: ssh_crypto.valid_macs, description: 'Expected value for sshd_config macs')
+sshd_permittunnel = attribute('sshd_permittunnel', default: 'no', description: 'Expected value for sshd_config PermitTunnel')
+sshd_tcpforwarding = attribute('sshd_tcpforwarding', default: 'no', description: 'Expected value for sshd_config TcpForwarding')
+sshd_agentforwarding = attribute('sshd_agentforwarding', default: 'no', description: 'Expected value for sshd_config AgentForwarding')
+sshd_gatewayports = attribute('sshd_gatewayports', default: 'no', description: 'Expected value for sshd_config GatewayPorts')
+sshd_x11forwarding = attribute('sshd_x11forwarding', default: 'no', description: 'Expected value for sshd_config X11Forwarding')
+sshd_banner = attribute('sshd_banner', default: 'none', description: 'Expected value for sshd_config Banner')
+
 only_if do
   command('sshd').exist?
 end
@@ -27,7 +37,7 @@ control 'sshd-01' do
   title 'Server: Check for secure ssh ciphers'
   desc 'Configure a list of ciphers to the best secure ciphers (avoid older and weaker ciphers)'
   describe sshd_config do
-    its('Ciphers') { should eq(ssh_crypto.valid_ciphers) }
+    its('Ciphers') { should eq(sshd_valid_ciphers) }
   end
 end
 
@@ -36,7 +46,7 @@ control 'sshd-02' do
   title 'Server: Check for secure ssh Key-Exchange Algorithm'
   desc 'Configure a list of Key-Exchange Algorithms (Kexs) to the best secure Kexs (avoid older and weaker Key-Exchange Algorithm)'
   describe sshd_config do
-    its('KexAlgorithms') { should eq(ssh_crypto.valid_kexs) }
+    its('KexAlgorithms') { should eq(sshd_valid_kexs) }
   end
 end
 
@@ -45,7 +55,7 @@ control 'sshd-03' do
   title 'Server: Check for secure ssh Message Authentication Codes'
   desc 'Configure a list of Message Authentication Codes (MACs) to the best secure MACs (avoid older and weaker Message Authentication Codes)'
   describe sshd_config do
-    its('MACs') { should eq(ssh_crypto.valid_macs) }
+    its('MACs') { should eq(sshd_valid_macs) }
   end
 end
 
@@ -372,7 +382,7 @@ control 'sshd-38' do
   title 'Server: Disable tunnels'
   desc 'Avoid to use tunnels.'
   describe sshd_config do
-    its('PermitTunnel') { should eq('no') }
+    its('PermitTunnel') { should eq(sshd_permittunnel) }
   end
 end
 
@@ -381,7 +391,7 @@ control 'sshd-39' do
   title 'Server: Disable TCP forwarding'
   desc 'If you use TCP forwarding in an uncontrolled manner then you can bypass the firewalls'
   describe sshd_config do
-    its('AllowTcpForwarding') { should eq('no') }
+    its('AllowTcpForwarding') { should eq(sshd_tcpforwarding) }
   end
 end
 
@@ -390,7 +400,7 @@ control 'sshd-40' do
   title 'Server: Disable Agent forwarding'
   desc "Users with the ability to bypass file permissions on the remote host (for the agent's UNIX-domain socket) can access the local agent through the forwarded connection. An attacker cannot obtain key material from the agent, however they can perform operations on the keys that enable them to authenticate using the identities loaded into the agent."
   describe sshd_config do
-    its('AllowAgentForwarding') { should eq('no') }
+    its('AllowAgentForwarding') { should eq(sshd_agentforwarding) }
   end
 end
 
@@ -399,7 +409,7 @@ control 'sshd-41' do
   title 'Server: Disable gateway ports'
   desc 'Prevent remote hosts from connecting to forwarded ports on the node.'
   describe sshd_config do
-    its('GatewayPorts') { should eq('no') }
+    its('GatewayPorts') { should eq(sshd_gatewayports) }
   end
 end
 
@@ -408,7 +418,7 @@ control 'sshd-42' do
   title 'Server: Disable X11Forwarding'
   desc 'Prevent X11 forwarding by default, as it can be used in a limited way to enable attacks.'
   describe sshd_config do
-    its('X11Forwarding') { should eq('no') }
+    its('X11Forwarding') { should eq(sshd_x11forwarding) }
   end
 end
 
@@ -444,7 +454,7 @@ control 'sshd-46' do
   title 'Server: Banner'
   desc 'Specifies a banner file to serve before authentication succeeds'
   describe sshd_config do
-    its('Banner') { should eq('none') }
+    its('Banner') { should eq(sshd_banner) }
   end
 end
 
