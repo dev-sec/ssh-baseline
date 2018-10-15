@@ -198,6 +198,11 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /7\./
         ps = ps59
       end
+    when 'ubuntu'
+      case inspec.os[:release]
+      when /18\./
+        ps = ps75
+      end
     when 'alpine'
       ps = ps75
     end
