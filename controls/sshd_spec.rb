@@ -184,7 +184,7 @@ control 'sshd-15' do
   title 'Server: Specify UseLogin to NO'
   desc 'Disable legacy login mechanism and do not use login for interactive login sessions.'
   describe sshd_config do
-    its('UseLogin') { should eq('no') }
+    its('UseLogin') { should_not eq('yes') }
   end
 end
 
