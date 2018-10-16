@@ -22,8 +22,6 @@ only_if do
   command('ssh').exist?
 end
 
-ssh_version = command('ssh -V 2>&1 | cut -f1 -d" " | cut -f2 -d"_"').stdout.to_f
-
 control 'ssh-01' do
   impact 1.0
   title 'client: Check ssh_config owner, group and permissions.'
@@ -156,7 +154,7 @@ control 'ssh-14' do
   impact 1.0
   title 'Client: Disable rhosts-based authentication'
   desc 'Avoid rhosts-based authentication, as it opens more ways for an attacker to enter a system.'
-  only_if { ssh_version < 7.6 }
+  only_if { ssh_crypto.ssh_version < 7.6 }
   describe ssh_config do
     its('RhostsRSAAuthentication') { should eq('no') }
   end
@@ -166,7 +164,7 @@ control 'ssh-15' do
   impact 1.0
   title 'Client: Enable RSA authentication'
   desc 'Make sure RSA authentication is used by default.'
-  only_if { ssh_version < 7.6 }
+  only_if { ssh_crypto.ssh_version < 7.6 }
   describe ssh_config do
     its('RSAAuthentication') { should eq('yes') }
   end
