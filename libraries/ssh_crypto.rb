@@ -19,6 +19,10 @@
 class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
   name 'ssh_crypto'
 
+  def ssh_version
+    inspec.command('ssh -V 2>&1 | cut -f1 -d" " | cut -f2 -d"_"').stdout.to_f
+  end
+
   def valid_ciphers # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
     # define a set of default ciphers
     ciphers53 = 'aes256-ctr,aes192-ctr,aes128-ctr'
