@@ -207,7 +207,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /18\./
         ps = ps75
       end
-    when 'amazon', 'fedora', 'alpine'
+    when 'fedora', 'alpine'
       ps = ps75
     end
 
