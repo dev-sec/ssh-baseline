@@ -40,32 +40,32 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       end
     when 'debian'
       case inspec.os[:release]
-      when /6\./, /7\./
+      when /^6\./, /^7\./
         ciphers = ciphers53
-      when /8\./, /9\./
+      when /^8\./, /^9\./
         ciphers = ciphers66
       end
     when 'redhat', 'centos', 'oracle'
       case inspec.os[:release]
-      when /6\./
+      when /^6\./
         ciphers = ciphers53
-      when /7\./
+      when /^7\./
         ciphers = ciphers66
       end
     when 'amazon', 'fedora', 'alpine'
       ciphers = ciphers66
     when 'opensuse'
       case inspec.os[:release]
-      when /13\.2/
+      when /^13\.2/
         ciphers = ciphers66
-      when /42\./
+      when /^42\./
         ciphers = ciphers66
       end
     when 'mac_os_x'
       case inspec.os[:release]
-      when /10.9\./
+      when /^10.9\./
         ciphers = ciphers53
-      when /10.10\./, /10.11\./, /10.12\./
+      when /^10.10\./, /^10.11\./, /^10.12\./
         ciphers = ciphers66
       end
     end
@@ -90,34 +90,34 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       end
     when 'debian'
       case inspec.os[:release]
-      when /6\./
+      when /^6\./
         kex = nil
-      when /7\./
+      when /^7\./
         kex = kex59
-      when /8\./, /9\./
+      when /^8\./, /^9\./
         kex = kex66
       end
     when 'redhat', 'centos', 'oracle'
       case inspec.os[:release]
-      when /6\./
+      when /^6\./
         kex = nil
-      when /7\./
+      when /^7\./
         kex = kex66
       end
     when 'amazon', 'fedora', 'alpine'
       kex = kex66
     when 'opensuse'
       case inspec.os[:release]
-      when /13\.2/
+      when /^13\.2/
         kex = kex66
-      when /42\./
+      when /^42\./
         kex = kex66
       end
     when 'mac_os_x'
       case inspec.os[:release]
-      when /10.9\./
+      when /^10.9\./
         kex = kex59
-      when /10.10\./, /10.11\./, /10.12\./
+      when /^10.10\./, /^10.11\./, /^10.12\./
         kex = kex66
       end
     end
@@ -143,34 +143,34 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       end
     when 'debian'
       case inspec.os[:release]
-      when /6\./
+      when /^6\./
         macs = macs53
-      when /7\./
+      when /^7\./
         macs = macs59
-      when /8\./, /9\./
+      when /^8\./, /^9\./
         macs = macs66
       end
     when 'redhat', 'centos', 'oracle'
       case inspec.os[:release]
-      when /6\./
+      when /^6\./
         macs = macs53
-      when /7\./
+      when /^7\./
         macs = macs66
       end
     when 'amazon', 'fedora', 'alpine'
       macs = macs66
     when 'opensuse'
       case inspec.os[:release]
-      when /13\.2/
+      when /^13\.2/
         macs = macs66
-      when /42\./
+      when /^42\./
         macs = macs66
       end
     when 'mac_os_x'
       case inspec.os[:release]
-      when /10.9\./
+      when /^10.9\./
         macs = macs59
-      when /10.10\./, /10.11\./, /10.12\./
+      when /^10.10\./, /^10.11\./, /^10.12\./
         macs = macs66
       end
     end
@@ -191,20 +191,20 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     case inspec.os[:name]
     when 'debian'
       case inspec.os[:release]
-      when /6\./
+      when /^6\./
         ps = ps53
       end
     when 'redhat', 'centos', 'oracle'
       case inspec.os[:release]
       # redhat/centos/oracle 6.x has ssh 5.3
-      when /6\./
+      when /^6\./
         ps = ps53
-      when /7\./
+      when /^7\./
         ps = ps59
       end
     when 'ubuntu'
       case inspec.os[:release]
-      when /18\./
+      when /^18\./
         ps = ps75
       end
     when 'fedora', 'alpine'
@@ -231,32 +231,32 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       end
     when 'debian'
       case inspec.os[:release]
-      when /7\./
+      when /^7\./
         alg = alg60
-      when /8\./, /9\./
+      when /^8\./, /^9\./
         alg = alg66
       end
     when 'redhat', 'centos', 'oracle'
       case inspec.os[:release]
-      when /6\./
+      when /^6\./
         alg = alg53
-      when /7\./
+      when /^7\./
         alg = alg66
       end
     when 'amazon', 'fedora', 'alpine'
       alg = alg66
     when 'opensuse'
       case inspec.os[:release]
-      when /13\.2/
+      when /^13\.2/
         alg = alg66
-      when /42\./
+      when /^42\./
         alg = alg66
       end
     when 'mac_os_x'
       case inspec.os[:release]
-      when /10.9\./
+      when /^10.9\./
         alg53
-      when /10.10\./, /10.11\./, /10.12\./
+      when /^10.10\./, /^10.11\./, /^10.12\./
         alg66
       end
     end
