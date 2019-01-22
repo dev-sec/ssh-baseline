@@ -219,6 +219,7 @@ control 'ssh-21' do
   impact 1.0
   title 'Client: Do not allow Roaming'
   desc 'Workaround for SSH Client Bug CVE-2016-0777 and CVE-2016-0778'
+  only_if { ssh_crypto.ssh_version < 7.2 }
   describe ssh_config do
     its('UseRoaming') { should eq('no') }
   end
