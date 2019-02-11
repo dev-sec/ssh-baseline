@@ -103,7 +103,7 @@ control 'sshd-06' do
   title 'Server: Do not permit root-based login or do not allow password and keyboard-interactive authentication'
   desc 'Reduce the potential risk to gain full privileges access of the system because of weak password and keyboard-interactive authentication, do not allow logging in as the root user or with password authentication.'
   describe sshd_config do
-    its('PermitRootLogin') { should match(/no|without-password/) }
+    its('PermitRootLogin') { should match(/no|without-password|prohibit-password/) }
   end
 end
 
