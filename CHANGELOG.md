@@ -1,5 +1,31 @@
 # Change Log
 
+## [2.4.0](https://github.com/dev-sec/ssh-baseline/tree/2.4.0) (2019-02-25)
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.3.2...2.4.0)
+
+**Closed issues:**
+
+- need to account for sshd version when checking UseRoaming in `ssh\_config` [\#121](https://github.com/dev-sec/ssh-baseline/issues/121)
+- profile fails inspec check [\#101](https://github.com/dev-sec/ssh-baseline/issues/101)
+- Deprecated option [\#95](https://github.com/dev-sec/ssh-baseline/issues/95)
+
+**Merged pull requests:**
+
+- Allow prohibit-password as PermitRootLogin value [\#123](https://github.com/dev-sec/ssh-baseline/pull/123) ([jeremy-clerc](https://github.com/jeremy-clerc))
+- UseRoaming is deprecated, only check on older versions [\#122](https://github.com/dev-sec/ssh-baseline/pull/122) ([rndmh3ro](https://github.com/rndmh3ro))
+- Fix os detection [\#120](https://github.com/dev-sec/ssh-baseline/pull/120) ([IceBear2k](https://github.com/IceBear2k))
+- Update issue templates [\#118](https://github.com/dev-sec/ssh-baseline/pull/118) ([rndmh3ro](https://github.com/rndmh3ro))
+- Fixup of UsePrivilegeSeparation deprecation for Amazon [\#117](https://github.com/dev-sec/ssh-baseline/pull/117) ([artem-sidorenko](https://github.com/artem-sidorenko))
+- Deprecated UsePrivilegeSeparation for Fedora/Amazon [\#116](https://github.com/dev-sec/ssh-baseline/pull/116) ([artem-sidorenko](https://github.com/artem-sidorenko))
+- UseLogin is deprecated [\#114](https://github.com/dev-sec/ssh-baseline/pull/114) ([artem-sidorenko](https://github.com/artem-sidorenko))
+- Add separate PrivilegeSeparation check for Ubuntu 1804 [\#113](https://github.com/dev-sec/ssh-baseline/pull/113) ([rndmh3ro](https://github.com/rndmh3ro))
+- allow some customization of expected values depending on attributes [\#112](https://github.com/dev-sec/ssh-baseline/pull/112) ([juju4](https://github.com/juju4))
+- Avoid checking deprecated optinos for OpenSSH \>=7.6 [\#110](https://github.com/dev-sec/ssh-baseline/pull/110) ([artem-sidorenko](https://github.com/artem-sidorenko))
+- Avoid failing on EL 6 family and OpenSuse Leap 42 [\#109](https://github.com/dev-sec/ssh-baseline/pull/109) ([artem-sidorenko](https://github.com/artem-sidorenko))
+- add debian 9 support [\#106](https://github.com/dev-sec/ssh-baseline/pull/106) ([rndmh3ro](https://github.com/rndmh3ro))
+- adding ubuntu bionic support [\#104](https://github.com/dev-sec/ssh-baseline/pull/104) ([attachmentgenie](https://github.com/attachmentgenie))
+- Initial support for Alpine Linux [\#102](https://github.com/dev-sec/ssh-baseline/pull/102) ([radhus](https://github.com/radhus))
+
 ## [2.3.2](https://github.com/dev-sec/ssh-baseline/tree/2.3.2) (2018-04-20)
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.3.1...2.3.2)
 
