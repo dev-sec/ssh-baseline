@@ -48,35 +48,47 @@ class SshCrypto < Inspec.resource(1)
 
   FALLBACK_SSH_VERSION ||= 5.9
 
-  def ssh_version
-    version = inspec.command('ssh -V 2>&1 | cut -f1 -d" " | cut -f2 -d"_" | cut -f1 -d ","').stdout.to_f
-    return version 
+  def real_ssh_version 
+    inspec.command('ssh -V 2>&1 | cut -f1 -d" " | cut -f2 -d"_" | cut -f1 -d ","').stdout.to_f
+  end
+
+  def ssh_version(versions)
+    identified_version = inspec.command('ssh -V 2>&1 | cut -f1 -d" " | cut -f2 -d"_" | cut -f1 -d ","').stdout.to_f
+    found_ssh_version = nil 
+
+    versions.each do |version, corresponding_content|
+      next unless version.is_a?(Float)
+      found_ssh_version = version if identified_version >= version
+    end
+
+    return found_ssh_version
   rescue NoMethodError
     guess_ssh_version
   end
 
   def valid_privseparation
-    PRIVILEGE_SEPARATION[ssh_version]
+    PRIVILEGE_SEPARATION[ssh_version(PRIVILEGE_SEPARATION)]
   end
 
   def valid_algorithms
-    HOSTKEY_ALGORITHMS[ssh_version]
+    HOSTKEY_ALGORITHMS[ssh_version(HOSTKEY_ALGORITHMS)]
   end
 
   def valid_ciphers
-    CRYPTO[:ciphers][ssh_version]
+    CRYPTO[:ciphers][ssh_version(CRYPTO[:ciphers])]
   end
 
   def valid_macs
-    CRYPTO[:macs][ssh_version]
+    CRYPTO[:macs][ssh_version(CRYPTO[:macs])]
   end
 
   def valid_kexs
-    CRYPTO[:kex][ssh_version]
+    puts ssh_version(CRYPTO[:kex])
+    CRYPTO[:kex][ssh_version(CRYPTO[:kex])]
   end
 
  def valid_hostkeys
-  hostkeys = valid_algorithms.map { |alg| '/etc/ssh/ssh_host_#{alg}_key' }
+  hostkeys = HOSTKEY_ALGORITHMS[ssh_version(HOSTKEY_ALGORITHMS)].map { |alg| "/etc/ssh/ssh_host_#{alg}_key" }
   # its('HostKey') provides a string for a single-element value.
   # we have to return a string if we have a single-element
   # https://github.com/chef/inspec/issues/1434
