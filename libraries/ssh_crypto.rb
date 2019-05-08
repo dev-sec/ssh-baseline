@@ -100,7 +100,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     when 'redhat', 'centos', 'oracle'
       case inspec.os[:release]
       when /^6\./
-        kex = nil
+        kex = kex59
       when /^7\./
         kex = kex66
       end
@@ -153,7 +153,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     when 'redhat', 'centos', 'oracle'
       case inspec.os[:release]
       when /^6\./
-        macs = macs53
+        macs = macs59
       when /^7\./
         macs = macs66
       end
