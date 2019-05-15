@@ -11,6 +11,7 @@
 
 **Merged pull requests:**
 
+- 2.4.0 [\#124](https://github.com/dev-sec/ssh-baseline/pull/124) ([chris-rock](https://github.com/chris-rock))
 - Allow prohibit-password as PermitRootLogin value [\#123](https://github.com/dev-sec/ssh-baseline/pull/123) ([jeremy-clerc](https://github.com/jeremy-clerc))
 - UseRoaming is deprecated, only check on older versions [\#122](https://github.com/dev-sec/ssh-baseline/pull/122) ([rndmh3ro](https://github.com/rndmh3ro))
 - Fix os detection [\#120](https://github.com/dev-sec/ssh-baseline/pull/120) ([IceBear2k](https://github.com/IceBear2k))
