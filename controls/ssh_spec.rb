@@ -154,7 +154,7 @@ control 'ssh-14' do
   impact 1.0
   title 'Client: Disable rhosts-based authentication'
   desc 'Avoid rhosts-based authentication, as it opens more ways for an attacker to enter a system.'
-  only_if { ssh_crypto.real_ssh_version < 7.6 }
+  only_if { ssh_crypto.get_ssh_version < 7.6 }
   describe ssh_config do
     its('RhostsRSAAuthentication') { should eq('no') }
   end
@@ -164,7 +164,7 @@ control 'ssh-15' do
   impact 1.0
   title 'Client: Enable RSA authentication'
   desc 'Make sure RSA authentication is used by default.'
-  only_if { ssh_crypto.real_ssh_version < 7.6 }
+  only_if { ssh_crypto.get_ssh_version < 7.6 }
   describe ssh_config do
     its('RSAAuthentication') { should eq('yes') }
   end
@@ -219,7 +219,7 @@ control 'ssh-21' do
   impact 1.0
   title 'Client: Do not allow Roaming'
   desc 'Workaround for SSH Client Bug CVE-2016-0777 and CVE-2016-0778'
-  only_if { ssh_crypto.real_ssh_version < 7.2 }
+  only_if { ssh_crypto.get_ssh_version < 7.2 }
   describe ssh_config do
     its('UseRoaming') { should eq('no') }
   end

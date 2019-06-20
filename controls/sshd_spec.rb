@@ -184,7 +184,7 @@ control 'sshd-15' do
   title 'Server: Specify UseLogin to NO'
   desc 'Disable legacy login mechanism and do not use login for interactive login sessions.'
   describe sshd_config do
-    its('UseLogin') { should eq(ssh_crypto.real_ssh_version < 7.4 ? 'no' : nil) }
+    its('UseLogin') { should eq(ssh_crypto.get_ssh_version < 7.4 ? 'no' : nil) }
   end
 end
 

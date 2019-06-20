@@ -21,17 +21,17 @@ class SshCrypto < Inspec.resource(1)
 
   CRYPTO ||= {
     macs: {
-      6.6 => 'hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256',
-      5.9 => 'hmac-sha2-512,hmac-sha2-256,hmac-ripemd160',
       5.3 => 'hmac-ripemd160,hmac-sha1',
+      5.9 => 'hmac-sha2-512,hmac-sha2-256,hmac-ripemd160',
+      6.6 => 'hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256'
     },
     ciphers: {
       5.3 => 'aes256-ctr,aes192-ctr,aes128-ctr',
       6.6 => 'chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr',
     },
     kex: {
-      6.6 => 'curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256',
       5.9 => 'diffie-hellman-group-exchange-sha256',
+      6.6 => 'curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256',
     }
   }.freeze
 
@@ -48,47 +48,69 @@ class SshCrypto < Inspec.resource(1)
 
   FALLBACK_SSH_VERSION ||= 5.9
 
-  def real_ssh_version 
+  def get_ssh_version
     inspec.command('ssh -V 2>&1 | cut -f1 -d" " | cut -f2 -d"_" | cut -f1 -d ","').stdout.to_f
   end
 
-  def ssh_version(versions)
-    identified_version = inspec.command('ssh -V 2>&1 | cut -f1 -d" " | cut -f2 -d"_" | cut -f1 -d ","').stdout.to_f
+  # Find the ssh version, matching to the next small
+  # version in versions array
+  def find_ssh_version(version, versions)
     found_ssh_version = nil 
 
-    versions.each do |version, corresponding_content|
-      next unless version.is_a?(Float)
-      found_ssh_version = version if identified_version >= version
+    versions.each do |v|
+      next unless v.is_a?(Float)
+      found_ssh_version = v if version >= v
     end
 
     return found_ssh_version
+
   rescue NoMethodError
     guess_ssh_version
   end
 
   def valid_privseparation
-    PRIVILEGE_SEPARATION[ssh_version(PRIVILEGE_SEPARATION)]
+     found_ssh_version = find_ssh_version(get_ssh_version, PRIVILEGE_SEPARATION.keys) 
+
+     PRIVILEGE_SEPARATION[found_ssh_version]
   end
 
   def valid_algorithms
-    HOSTKEY_ALGORITHMS[ssh_version(HOSTKEY_ALGORITHMS)]
+    found_ssh_version = find_ssh_version(get_ssh_version, HOSTKEY_ALGORITHMS.keys)
+
+    HOSTKEY_ALGORITHMS[found_ssh_version]
   end
 
   def valid_ciphers
-    CRYPTO[:ciphers][ssh_version(CRYPTO[:ciphers])]
+    get_crypto_data(:ciphers)
   end
 
   def valid_macs
-    CRYPTO[:macs][ssh_version(CRYPTO[:macs])]
+    get_crypto_data(:macs)
   end
 
   def valid_kexs
-    puts ssh_version(CRYPTO[:kex])
-    CRYPTO[:kex][ssh_version(CRYPTO[:kex])]
+    get_crypto_data(:kex)
+  end
+
+  def get_crypto_data(crypto_type)
+    # In the chef baseline there are two methods to determine the ssh version, here there is one
+    # ssh -V should return the version of both client and server reliably.
+    found_ssh_version = find_ssh_version(get_ssh_version, CRYPTO[crypto_type].keys)
+
+    crypto = CRYPTO[crypto_type][found_ssh_version]
+
+    if crypto.nil?
+      Inspec::Log.info("No crypto information available for #{found_ssh_version}")
+      return nil
+    end
+
+    crypto
   end
 
  def valid_hostkeys
-  hostkeys = HOSTKEY_ALGORITHMS[ssh_version(HOSTKEY_ALGORITHMS)].map { |alg| "/etc/ssh/ssh_host_#{alg}_key" }
+  found_ssh_version = find_ssh_version(get_ssh_version, HOSTKEY_ALGORITHMS.keys)
+
+  hostkeys = HOSTKEY_ALGORITHMS[found_ssh_version].map { |alg| "/etc/ssh/ssh_host_#{alg}_key" }
   # its('HostKey') provides a string for a single-element value.
   # we have to return a string if we have a single-element
   # https://github.com/chef/inspec/issues/1434
@@ -96,12 +118,14 @@ class SshCrypto < Inspec.resource(1)
   hostkeys
 end
 
+  # This method gessues the ssh_version based on operating system family and name 
+  # It intends to be a fallback in case no ssh version can be determined via means of ssh -V
   def guess_ssh_version
     family = inspec.os[:family]
     platform = inspec.os[:name]
     case family
     when 'debian'
-      case name
+      case platform
       when 'ubuntu'
         return 6.6 if version >= 14.04
       when 'debian'
