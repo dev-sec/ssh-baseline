@@ -21,7 +21,67 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
 
   def ssh_version
     inspec.command('ssh -V 2>&1 | cut -f1 -d" " | cut -f2 -d"_"').stdout.to_f
+  rescue NoMethodError
+    guess_ssh_version
   end
+
+  # Find the ssh version, matching to the next small
+  # version in versions array
+  def find_ssh_version(version, versions)
+    found_ssh_version = nil
+
+    versions.map do |v|
+      next unless v.is_a?(Float)
+      found_ssh_version = v if version >= v
+    end
+
+    # We can't just throw an Error here like in devsec_ssh.rb. This would abort the
+    # whole execution of tests, but that is not wanted since there are valid cases where
+    # a feature is not supported on the hosts so no ssh version matching can be determined.
+    Inspec::Log.warn("No matching ssh version could be found for #{version}") unless found_ssh_version
+
+    return found_ssh_version
+  end
+
+  # This method guesses the ssh_version based on operating system family and name
+  # It intends to be a fallback in case no ssh version can be determined via means of ssh -V
+  def guess_ssh_version # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
+    family = inspec.os[:family]
+    platform = inspec.os[:name]
+    case family
+    when 'debian'
+      case platform
+      when 'ubuntu'
+        return 6.6 if version >= 14.04
+      when 'debian'
+        return 6.6 if version >= 8
+        return 6.0 if version >= 7
+        return 5.3 if version <= 6
+      end
+    when 'rhel'
+      return 6.6 if version >= 7
+      return 5.3 if version >= 6
+    when 'fedora'
+      return 7.3 if version >= 25
+      return 7.2 if version >= 24
+    when 'suse'
+      case platform
+      when 'opensuse'
+        return 6.6 if version >= 13.2
+      when 'opensuseleap'
+        return 7.2 if version >= 42.1
+      end
+    when 'linux'
+      case platform
+      when 'amazon'
+        return 6.6
+      end
+      when 'alpine'
+        return 6.6
+    end
+    FALLBACK_SSH_VERSION
+  end
+
 
   def valid_ciphers # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
     # define a set of default ciphers
@@ -196,7 +256,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       end
     when 'redhat', 'centos', 'oracle'
       case inspec.os[:release]
-      # redhat/centos/oracle 6.x has ssh 5.3
+        # redhat/centos/oracle 6.x has ssh 5.3
       when /^6\./
         ps = ps53
       when /^7\./
