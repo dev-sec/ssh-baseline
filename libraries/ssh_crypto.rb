@@ -50,6 +50,8 @@ class SshCrypto < Inspec.resource(1)
 
   def get_ssh_version
     inspec.command('ssh -V 2>&1 | cut -f1 -d" " | cut -f2 -d"_" | cut -f1 -d ","').stdout.to_f
+  rescue NoMethodError
+    guess_ssh_version
   end
 
   # Find the ssh version, matching to the next small
@@ -57,15 +59,17 @@ class SshCrypto < Inspec.resource(1)
   def find_ssh_version(version, versions)
     found_ssh_version = nil 
 
-    versions.each do |v|
+    versions.map do |v|
       next unless v.is_a?(Float)
       found_ssh_version = v if version >= v
     end
 
-    return found_ssh_version
+    # We can't just throw an Error here like in devsec_ssh.rb. This would abort the
+    # whole execution of tests, but that is not wanted since there are valid cases where
+    # a feature is not supported on the hosts so no ssh version matching can be determined.
+    Inspec::Log.warn("No matching ssh version could be found for #{version}") unless found_ssh_version
 
-  rescue NoMethodError
-    guess_ssh_version
+    return found_ssh_version
   end
 
   def valid_privseparation
@@ -95,7 +99,7 @@ class SshCrypto < Inspec.resource(1)
   def get_crypto_data(crypto_type)
     # In the chef baseline there are two methods to determine the ssh version, here there is one
     # ssh -V should return the version of both client and server reliably.
-    found_ssh_version = find_ssh_version(get_ssh_version, CRYPTO[crypto_type].keys)
+    found_ssh_version = find_ssh_version(get_ssh_version, CRYPTO[crypto_type.to_sym].keys)
 
     crypto = CRYPTO[crypto_type][found_ssh_version]
 
