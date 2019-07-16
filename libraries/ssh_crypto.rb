@@ -42,7 +42,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       case inspec.os[:release]
       when /^6\./, /^7\./
         ciphers = ciphers53
-      when /^8\./, /^9\./
+      when /^8\./, /^9\./, /^10\./
         ciphers = ciphers66
       end
     when 'redhat', 'centos', 'oracle'
@@ -94,7 +94,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
         kex = nil
       when /^7\./
         kex = kex59
-      when /^8\./, /^9\./
+      when /^8\./, /^9\./, /^10\./
         kex = kex66
       end
     when 'redhat', 'centos', 'oracle'
@@ -147,7 +147,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
         macs = macs53
       when /^7\./
         macs = macs59
-      when /^8\./, /^9\./
+      when /^8\./, /^9\./, /^10\./
         macs = macs66
       end
     when 'redhat', 'centos', 'oracle'
