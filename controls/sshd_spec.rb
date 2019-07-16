@@ -465,7 +465,7 @@ control 'sshd-47' do
   case os[:family]
   when 'debian' then
     describe sshd_config do
-      its('DebianBanner') { should eq('no') }
+      its('DebianBanner') { should eq(nil) }
     end
   else
     describe sshd_config do
