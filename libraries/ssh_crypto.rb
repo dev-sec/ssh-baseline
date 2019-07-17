@@ -193,6 +193,8 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       case inspec.os[:release]
       when /^6\./
         ps = ps53
+      when /^10\./
+        ps = ps75
       end
     when 'redhat', 'centos', 'oracle'
       case inspec.os[:release]
