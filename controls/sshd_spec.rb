@@ -462,7 +462,7 @@ control 'sshd-47' do
   impact 1.0
   title 'Server: DebianBanner'
   desc 'Specifies whether to include OS distribution in version information'
-  case os[:family]
+  case os[:name]
   when 'debian' then
     describe sshd_config do
       its('DebianBanner') { should eq('no') }
