@@ -218,9 +218,11 @@ end
 control 'sshd-19' do
   impact 1.0
   title 'Server: Specify Limit for maximum authentication retries'
-  desc 'MaxAuthTries limits the user to three wrong attempts before the login attempt is denied. This avoid resource starvation attacks.'
+  desc 'The MaxAuthTries parameter specifies the maximum number of authentication attempts permitted per connection. When the login failure count reaches half the number, error messages will be written to the syslog file detailing the login failure. Setting the MaxAuthTries parameter to a low number will minimize the risk of successful brute force attacks to the SSH server. The default is 2 but should be configured based on site policy.'
+  tag 'CIS Red Hat Enterprise Linux 7 Benchmark version 01-31-2017': '2.1.1'
+  ref 'Center for Internet Security', url: 'https://www.cisecurity.org/'
   describe sshd_config do
-    its('MaxAuthTries') { should eq('2') }
+    its('MaxAuthTries') { should be == attribute('max_auth_tries') }
   end
 end
 
