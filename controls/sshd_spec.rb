@@ -222,7 +222,7 @@ control 'sshd-19' do
   tag 'CIS Red Hat Enterprise Linux 7 Benchmark version 01-31-2017': '2.1.1'
   ref 'Center for Internet Security', url: 'https://www.cisecurity.org/'
   describe sshd_config do
-    its('MaxAuthTries') { should be == attribute('max_auth_tries') }
+    its('MaxAuthTries') { should cmp == attribute('max_auth_tries') }
   end
 end
 
