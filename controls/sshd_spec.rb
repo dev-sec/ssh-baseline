@@ -27,6 +27,7 @@ sshd_agentforwarding = attribute('sshd_agentforwarding', value: 'no', descriptio
 sshd_gatewayports = attribute('sshd_gatewayports', value: 'no', description: 'Expected value for sshd_config GatewayPorts')
 sshd_x11forwarding = attribute('sshd_x11forwarding', value: 'no', description: 'Expected value for sshd_config X11Forwarding')
 sshd_banner = attribute('sshd_banner', value: 'none', description: 'Expected value for sshd_config Banner')
+sshd_max_auth_tries = attribute('sshd_max_auth_tries', value: 2, description: 'Expected value for max_auth_retries')
 
 only_if do
   command('sshd').exist?
@@ -222,7 +223,7 @@ control 'sshd-19' do
   tag 'CIS Red Hat Enterprise Linux 7 Benchmark version 01-31-2017': '2.1.1'
   ref 'Center for Internet Security', url: 'https://www.cisecurity.org/'
   describe sshd_config do
-    its('MaxAuthTries') { should cmp == attribute('max_auth_tries') }
+    its('MaxAuthTries') { should cmp(sshd_max_auth_tries) }
   end
 end
 
