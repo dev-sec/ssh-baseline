@@ -18,15 +18,15 @@
 
 title 'SSH server config'
 
-sshd_valid_ciphers = attribute('sshd_valid_ciphers', default: ssh_crypto.valid_ciphers, description: 'Expected value for sshd_config ciphers')
-sshd_valid_kexs = attribute('sshd_valid_kexs', default: ssh_crypto.valid_kexs, description: 'Expected value for sshd_config kexs')
-sshd_valid_macs = attribute('sshd_valid_macs', default: ssh_crypto.valid_macs, description: 'Expected value for sshd_config macs')
-sshd_permittunnel = attribute('sshd_permittunnel', default: 'no', description: 'Expected value for sshd_config PermitTunnel')
-sshd_tcpforwarding = attribute('sshd_tcpforwarding', default: 'no', description: 'Expected value for sshd_config TcpForwarding')
-sshd_agentforwarding = attribute('sshd_agentforwarding', default: 'no', description: 'Expected value for sshd_config AgentForwarding')
-sshd_gatewayports = attribute('sshd_gatewayports', default: 'no', description: 'Expected value for sshd_config GatewayPorts')
-sshd_x11forwarding = attribute('sshd_x11forwarding', default: 'no', description: 'Expected value for sshd_config X11Forwarding')
-sshd_banner = attribute('sshd_banner', default: 'none', description: 'Expected value for sshd_config Banner')
+sshd_valid_ciphers = attribute('sshd_valid_ciphers', value: ssh_crypto.valid_ciphers, description: 'Expected value for sshd_config ciphers')
+sshd_valid_kexs = attribute('sshd_valid_kexs', value: ssh_crypto.valid_kexs, description: 'Expected value for sshd_config kexs')
+sshd_valid_macs = attribute('sshd_valid_macs', value: ssh_crypto.valid_macs, description: 'Expected value for sshd_config macs')
+sshd_permittunnel = attribute('sshd_permittunnel', value: 'no', description: 'Expected value for sshd_config PermitTunnel')
+sshd_tcpforwarding = attribute('sshd_tcpforwarding', value: 'no', description: 'Expected value for sshd_config TcpForwarding')
+sshd_agentforwarding = attribute('sshd_agentforwarding', value: 'no', description: 'Expected value for sshd_config AgentForwarding')
+sshd_gatewayports = attribute('sshd_gatewayports', value: 'no', description: 'Expected value for sshd_config GatewayPorts')
+sshd_x11forwarding = attribute('sshd_x11forwarding', value: 'no', description: 'Expected value for sshd_config X11Forwarding')
+sshd_banner = attribute('sshd_banner', value: 'none', description: 'Expected value for sshd_config Banner')
 sshd_max_auth_tries = attribute('sshd_max_auth_tries', value: 2, description: 'Expected value for max_auth_retries')
 
 only_if do
