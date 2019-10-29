@@ -49,7 +49,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       case inspec.os[:release]
       when /^6\./
         ciphers = ciphers53
-      when /^7\./
+      when /^7\./, /^8\./
         ciphers = ciphers66
       end
     when 'amazon', 'fedora', 'alpine'
@@ -101,7 +101,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       case inspec.os[:release]
       when /^6\./
         kex = nil
-      when /^7\./
+      when /^7\./, /^8\./
         kex = kex66
       end
     when 'amazon', 'fedora', 'alpine'
@@ -154,7 +154,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       case inspec.os[:release]
       when /^6\./
         macs = macs53
-      when /^7\./
+      when /^7\./, /^8\./
         macs = macs66
       end
     when 'amazon', 'fedora', 'alpine'
@@ -178,7 +178,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     macs
   end
 
-  def valid_privseparation
+  def valid_privseparation # rubocop:disable Metrics/CyclomaticComplexity
     # define privilege separation set
     ps53 = 'yes'
     ps59 = 'sandbox'
@@ -203,6 +203,8 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
         ps = ps53
       when /^7\./
         ps = ps59
+      when /^8\./
+        ps = ps75
       end
     when 'ubuntu'
       case inspec.os[:release]
