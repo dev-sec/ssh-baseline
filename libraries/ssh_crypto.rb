@@ -130,6 +130,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     macs66 = 'hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256'
     macs59 = 'hmac-sha2-512,hmac-sha2-256,hmac-ripemd160'
     macs53 = 'hmac-ripemd160,hmac-sha1'
+    macs53_el65 = 'hmac-sha2-512,hmac-sha2-256'
     macs = macs59
 
     # adjust MACs based on OS + release
@@ -152,8 +153,12 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       end
     when 'redhat', 'centos', 'oracle'
       case inspec.os[:release]
-      when /^6\./
-        macs = macs53
+      when /^6\.(\d+)/
+        macs = if Regexp.last_match(1).to_i >= 5
+                 macs53_el65
+               else
+                 macs53
+               end
       when /^7\./, /^8\./
         macs = macs66
       end
