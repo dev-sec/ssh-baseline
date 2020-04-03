@@ -153,12 +153,8 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       end
     when 'redhat', 'centos', 'oracle'
       case inspec.os[:release]
-      when /^6\.(\d+)/
-        macs = if Regexp.last_match(1).to_i >= 5
-                 macs53_el65
-               else
-                 macs53
-               end
+      when /^6\./
+        macs = macs53_el65
       when /^7\./, /^8\./
         macs = macs66
       end
