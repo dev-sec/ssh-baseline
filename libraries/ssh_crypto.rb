@@ -154,6 +154,11 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     when 'redhat', 'centos', 'oracle'
       case inspec.os[:release]
       when /^6\./
+        # RedHat Enterprise Linux (and family) backported SHA2 support to their fork of OpenSSH 5.3 in RHEL 6.5.
+        # See BZ#969565 at:
+        # https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html-single/6.5_technical_notes/index#openssh
+        # Because extended support (EUS) updates for 6.x minor releases is no longer available,
+        # only the settings available for the supported (latest) 6.x release are recommended.
         macs = macs53_el65
       when /^7\./, /^8\./
         macs = macs66
