@@ -130,6 +130,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     macs66 = 'hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256'
     macs59 = 'hmac-sha2-512,hmac-sha2-256,hmac-ripemd160'
     macs53 = 'hmac-ripemd160,hmac-sha1'
+    macs53_el65 = 'hmac-sha2-512,hmac-sha2-256'
     macs = macs59
 
     # adjust MACs based on OS + release
@@ -153,7 +154,12 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     when 'redhat', 'centos', 'oracle'
       case inspec.os[:release]
       when /^6\./
-        macs = macs53
+        # RedHat Enterprise Linux (and family) backported SHA2 support to their fork of OpenSSH 5.3 in RHEL 6.5.
+        # See BZ#969565 at:
+        # https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html-single/6.5_technical_notes/index#openssh
+        # Because extended support (EUS) updates for 6.x minor releases is no longer available,
+        # only the settings available for the supported (latest) 6.x release are recommended.
+        macs = macs53_el65
       when /^7\./, /^8\./
         macs = macs66
       end
