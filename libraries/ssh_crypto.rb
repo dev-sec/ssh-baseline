@@ -35,7 +35,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       case inspec.os[:release]
       when '12.04'
         ciphers = ciphers53
-      when '14.04', '15.10', '16.04', '18.04'
+      when '14.04', '15.10', '16.04', '18.04', '18.10', '19.04', '19.10'
         ciphers = ciphers66
       end
     when 'debian'
@@ -85,7 +85,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       case inspec.os[:release]
       when '12.04'
         kex = kex59
-      when '14.04', '15.10', '16.04', '18.04'
+      when '14.04', '15.10', '16.04', '18.04', '18.10', '19.04', '19.10'
         kex = kex66
       end
     when 'debian'
@@ -139,7 +139,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       case inspec.os[:release]
       when '12.04'
         macs = macs59
-      when '14.04', '15.10', '16.04', '18.04'
+      when '14.04', '15.10', '16.04', '18.04', '18.10', '19.04', '19.10'
         macs = macs66
       end
     when 'debian'
@@ -236,7 +236,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       case inspec.os[:release]
       when '12.04'
         alg = alg53
-      when '14.04', '15.10', '16.04', '18.04'
+      when '14.04', '15.10', '16.04', '18.04', '18.10', '19.04', '19.10'
         alg = alg66
       end
     when 'debian'
