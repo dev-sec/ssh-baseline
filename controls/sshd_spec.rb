@@ -31,6 +31,12 @@ sshd_max_auth_tries = attribute('sshd_max_auth_tries', value: 2, description: 'E
 sshd_custom_user = attribute('custom_user', value: 'root', description: 'The SSH user is not always root. It must be an unprivileged user in a container')
 sshd_custom_path = attribute('custom_path', value: '/etc/ssh', description: 'Sometimes ssh configuration files are present in another location and ssh use them with the -f flag')
 
+sshd_valid_privseparation = ssh_crypto.valid_privseparation
+
+unless sshd_custom_user == 'root' do
+  sshd_valid_privseparation = 'no'
+end
+
 only_if do
   command('sshd').exist?
 end
@@ -196,7 +202,7 @@ control 'sshd-16' do
   title 'Server: Use privilege separation'
   desc 'UsePrivilegeSeparation is an option, when enabled will allow the OpenSSH server to run a small (necessary) amount of code as root and the of the code in a chroot jail environment. This enables ssh to deal incoming network traffic in an unprivileged child process to avoid privilege escalation by an attacker.'
   describe sshd_config do
-    its('UsePrivilegeSeparation') { should eq(ssh_crypto.valid_privseparation) }
+    its('UsePrivilegeSeparation') { should eq(sshd_valid_privseparation) }
   end
 end
 
