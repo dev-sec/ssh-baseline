@@ -31,11 +31,7 @@ sshd_max_auth_tries = attribute('sshd_max_auth_tries', value: 2, description: 'E
 sshd_custom_user = attribute('custom_user', value: 'root', description: 'The SSH user is not always root. It must be an unprivileged user in a container')
 sshd_custom_path = attribute('custom_path', value: '/etc/ssh', description: 'Sometimes ssh configuration files are present in another location and ssh use them with the -f flag')
 
-sshd_valid_privseparation = ssh_crypto.valid_privseparation
-
-unless sshd_custom_user == 'root' do
-  sshd_valid_privseparation = 'no'
-end
+sshd_custom_user != 'root' ? sshd_valid_privseparation = 'no' : sshd_valid_privseparation = ssh_crypto.valid_privseparation
 
 only_if do
   command('sshd').exist?
