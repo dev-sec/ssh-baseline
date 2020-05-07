@@ -32,10 +32,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     # adjust ciphers based on OS + release
     case inspec.os[:name]
     when 'ubuntu'
-      case inspec.os[:release]
-      when '12.04'
-        ciphers = ciphers53
-      when '14.04', '15.10', '16.04', '18.04', '18.10', '19.04', '19.10'
+      if inspec.os[:release][0,2] > '12'
         ciphers = ciphers66
       end
     when 'debian'
@@ -82,10 +79,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     # adjust KEXs based on OS + release
     case inspec.os[:name]
     when 'ubuntu'
-      case inspec.os[:release]
-      when '12.04'
-        kex = kex59
-      when '14.04', '15.10', '16.04', '18.04', '18.10', '19.04', '19.10'
+      if inspec.os[:release][0,2] > '12'
         kex = kex66
       end
     when 'debian'
@@ -136,10 +130,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     # adjust MACs based on OS + release
     case inspec.os[:name]
     when 'ubuntu'
-      case inspec.os[:release]
-      when '12.04'
-        macs = macs59
-      when '14.04', '15.10', '16.04', '18.04', '18.10', '19.04', '19.10'
+      if inspec.os[:release][0,2] > '12'
         macs = macs66
       end
     when 'debian'
@@ -233,11 +224,8 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
 
     case inspec.os[:name]
     when 'ubuntu'
-      case inspec.os[:release]
-      when '12.04'
+      if inspec.os[:release][0,2] < '14'
         alg = alg53
-      when '14.04', '15.10', '16.04', '18.04', '18.10', '19.04', '19.10'
-        alg = alg66
       end
     when 'debian'
       case inspec.os[:release]
