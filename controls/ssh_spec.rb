@@ -22,8 +22,8 @@ only_if do
   command('ssh').exist?
 end
 
-ssh_custom_user = attribute('custom_user', value: 'root', description: 'The SSH user is not always root. It must be an unprivileged user in a container')
-ssh_custom_path = attribute('custom_path', value: '/etc/ssh', description: 'Sometimes ssh configuration files are present in another location and ssh use them with the -f flag')
+ssh_custom_user = attribute('ssh_custom_user', value: 'root', description: 'The SSH user is not always root. It must be an unprivileged user in a container')
+ssh_custom_path = attribute('ssh_custom_path', value: '/etc/ssh', description: 'Sometimes ssh configuration files are present in another location and ssh use them with the -f flag')
 
 control 'ssh-01' do
   impact 1.0
@@ -33,7 +33,7 @@ control 'ssh-01' do
   describe file(ssh_custom_path + '/ssh_config') do
     it { should exist }
     it { should be_file }
-    it { should be_owned_by custom_user }
+    it { should be_owned_by ssh_custom_user }
     it { should be_grouped_into os.darwin? ? 'wheel' : ssh_custom_user }
     it { should_not be_executable }
     it { should be_readable.by('owner') }

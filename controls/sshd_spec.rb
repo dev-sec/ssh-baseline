@@ -28,8 +28,8 @@ sshd_gatewayports = attribute('sshd_gatewayports', value: 'no', description: 'Ex
 sshd_x11forwarding = attribute('sshd_x11forwarding', value: 'no', description: 'Expected value for sshd_config X11Forwarding')
 sshd_banner = attribute('sshd_banner', value: 'none', description: 'Expected value for sshd_config Banner')
 sshd_max_auth_tries = attribute('sshd_max_auth_tries', value: 2, description: 'Expected value for max_auth_retries')
-sshd_custom_user = attribute('custom_user', value: 'root', description: 'The SSH user is not always root. It must be an unprivileged user in a container')
-sshd_custom_path = attribute('custom_path', value: '/etc/ssh', description: 'Sometimes ssh configuration files are present in another location and ssh use them with the -f flag')
+sshd_custom_user = attribute('sshd_custom_user', value: 'root', description: 'The SSH user is not always root. It must be an unprivileged user in a container')
+sshd_custom_path = attribute('sshd_custom_path', value: '/etc/ssh', description: 'Sometimes ssh configuration files are present in another location and ssh use them with the -f flag')
 
 sshd_valid_privseparation = if sshd_custom_user != 'root'
                               'no'
