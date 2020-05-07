@@ -32,9 +32,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     # adjust ciphers based on OS + release
     case inspec.os[:name]
     when 'ubuntu'
-      if inspec.os[:release][0,2] > '12'
-        ciphers = ciphers66
-      end
+      ciphers = ciphers66 if inspec.os[:release][0, 2] > '12'
     when 'debian'
       case inspec.os[:release]
       when /^6\./, /^7\./
@@ -79,9 +77,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     # adjust KEXs based on OS + release
     case inspec.os[:name]
     when 'ubuntu'
-      if inspec.os[:release][0,2] > '12'
-        kex = kex66
-      end
+      kex = kex66 if inspec.os[:release][0, 2] > '12'
     when 'debian'
       case inspec.os[:release]
       when /^6\./
@@ -130,9 +126,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     # adjust MACs based on OS + release
     case inspec.os[:name]
     when 'ubuntu'
-      if inspec.os[:release][0,2] > '12'
-        macs = macs66
-      end
+      macs = macs66 if inspec.os[:release][0, 2] > '12'
     when 'debian'
       case inspec.os[:release]
       when /^6\./
@@ -224,9 +218,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
 
     case inspec.os[:name]
     when 'ubuntu'
-      if inspec.os[:release][0,2] < '14'
-        alg = alg53
-      end
+      alg = alg53 if inspec.os[:release][0, 2] < '14'
     when 'debian'
       case inspec.os[:release]
       when /^7\./
