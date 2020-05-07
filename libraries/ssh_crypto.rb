@@ -23,7 +23,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     inspec.command('ssh -V 2>&1 | cut -f1 -d" " | cut -f2 -d"_"').stdout.to_f
   end
 
-  def valid_ciphers # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
+  def valid_ciphers # rubocop:disable Metrics/CyclomaticComplexity
     # define a set of default ciphers
     ciphers53 = 'aes256-ctr,aes192-ctr,aes128-ctr'
     ciphers66 = 'chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr'
@@ -68,7 +68,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     ciphers
   end
 
-  def valid_kexs # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
+  def valid_kexs # rubocop:disable Metrics/CyclomaticComplexity
     # define a set of default KEXs
     kex66 = 'curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256'
     kex59 = 'diffie-hellman-group-exchange-sha256'
@@ -210,7 +210,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
   end
 
   # return a list of valid algoriths for a current platform
-  def valid_algorithms # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
+  def valid_algorithms # rubocop:disable Metrics/CyclomaticComplexity
     alg53 = %w[rsa]
     alg60 = %w[rsa ecdsa]
     alg66 = %w[rsa ecdsa ed25519]
