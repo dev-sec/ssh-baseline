@@ -23,7 +23,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     inspec.command('ssh -V 2>&1 | cut -f1 -d" " | cut -f2 -d"_"').stdout.to_f
   end
 
-  def valid_ciphers # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
+  def valid_ciphers # rubocop:disable Metrics/CyclomaticComplexity
     # define a set of default ciphers
     ciphers53 = 'aes256-ctr,aes192-ctr,aes128-ctr'
     ciphers66 = 'chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr'
@@ -32,12 +32,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     # adjust ciphers based on OS + release
     case inspec.os[:name]
     when 'ubuntu'
-      case inspec.os[:release]
-      when '12.04'
-        ciphers = ciphers53
-      when '14.04', '15.10', '16.04', '18.04'
-        ciphers = ciphers66
-      end
+      ciphers = ciphers66 if inspec.os[:release][0, 2] > '12'
     when 'debian'
       case inspec.os[:release]
       when /^6\./, /^7\./
@@ -73,7 +68,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     ciphers
   end
 
-  def valid_kexs # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
+  def valid_kexs # rubocop:disable Metrics/CyclomaticComplexity
     # define a set of default KEXs
     kex66 = 'curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256'
     kex59 = 'diffie-hellman-group-exchange-sha256'
@@ -82,12 +77,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     # adjust KEXs based on OS + release
     case inspec.os[:name]
     when 'ubuntu'
-      case inspec.os[:release]
-      when '12.04'
-        kex = kex59
-      when '14.04', '15.10', '16.04', '18.04'
-        kex = kex66
-      end
+      kex = kex66 if inspec.os[:release][0, 2] > '12'
     when 'debian'
       case inspec.os[:release]
       when /^6\./
@@ -136,12 +126,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     # adjust MACs based on OS + release
     case inspec.os[:name]
     when 'ubuntu'
-      case inspec.os[:release]
-      when '12.04'
-        macs = macs59
-      when '14.04', '15.10', '16.04', '18.04'
-        macs = macs66
-      end
+      macs = macs66 if inspec.os[:release][0, 2] > '12'
     when 'debian'
       case inspec.os[:release]
       when /^6\./
@@ -225,7 +210,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
   end
 
   # return a list of valid algoriths for a current platform
-  def valid_algorithms # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
+  def valid_algorithms # rubocop:disable Metrics/CyclomaticComplexity
     alg53 = %w[rsa]
     alg60 = %w[rsa ecdsa]
     alg66 = %w[rsa ecdsa ed25519]
@@ -233,12 +218,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
 
     case inspec.os[:name]
     when 'ubuntu'
-      case inspec.os[:release]
-      when '12.04'
-        alg = alg53
-      when '14.04', '15.10', '16.04', '18.04'
-        alg = alg66
-      end
+      alg = alg53 if inspec.os[:release][0, 2] < '14'
     when 'debian'
       case inspec.os[:release]
       when /^7\./
