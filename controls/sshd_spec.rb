@@ -28,6 +28,14 @@ sshd_gatewayports = attribute('sshd_gatewayports', value: 'no', description: 'Ex
 sshd_x11forwarding = attribute('sshd_x11forwarding', value: 'no', description: 'Expected value for sshd_config X11Forwarding')
 sshd_banner = attribute('sshd_banner', value: 'none', description: 'Expected value for sshd_config Banner')
 sshd_max_auth_tries = attribute('sshd_max_auth_tries', value: 2, description: 'Expected value for max_auth_retries')
+sshd_custom_user = attribute('sshd_custom_user', value: 'root', description: 'The SSH user is not always root. It must be an unprivileged user in a container')
+sshd_custom_path = attribute('sshd_custom_path', value: '/etc/ssh', description: 'Sometimes ssh configuration files are present in another location and ssh use them with the -f flag')
+
+sshd_valid_privseparation = if sshd_custom_user != 'root'
+                              'no'
+                            else
+                              ssh_crypto.valid_privseparation
+                            end
 
 only_if do
   command('sshd').exist?
@@ -63,12 +71,12 @@ end
 control 'sshd-04' do
   impact 1.0
   title 'Server: Check SSH folder owner, group and permissions.'
-  desc 'The SSH folder should owned by root, only be writable by owner and readable by others.'
-  describe file('/etc/ssh') do
+  desc 'The SSH folder should owned by root or a defined user, only be writable by owner and readable by others.'
+  describe file(sshd_custom_path) do
     it { should exist }
     it { should be_directory }
     it { should be_owned_by 'root' }
-    it { should be_grouped_into os.darwin? ? 'wheel' : 'root' }
+    it { should be_grouped_into os.darwin? ? 'wheel' : sshd_custom_user }
     it { should be_executable }
     it { should be_readable.by('owner') }
     it { should be_readable.by('group') }
@@ -84,7 +92,7 @@ control 'sshd-05' do
   title 'Server: Check sshd_config owner, group and permissions.'
   desc 'The sshd_config should owned by root, only be writable/readable by owner and not be executable.'
 
-  describe file('/etc/ssh/sshd_config') do
+  describe file(sshd_custom_path + '/sshd_config') do
     it { should exist }
     it { should be_file }
     it { should be_owned_by 'root' }
@@ -194,7 +202,7 @@ control 'sshd-16' do
   title 'Server: Use privilege separation'
   desc 'UsePrivilegeSeparation is an option, when enabled will allow the OpenSSH server to run a small (necessary) amount of code as root and the of the code in a chroot jail environment. This enables ssh to deal incoming network traffic in an unprivileged child process to avoid privilege escalation by an attacker.'
   describe sshd_config do
-    its('UsePrivilegeSeparation') { should eq(ssh_crypto.valid_privseparation) }
+    its('UsePrivilegeSeparation') { should eq(sshd_valid_privseparation) }
   end
 end
 
@@ -481,7 +489,7 @@ control 'sshd-48' do
   impact 1.0
   title 'Server: DH primes'
   desc 'Verifies if strong DH primes are used in /etc/ssh/moduli'
-  describe bash("test $(awk '$5 < 2047 && $5 ~ /^[0-9]+$/ { print $5 }' /etc/ssh/moduli | uniq | wc -c) -eq 0") do
+  describe bash("test $(awk '$5 < 2047 && $5 ~ /^[0-9]+$/ { print $5 }' #{sshd_custom_path}/moduli | uniq | wc -c) -eq 0") do
     its('exit_status') { should eq 0 }
     its('stdout') { should eq '' }
     its('stderr') { should eq '' }
