@@ -220,7 +220,7 @@ control 'sshd-18' do
   title 'Server: Specify LoginGraceTime'
   desc 'The LoginGraceTime gives the user 30 seconds to accomplish a login. This could be used to conduct a Denial of Service (DoS) against a running SSH daemon.'
   describe sshd_config do
-    its('LoginGraceTime') { should eq('30s') }
+    its('LoginGraceTime') { should eq('30') }
   end
 end
 
