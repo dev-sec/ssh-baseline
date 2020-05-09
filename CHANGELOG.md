@@ -1,5 +1,21 @@
 # Change Log
 
+## [2.5.0](https://github.com/dev-sec/ssh-baseline/tree/2.5.0) (2020-05-09)
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.4.0...2.5.0)
+
+**Merged pull requests:**
+
+- In a container, sshd should not run as root [\#152](https://github.com/dev-sec/ssh-baseline/pull/152) ([micheelengronne](https://github.com/micheelengronne))
+- ubuntu versions [\#151](https://github.com/dev-sec/ssh-baseline/pull/151) ([micheelengronne](https://github.com/micheelengronne))
+- Use SHA2 HMACs in OpenSSH for RHEL family 6.5+ [\#146](https://github.com/dev-sec/ssh-baseline/pull/146) ([foonix](https://github.com/foonix))
+- Support of CentOS 8 [\#143](https://github.com/dev-sec/ssh-baseline/pull/143) ([artem-sidorenko](https://github.com/artem-sidorenko))
+- Move atribute to spec as local var [\#142](https://github.com/dev-sec/ssh-baseline/pull/142) ([kiwivogel](https://github.com/kiwivogel))
+- Fix deprecations [\#141](https://github.com/dev-sec/ssh-baseline/pull/141) ([kiwivogel](https://github.com/kiwivogel))
+- max_auth_tries is a string not numeric [\#139](https://github.com/dev-sec/ssh-baseline/issues/139) ([chbiel](https://github.com/chbiel))
+- MaxAuthTries Parameter [\#138](https://github.com/dev-sec/ssh-baseline/pull/138) ([monobaila](https://github.com/monobaila))
+- Debian 10 has Openssh 7.9 with deperecated UsePrivilegeSeparation [\#135](https://github.com/dev-sec/ssh-baseline/pull/135) ([artem-sidorenko](https://github.com/artem-sidorenko))
+- Debian 10 support for ciphers, kex, macs [\#134](https://github.com/dev-sec/ssh-baseline/pull/134) ([artem-sidorenko](https://github.com/artem-sidorenko))
+
 ## [2.4.0](https://github.com/dev-sec/ssh-baseline/tree/2.4.0) (2019-02-25)
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.3.2...2.4.0)
 
