@@ -70,6 +70,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
 
   def valid_kexs # rubocop:disable Metrics/CyclomaticComplexity
     # define a set of default KEXs
+    kex80 = 'sntrup4591761x25519-sha512@tinyssh.org,curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256'
     kex66 = 'curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256'
     kex59 = 'diffie-hellman-group-exchange-sha256'
     kex = kex59
@@ -94,8 +95,12 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /^7\./, /^8\./
         kex = kex66
       end
-    when 'amazon', 'fedora', 'alpine'
+    when 'amazon'
       kex = kex66
+    when 'alpine'
+      kex = kex80
+    when 'fedora'
+      inspec.os[:release] >= '30' ? kex=kex80 : kex=kex66
     when 'opensuse'
       case inspec.os[:release]
       when /^13\.2/
