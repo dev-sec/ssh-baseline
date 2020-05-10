@@ -100,7 +100,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     when 'alpine'
       kex = kex80
     when 'fedora'
-      inspec.os[:release] >= '30' ? kex=kex80 : kex=kex66
+      kex = inspec.os[:release] >= '30' ? kex80 : kex66
     when 'opensuse'
       case inspec.os[:release]
       when /^13\.2/
