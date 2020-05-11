@@ -36,14 +36,14 @@ jobs:
         with:
           cmd: yq w -I4 -i inspec.yml version ${{ steps.version.outputs.next-version }} && sed -i '1i---' inspec.yml
 
-      - name: push inspec.yml
+      - name: push inspec.yml and changelog
         uses: github-actions-x/commit@v2.6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           push-branch: 'master'
-          commit-message: 'update inspec.yml'
+          commit-message: 'update inspec.yml and changelog'
           force-add: 'true'
-          files: inspec.yml
+          files: inspec.yml CHANGELOG.md
           name: dev-sec CI
           email: github@gumpri.ch
 
