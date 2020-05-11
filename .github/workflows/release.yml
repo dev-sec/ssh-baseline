@@ -22,7 +22,7 @@ jobs:
         id: version
         uses: charmixer/auto-changelog-action@8095796
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CHANGELOG_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate changelog
         uses: charmixer/auto-changelog-action@v1
