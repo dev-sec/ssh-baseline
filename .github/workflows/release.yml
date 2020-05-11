@@ -45,7 +45,7 @@ jobs:
           force-add: 'true'
           files: inspec.yml CHANGELOG.md
           name: dev-sec CI
-          email: github@gumpri.ch
+          email: hello@dev-sec.io
 
       - name: Read CHANGELOG.md
         id: package
