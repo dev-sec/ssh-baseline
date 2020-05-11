@@ -23,11 +23,6 @@ jobs:
         uses: charmixer/auto-changelog-action@8095796
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: update inspec.yml
-        uses: mikefarah/yq@3.2.1
-        with:
-          cmd: yq w -I4 -i inspec.yml version ${{ steps.version.outputs.next-version }} && sed -i '1i---' inspec.yml
 
       - name: Generate changelog
         uses: charmixer/auto-changelog-action@v1
@@ -35,6 +30,22 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           since_tag: ${{ steps.previoustag.outputs.tag }}
           future_release: ${{ steps.version.outputs.next-version }}
+
+      - name: update inspec.yml
+        uses: mikefarah/yq@3.2.1
+        with:
+          cmd: yq w -I4 -i inspec.yml version ${{ steps.version.outputs.next-version }} && sed -i '1i---' inspec.yml
+
+      - name: push inspec.yml
+        uses: github-actions-x/commit@v2.6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          push-branch: 'master'
+          commit-message: 'update inspec.yml'
+          force-add: 'true'
+          files: inspec.yml
+          name: dev-sec CI
+          email: github@gumpri.ch
 
       - name: Read CHANGELOG.md
         id: package
