@@ -1,8 +1,8 @@
 # Changelog
 
-## [2.4.1](https://github.com/dev-sec/ssh-baseline/tree/2.4.1) (2020-05-18)
+## [2.5.0](https://github.com/dev-sec/ssh-baseline/tree/2.5.0) (2020-05-18)
 
-[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.4.1...2.4.1)
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.4.1...2.5.0)
 
 **Closed issues:**
 
