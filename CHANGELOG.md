@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- sshd\_config custom path [\#161](https://github.com/dev-sec/ssh-baseline/pull/161) ([micheelengronne](https://github.com/micheelengronne))
 - Continously updated changelog [\#160](https://github.com/dev-sec/ssh-baseline/pull/160) ([micheelengronne](https://github.com/micheelengronne))
 
 ## [2.5.1](https://github.com/dev-sec/ssh-baseline/tree/2.5.1) (2020-05-18)
