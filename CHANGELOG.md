@@ -1,32 +1,12 @@
 # Changelog
 
-## [2.5.0](https://github.com/dev-sec/ssh-baseline/tree/2.5.0) (2020-05-18)
+## [2.5.1](https://github.com/dev-sec/ssh-baseline/tree/2.5.1) (2020-05-18)
 
-[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.4.1...2.5.0)
-
-**Closed issues:**
-
-- Mozilla OpenSSH Guidelines [\#150](https://github.com/dev-sec/ssh-baseline/issues/150)
-- Test SSHD running as another user [\#149](https://github.com/dev-sec/ssh-baseline/issues/149)
-- New release [\#147](https://github.com/dev-sec/ssh-baseline/issues/147)
-- Test for sha2 HMACs on RHEL 6 / CentOS 6 [\#145](https://github.com/dev-sec/ssh-baseline/issues/145)
-- max\_auth\_tries is a string not numeric [\#139](https://github.com/dev-sec/ssh-baseline/issues/139)
-- MaxAuthTries - Citation\(s\) for baseline choice. [\#137](https://github.com/dev-sec/ssh-baseline/issues/137)
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.0...2.5.1)
 
 **Merged pull requests:**
 
-- API rate limiter debug [\#158](https://github.com/dev-sec/ssh-baseline/pull/158) ([micheelengronne](https://github.com/micheelengronne))
-- Release github workflow [\#157](https://github.com/dev-sec/ssh-baseline/pull/157) ([micheelengronne](https://github.com/micheelengronne))
-- In a container, sshd should not run as root [\#152](https://github.com/dev-sec/ssh-baseline/pull/152) ([micheelengronne](https://github.com/micheelengronne))
-- ubuntu versions [\#151](https://github.com/dev-sec/ssh-baseline/pull/151) ([micheelengronne](https://github.com/micheelengronne))
-- Use SHA2 HMACs in OpenSSH for RHEL family 6.5+ [\#146](https://github.com/dev-sec/ssh-baseline/pull/146) ([foonix](https://github.com/foonix))
-- Support of CentOS 8 [\#143](https://github.com/dev-sec/ssh-baseline/pull/143) ([artem-sidorenko](https://github.com/artem-sidorenko))
-- Move atribute to spec as local var [\#142](https://github.com/dev-sec/ssh-baseline/pull/142) ([kiwivogel](https://github.com/kiwivogel))
-- Fix deprecations [\#141](https://github.com/dev-sec/ssh-baseline/pull/141) ([kiwivogel](https://github.com/kiwivogel))
-- Issue 139 - Use cmp instead of be matcher to allow string matching  [\#140](https://github.com/dev-sec/ssh-baseline/pull/140) ([chbiel](https://github.com/chbiel))
-- Issue 137 - MaxAuthTries Parameter. [\#138](https://github.com/dev-sec/ssh-baseline/pull/138) ([monobaila](https://github.com/monobaila))
-- Debian 10 has Openssh 7.9 with deperecated UsePrivilegeSeparation [\#135](https://github.com/dev-sec/ssh-baseline/pull/135) ([artem-sidorenko](https://github.com/artem-sidorenko))
-- Debian 10 support for ciphers, kex, macs [\#134](https://github.com/dev-sec/ssh-baseline/pull/134) ([artem-sidorenko](https://github.com/artem-sidorenko))
+- Align versions everywhere in the project [\#159](https://github.com/dev-sec/ssh-baseline/pull/159) ([micheelengronne](https://github.com/micheelengronne))
 
 
 
