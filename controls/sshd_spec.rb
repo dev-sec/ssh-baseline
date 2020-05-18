@@ -75,7 +75,7 @@ control 'sshd-04' do
   describe file(sshd_custom_path) do
     it { should exist }
     it { should be_directory }
-    it { should be_owned_by 'root' }
+    it { should be_owned_by sshd_custom_user }
     it { should be_grouped_into os.darwin? ? 'wheel' : sshd_custom_user }
     it { should be_executable }
     it { should be_readable.by('owner') }
@@ -90,13 +90,13 @@ end
 control 'sshd-05' do
   impact 1.0
   title 'Server: Check sshd_config owner, group and permissions.'
-  desc 'The sshd_config should owned by root, only be writable/readable by owner and not be executable.'
+  desc 'The sshd_config should owned by root or a defined user, only be writable/readable by owner and not be executable.'
 
   describe file(sshd_custom_path + '/sshd_config') do
     it { should exist }
     it { should be_file }
-    it { should be_owned_by 'root' }
-    it { should be_grouped_into os.darwin? ? 'wheel' : 'root' }
+    it { should be_owned_by sshd_custom_user }
+    it { should be_grouped_into os.darwin? ? 'wheel' : sshd_custom_user }
     it { should_not be_executable }
     it { should be_readable.by('owner') }
     it { should_not be_readable.by('group') }
