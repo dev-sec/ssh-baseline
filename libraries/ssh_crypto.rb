@@ -256,7 +256,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
 
   # returns the hostkeys value based on valid_algorithms
   def valid_hostkeys
-    hostkeys = valid_algorithms.map { |alg| "/etc/ssh/ssh_host_#{alg}_key" }
+    hostkeys = valid_algorithms.map { |alg| "#{sshd_custom_path}/ssh_host_#{alg}_key" }
     # its('HostKey') provides a string for a single-element value.
     # we have to return a string if we have a single-element
     # https://github.com/chef/inspec/issues/1434
