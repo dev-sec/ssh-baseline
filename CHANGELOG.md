@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- CHANGELOG for RELEASE done before the push to avoid breaking [\#167](https://github.com/dev-sec/ssh-baseline/pull/167) ([micheelengronne](https://github.com/micheelengronne))
 - sshd custom port [\#164](https://github.com/dev-sec/ssh-baseline/pull/164) ([micheelengronne](https://github.com/micheelengronne))
 - custom path for hostkeys [\#163](https://github.com/dev-sec/ssh-baseline/pull/163) ([micheelengronne](https://github.com/micheelengronne))
 
@@ -183,7 +184,6 @@
 **Merged pull requests:**
 
 - Use new ciphers, kex, macs and priv separation sandbox for redhat family 7 [\#62](https://github.com/dev-sec/ssh-baseline/pull/62) ([atomic111](https://github.com/atomic111))
-- Fixing typo in sshd\_spec.rb [\#61](https://github.com/dev-sec/ssh-baseline/pull/61) ([brimstone](https://github.com/brimstone))
 - Fix: Issue ListenAddress \#45 \(\#45\) and  added check for SSH Client Bug CVE-2016-0777 and CVE-2016-0778  [\#60](https://github.com/dev-sec/ssh-baseline/pull/60) ([atomic111](https://github.com/atomic111))
 - changed from hardening-io to dev-sec in README.md and added ubuntu and centos version to ssh\_crypto.rb [\#59](https://github.com/dev-sec/ssh-baseline/pull/59) ([atomic111](https://github.com/atomic111))
 
@@ -209,6 +209,7 @@
 
 **Merged pull requests:**
 
+- Fixing typo in sshd\_spec.rb [\#61](https://github.com/dev-sec/ssh-baseline/pull/61) ([brimstone](https://github.com/brimstone))
 - 1.2.0 [\#57](https://github.com/dev-sec/ssh-baseline/pull/57) ([chris-rock](https://github.com/chris-rock))
 - Symlinks real suite names to "default" [\#55](https://github.com/dev-sec/ssh-baseline/pull/55) ([conorsch](https://github.com/conorsch))
 - complet inspec tests [\#52](https://github.com/dev-sec/ssh-baseline/pull/52) ([atomic111](https://github.com/atomic111))
