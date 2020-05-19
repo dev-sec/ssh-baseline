@@ -16,8 +16,6 @@
 # author: Dominik Richter
 # author: Patrick Muench
 
-sshd_custom_path = attribute('sshd_custom_path', value: '/etc/ssh', description: 'Sometimes ssh configuration files are present in another location and ssh use them with the -f flag')
-
 class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
   name 'ssh_crypto'
 
