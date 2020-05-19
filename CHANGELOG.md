@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.5.3](https://github.com/dev-sec/ssh-baseline/tree/2.5.3) (2020-05-19)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.2...2.5.3)
+
+**Merged pull requests:**
+
+- release trigger [\#166](https://github.com/dev-sec/ssh-baseline/pull/166) ([micheelengronne](https://github.com/micheelengronne))
+
 ## [2.5.2](https://github.com/dev-sec/ssh-baseline/tree/2.5.2) (2020-05-19)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.1...2.5.2)
@@ -102,6 +110,7 @@
 
 - Modified the client\_alive\_interval default to suggested value [\#98](https://github.com/dev-sec/ssh-baseline/pull/98) ([iennae](https://github.com/iennae))
 - Support Amazon Linux [\#97](https://github.com/dev-sec/ssh-baseline/pull/97) ([woneill](https://github.com/woneill))
+- CI: update to ruby 2.4.1 and rubocop 0.49 [\#89](https://github.com/dev-sec/ssh-baseline/pull/89) ([artem-sidorenko](https://github.com/artem-sidorenko))
 
 ## [2.3.0](https://github.com/dev-sec/ssh-baseline/tree/2.3.0) (2017-12-01)
 
@@ -115,7 +124,6 @@
 
 - remove ripemd160 MAC from the macs66 list [\#94](https://github.com/dev-sec/ssh-baseline/pull/94) ([atomic111](https://github.com/atomic111))
 - use recommended spdx license identifier [\#90](https://github.com/dev-sec/ssh-baseline/pull/90) ([chris-rock](https://github.com/chris-rock))
-- CI: update to ruby 2.4.1 and rubocop 0.49 [\#89](https://github.com/dev-sec/ssh-baseline/pull/89) ([artem-sidorenko](https://github.com/artem-sidorenko))
 - Support of OpenSuse Leap 42.2 [\#88](https://github.com/dev-sec/ssh-baseline/pull/88) ([artem-sidorenko](https://github.com/artem-sidorenko))
 
 ## [2.2.0](https://github.com/dev-sec/ssh-baseline/tree/2.2.0) (2017-05-08)
