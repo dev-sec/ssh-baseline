@@ -1,14 +1,8 @@
 name: Create Changelog
 
 on:
-  pull_request:
-    types: [closed]
-
   release:
     types: [published]
-
-  issues:
-    types: [closed, edited]
 
 jobs:
   generate_changelog:
