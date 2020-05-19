@@ -30,6 +30,7 @@ sshd_banner = attribute('sshd_banner', value: 'none', description: 'Expected val
 sshd_max_auth_tries = attribute('sshd_max_auth_tries', value: 2, description: 'Expected value for max_auth_retries')
 sshd_custom_user = attribute('sshd_custom_user', value: 'root', description: 'The SSH user is not always root. It must be an unprivileged user in a container')
 sshd_custom_path = attribute('sshd_custom_path', value: '/etc/ssh', description: 'Sometimes ssh configuration files are present in another location and ssh use them with the -f flag')
+sshd_custom_port = attribute('sshd_custom_port', value: '22', description: 'Sometimes the ssh port is not 22. For instance, in a container as another user, 22 is forbidden')
 
 sshd_valid_privseparation = if sshd_custom_user != 'root'
                               'no'
@@ -121,7 +122,7 @@ control 'sshd-07' do
   title 'Server: Specify the listen ssh Port'
   desc 'Always specify which port the SSH server should listen to. Prevent unexpected settings.'
   describe sshd_config(sshd_custom_path + '/sshd_config') do
-    its('Port') { should eq('22') }
+    its('Port') { should eq(sshd_custom_port) }
   end
 end
 
