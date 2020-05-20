@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.5.6](https://github.com/dev-sec/ssh-baseline/tree/2.5.6) (2020-05-20)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.5...2.5.6)
+
+**Closed issues:**
+
+- PR \#163 leads to failing sshd-14 check [\#169](https://github.com/dev-sec/ssh-baseline/issues/169)
+
+**Merged pull requests:**
+
+- ListenAddress should exist [\#165](https://github.com/dev-sec/ssh-baseline/pull/165) ([micheelengronne](https://github.com/micheelengronne))
+
 ## [2.5.5](https://github.com/dev-sec/ssh-baseline/tree/2.5.5) (2020-05-20)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.4...2.5.5)
