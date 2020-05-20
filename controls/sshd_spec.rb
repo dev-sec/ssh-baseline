@@ -38,6 +38,9 @@ sshd_valid_privseparation = if sshd_custom_user != 'root'
                               ssh_crypto.valid_privseparation
                             end
 
+sshd_valid_hostkeys = ssh_crypto.valid_algorithms.map { |alg| "#{sshd_custom_path}/ssh_host_#{alg}_key" }
+sshd_valid_hostkeys = sshd_valid_hostkeys[0] if sshd_valid_hostkeys.length == 1
+
 only_if do
   command('sshd').exist?
 end
@@ -185,7 +188,7 @@ control 'sshd-14' do
   title 'Server: Specify SSH HostKeys'
   desc 'Specify HostKey for protection against Man-In-The-Middle Attacks'
   describe sshd_config(sshd_custom_path + '/sshd_config') do
-    its('HostKey') { should cmp ssh_crypto.valid_hostkeys }
+    its('HostKey') { should cmp sshd_valid_hostkeys }
   end
 end
 
