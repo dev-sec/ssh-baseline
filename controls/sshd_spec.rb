@@ -32,12 +32,6 @@ sshd_custom_user = attribute('sshd_custom_user', value: 'root', description: 'Th
 sshd_custom_path = attribute('sshd_custom_path', value: '/etc/ssh', description: 'Sometimes ssh configuration files are present in another location and ssh use them with the -f flag')
 sshd_custom_port = attribute('sshd_custom_port', value: '22', description: 'Sometimes the ssh port is not 22. For instance, in a container as another user, 22 is forbidden')
 
-sshd_valid_privseparation = if sshd_custom_user != 'root'
-                              'no'
-                            else
-                              ssh_crypto.valid_privseparation
-                            end
-
 only_if do
   command('sshd').exist?
 end

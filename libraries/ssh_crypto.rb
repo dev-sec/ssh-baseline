@@ -169,46 +169,6 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     macs
   end
 
-  def valid_privseparation # rubocop:disable Metrics/CyclomaticComplexity
-    # define privilege separation set
-    ps53 = 'yes'
-    ps59 = 'sandbox'
-    ps75 = nil
-    ps = ps59
-
-    # debian 7.x and newer has ssh 5.9+
-    # ubuntu 12.04 and newer has ssh 5.9+
-
-    case inspec.os[:name]
-    when 'debian'
-      case inspec.os[:release]
-      when /^6\./
-        ps = ps53
-      when /^10\./
-        ps = ps75
-      end
-    when 'redhat', 'centos', 'oracle'
-      case inspec.os[:release]
-      # redhat/centos/oracle 6.x has ssh 5.3
-      when /^6\./
-        ps = ps53
-      when /^7\./
-        ps = ps59
-      when /^8\./
-        ps = ps75
-      end
-    when 'ubuntu'
-      case inspec.os[:release]
-      when /^18\./
-        ps = ps75
-      end
-    when 'fedora', 'alpine'
-      ps = ps75
-    end
-
-    ps
-  end
-
   # return a list of valid algoriths for a current platform
   def valid_algorithms # rubocop:disable Metrics/CyclomaticComplexity
     alg53 = %w[rsa]
