@@ -109,7 +109,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       kex = inspec.os[:release] >= '30' ? kex80 : kex66
     # https://software.opensuse.org/package/openssh
     when 'opensuse'
-      kex = inspec.os[:release] == '15.2' ? kex80 : kex66
+      kex = inspec.os[:release] >= '15.2' ? kex80 : kex66
     when 'mac_os_x'
       case inspec.os[:release]
       when /^10.9\./
