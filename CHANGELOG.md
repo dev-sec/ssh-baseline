@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.5.7](https://github.com/dev-sec/ssh-baseline/tree/2.5.7) (2020-05-25)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.6...2.5.7)
+
+**Merged pull requests:**
+
+- OpenSSH 8.0 KEXs support [\#172](https://github.com/dev-sec/ssh-baseline/pull/172) ([sfuerte](https://github.com/sfuerte))
+
 ## [2.5.6](https://github.com/dev-sec/ssh-baseline/tree/2.5.6) (2020-05-20)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.5...2.5.6)
