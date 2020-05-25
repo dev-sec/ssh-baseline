@@ -68,16 +68,19 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     ciphers
   end
 
-  def valid_kexs # rubocop:disable Metrics/CyclomaticComplexity
+  def valid_kexs # rubocop:disable Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
     # define a set of default KEXs
+    kex80 = 'sntrup4591761x25519-sha512@tinyssh.org,curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256'
     kex66 = 'curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256'
     kex59 = 'diffie-hellman-group-exchange-sha256'
     kex = kex59
 
     # adjust KEXs based on OS + release
     case inspec.os[:name]
+    # https://packages.ubuntu.com/search?keywords=openssh-server
     when 'ubuntu'
-      kex = kex66 if inspec.os[:release][0, 2] > '12'
+      kex = inspec.os[:release][0, 2] >= '19' ? kex80 : kex66
+    # https://packages.debian.org/search?keywords=openssh-server
     when 'debian'
       case inspec.os[:release]
       when /^6\./
@@ -86,6 +89,8 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
         kex = kex59
       when /^8\./, /^9\./, /^10\./
         kex = kex66
+      when /^11\./
+        kex = kex80
       end
     when 'redhat', 'centos', 'oracle'
       case inspec.os[:release]
@@ -94,21 +99,25 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /^7\./, /^8\./
         kex = kex66
       end
-    when 'amazon', 'fedora', 'alpine'
+    # https://pkgs.alpinelinux.org/packages?name=openssh
+    when 'alpine'
+      kex = inspec.os[:release].split('.')[1] >= '10' ? kex80 : kex66
+    when 'amazon'
       kex = kex66
+    # https://src.fedoraproject.org/rpms/openssh
+    when 'fedora'
+      kex = inspec.os[:release] >= '30' ? kex80 : kex66
+    # https://software.opensuse.org/package/openssh
     when 'opensuse'
-      case inspec.os[:release]
-      when /^13\.2/
-        kex = kex66
-      when /^42\./
-        kex = kex66
-      end
+      kex = inspec.os[:release] >= '15.2' ? kex80 : kex66
     when 'mac_os_x'
       case inspec.os[:release]
       when /^10.9\./
         kex = kex59
       when /^10.10\./, /^10.11\./, /^10.12\./
         kex = kex66
+      when /^10.15\./
+        kex = kex80
       end
     end
 
