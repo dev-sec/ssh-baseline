@@ -47,7 +47,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /^7\./, /^8\./
         ciphers = ciphers66
       end
-    when 'amazon', 'fedora', 'alpine'
+    when 'amazon', 'fedora', 'alpine', 'arch'
       ciphers = ciphers66
     when 'opensuse'
       case inspec.os[:release]
@@ -100,6 +100,8 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
         kex = kex66
       end
     # https://pkgs.alpinelinux.org/packages?name=openssh
+    when 'arch'
+      kex = kex80
     when 'alpine'
       kex = inspec.os[:release].split('.')[1] >= '10' ? kex80 : kex66
     when 'amazon'
@@ -157,7 +159,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /^7\./, /^8\./
         macs = macs66
       end
-    when 'amazon', 'fedora', 'alpine'
+    when 'amazon', 'fedora', 'alpine', 'arch'
       macs = macs66
     when 'opensuse'
       case inspec.os[:release]
@@ -211,7 +213,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /^18\./
         ps = ps75
       end
-    when 'fedora', 'alpine'
+    when 'fedora', 'alpine', 'arch'
       ps = ps75
     end
 
@@ -242,7 +244,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /^7\./
         alg = alg66
       end
-    when 'amazon', 'fedora', 'alpine'
+    when 'amazon', 'fedora', 'alpine', 'arch'
       alg = alg66
     when 'opensuse'
       case inspec.os[:release]
