@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.5.8](https://github.com/dev-sec/ssh-baseline/tree/2.5.8) (2020-06-18)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.7...2.5.8)
+
+**Implemented enhancements:**
+
+- Add support for Archlinux [\#173](https://github.com/dev-sec/ssh-baseline/pull/173) ([mesaguy](https://github.com/mesaguy))
+
+**Closed issues:**
+
+- Support KEX for OpenSSH 8.0+ & quantum resistant KEX [\#144](https://github.com/dev-sec/ssh-baseline/issues/144)
+
 ## [2.5.7](https://github.com/dev-sec/ssh-baseline/tree/2.5.7) (2020-05-25)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.6...2.5.7)

@@ -6,6 +6,6 @@ copyright: DevSec Hardening Framework Team
 copyright_email: hello@dev-sec.io
 license: Apache-2.0
 summary: Test-suite for best-practice SSH hardening
-version: 2.5.7
+version: 2.5.8
 supports:
-  - os-family: unix
+    - os-family: unix
