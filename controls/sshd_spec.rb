@@ -503,3 +503,17 @@ control 'sshd-48' do
     its('stderr') { should eq '' }
   end
 end
+
+control 'sshd-49' do
+  impact 1.0
+  title 'Server: CRYPTO_POLICY'
+  desc 'Verifies, that we are not running CRYPTO_POLICY and our settings from sshd_config are effective'
+  if os[:family] == "redhat" && ::Gem::Version.new(os.release) > ::Gem::Version.new('8')
+    describe bash("pgrep -af 'sshd -D'") do
+      its('exit_status') { should eq 0 }
+      its('stdout') { should_not match('-oCiphers') }
+      its('stdout') { should_not match('-oKexAlgorithms') }
+      its('stdout') { should_not match('-oHostKeyAlgorithms') }
+    end
+  end
+end
