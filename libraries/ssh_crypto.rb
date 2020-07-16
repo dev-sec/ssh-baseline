@@ -96,8 +96,10 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       case inspec.os[:release]
       when /^6\./
         kex = nil
-      when /^7\./, /^8\./
+      when /^7\./
         kex = kex66
+      when /^8\./
+        kex = kex80
       end
     # https://pkgs.alpinelinux.org/packages?name=openssh
     when 'arch'
