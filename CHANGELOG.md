@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.5.11](https://github.com/dev-sec/ssh-baseline/tree/2.5.11) (2020-07-16)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.10...2.5.11)
+
+**Merged pull requests:**
+
+- add control for CRYPTO\_POLICY on RedHat [\#176](https://github.com/dev-sec/ssh-baseline/pull/176) ([schurzi](https://github.com/schurzi))
+
 ## [2.5.10](https://github.com/dev-sec/ssh-baseline/tree/2.5.10) (2020-07-16)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.9...2.5.10)
@@ -43,6 +51,10 @@
 **Closed issues:**
 
 - PR \#163 leads to failing sshd-14 check [\#169](https://github.com/dev-sec/ssh-baseline/issues/169)
+
+**Merged pull requests:**
+
+- ListenAddress should exist [\#165](https://github.com/dev-sec/ssh-baseline/pull/165) ([micheelengronne](https://github.com/micheelengronne))
 
 ## [2.5.5](https://github.com/dev-sec/ssh-baseline/tree/2.5.5) (2020-05-20)
 
@@ -107,7 +119,6 @@
 
 **Merged pull requests:**
 
-- ListenAddress should exist [\#165](https://github.com/dev-sec/ssh-baseline/pull/165) ([micheelengronne](https://github.com/micheelengronne))
 - API rate limiter debug [\#158](https://github.com/dev-sec/ssh-baseline/pull/158) ([micheelengronne](https://github.com/micheelengronne))
 - Release github workflow [\#157](https://github.com/dev-sec/ssh-baseline/pull/157) ([micheelengronne](https://github.com/micheelengronne))
 - In a container, sshd should not run as root [\#152](https://github.com/dev-sec/ssh-baseline/pull/152) ([micheelengronne](https://github.com/micheelengronne))
