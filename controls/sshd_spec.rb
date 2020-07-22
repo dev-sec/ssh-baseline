@@ -508,8 +508,8 @@ control 'sshd-49' do
   impact 1.0
   title 'Server: CRYPTO_POLICY'
   desc 'Verifies, that we are not running CRYPTO_POLICY and our settings from sshd_config are effective'
-  only_if('OS is RHEL 8+ or compatible') do
-    os[:family] == 'redhat' && ::Gem::Version.new(os.release) > ::Gem::Version.new('8')
+  only_if('OS has CRYPTO_POLICY') do
+    file('/etc/sysconfig/sshd').exist? && file('/etc/sysconfig/sshd').content.match?(/CRYPTO_POLICY/)
   end
 
   describe bash("pgrep -af 'sshd -D'") do
