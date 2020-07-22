@@ -1,10 +1,18 @@
 # Changelog
 
+## [2.5.12](https://github.com/dev-sec/ssh-baseline/tree/2.5.12) (2020-07-22)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.11...2.5.12)
+
+**Merged pull requests:**
+
+- rework CRYPTO\_POLICY check to work with fedora [\#177](https://github.com/dev-sec/ssh-baseline/pull/177) ([schurzi](https://github.com/schurzi))
+
 ## [2.5.11](https://github.com/dev-sec/ssh-baseline/tree/2.5.11) (2020-07-16)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.10...2.5.11)
 
-**Merged pull requests:**
+**Implemented enhancements:**
 
 - add control for CRYPTO\_POLICY on RedHat [\#176](https://github.com/dev-sec/ssh-baseline/pull/176) ([schurzi](https://github.com/schurzi))
 
@@ -12,7 +20,7 @@
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.9...2.5.10)
 
-**Merged pull requests:**
+**Implemented enhancements:**
 
 - use correct kex for RedHat/CentOS/Oracle Linux 8 [\#175](https://github.com/dev-sec/ssh-baseline/pull/175) ([schurzi](https://github.com/schurzi))
 
