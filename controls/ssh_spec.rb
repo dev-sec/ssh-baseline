@@ -236,7 +236,7 @@ control 'ssh-22' do
     file('/etc/sysconfig/sshd').exist? && file('/etc/sysconfig/sshd').content.match?(/CRYPTO_POLICY/)
   end
 
-  describe bash("ssh -G localhost") do
+  describe bash('ssh -G localhost') do
     its('exit_status') { should eq 0 }
     its('stdout') { should match('ciphers ' + ssh_crypto.valid_ciphers) }
     its('stdout') { should match('kexalgorithms ' + ssh_crypto.valid_kexs) }
