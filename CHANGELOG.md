@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.5.13](https://github.com/dev-sec/ssh-baseline/tree/2.5.13) (2020-07-23)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.12...2.5.13)
+
+**Merged pull requests:**
+
+- The release draft references the correct SHA [\#178](https://github.com/dev-sec/ssh-baseline/pull/178) ([micheelengronne](https://github.com/micheelengronne))
+
 ## [2.5.12](https://github.com/dev-sec/ssh-baseline/tree/2.5.12) (2020-07-22)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.11...2.5.12)
