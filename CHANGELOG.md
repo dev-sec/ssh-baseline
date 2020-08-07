@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.5.14](https://github.com/dev-sec/ssh-baseline/tree/2.5.14) (2020-08-07)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.13...2.5.14)
+
+**Merged pull requests:**
+
+- check for CRYPTO\_POLICY should also work, when not root [\#180](https://github.com/dev-sec/ssh-baseline/pull/180) ([schurzi](https://github.com/schurzi))
+
 ## [2.5.13](https://github.com/dev-sec/ssh-baseline/tree/2.5.13) (2020-07-23)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.12...2.5.13)
