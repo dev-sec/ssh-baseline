@@ -508,14 +508,14 @@ control 'sshd-49' do
   impact 1.0
   title 'Server: CRYPTO_POLICY'
   desc 'Verifies, that we are not running CRYPTO_POLICY and our settings from sshd_config are effective'
-  only_if('OS has CRYPTO_POLICY') do
-    file('/etc/sysconfig/sshd').exist? && file('/etc/sysconfig/sshd').content.match?(/CRYPTO_POLICY/)
+  only_if('sshd with options is running') do
+    processes('sshd -D').exists?
   end
 
-  describe bash("pgrep -af 'sshd -D'") do
-    its('exit_status') { should eq 0 }
-    its('stdout') { should_not match('-oCiphers') }
-    its('stdout') { should_not match('-oKexAlgorithms') }
-    its('stdout') { should_not match('-oHostKeyAlgorithms') }
+  describe processes('sshd -D') do
+    its('entries.length') { should eq 1 }
+    its('commands.first') { should_not match(/-oCiphers/) }
+    its('commands.first') { should_not match(/-oKexAlgorithms/) }
+    its('commands.first') { should_not match(/-oHostKeyAlgorithms/) }
   end
 end
