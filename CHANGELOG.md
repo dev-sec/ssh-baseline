@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.6.0](https://github.com/dev-sec/ssh-baseline/tree/2.6.0) (2020-08-22)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.14...2.6.0)
+
+**Implemented enhancements:**
+
+- add support for ubuntu20.04 [\#181](https://github.com/dev-sec/ssh-baseline/pull/181) ([schurzi](https://github.com/schurzi))
+
+**Closed issues:**
+
+- undefined method `match?' for nil:NilClass - CentOs 7 [\#179](https://github.com/dev-sec/ssh-baseline/issues/179)
+
 ## [2.5.14](https://github.com/dev-sec/ssh-baseline/tree/2.5.14) (2020-08-07)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.13...2.5.14)
@@ -124,10 +136,6 @@
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.0...2.5.1)
 
-**Merged pull requests:**
-
-- Align versions everywhere in the project [\#159](https://github.com/dev-sec/ssh-baseline/pull/159) ([micheelengronne](https://github.com/micheelengronne))
-
 ## [2.5.0](https://github.com/dev-sec/ssh-baseline/tree/2.5.0) (2020-05-18)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.4.1...2.5.0)
@@ -143,6 +151,7 @@
 
 **Merged pull requests:**
 
+- Align versions everywhere in the project [\#159](https://github.com/dev-sec/ssh-baseline/pull/159) ([micheelengronne](https://github.com/micheelengronne))
 - API rate limiter debug [\#158](https://github.com/dev-sec/ssh-baseline/pull/158) ([micheelengronne](https://github.com/micheelengronne))
 - Release github workflow [\#157](https://github.com/dev-sec/ssh-baseline/pull/157) ([micheelengronne](https://github.com/micheelengronne))
 - In a container, sshd should not run as root [\#152](https://github.com/dev-sec/ssh-baseline/pull/152) ([micheelengronne](https://github.com/micheelengronne))
