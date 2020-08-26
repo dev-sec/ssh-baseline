@@ -1,5 +1,85 @@
 # Changelog
 
+## [2.6.0](https://github.com/dev-sec/ssh-baseline/tree/2.6.0) (2020-08-22)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.14...2.6.0)
+
+**Implemented enhancements:**
+
+- add support for ubuntu20.04 [\#181](https://github.com/dev-sec/ssh-baseline/pull/181) ([schurzi](https://github.com/schurzi))
+
+**Closed issues:**
+
+- undefined method `match?' for nil:NilClass - CentOs 7 [\#179](https://github.com/dev-sec/ssh-baseline/issues/179)
+
+## [2.5.14](https://github.com/dev-sec/ssh-baseline/tree/2.5.14) (2020-08-07)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.13...2.5.14)
+
+**Merged pull requests:**
+
+- check for CRYPTO\_POLICY should also work, when not root [\#180](https://github.com/dev-sec/ssh-baseline/pull/180) ([schurzi](https://github.com/schurzi))
+
+## [2.5.13](https://github.com/dev-sec/ssh-baseline/tree/2.5.13) (2020-07-23)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.12...2.5.13)
+
+**Merged pull requests:**
+
+- The release draft references the correct SHA [\#178](https://github.com/dev-sec/ssh-baseline/pull/178) ([micheelengronne](https://github.com/micheelengronne))
+
+## [2.5.12](https://github.com/dev-sec/ssh-baseline/tree/2.5.12) (2020-07-22)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.11...2.5.12)
+
+**Merged pull requests:**
+
+- rework CRYPTO\_POLICY check to work with fedora [\#177](https://github.com/dev-sec/ssh-baseline/pull/177) ([schurzi](https://github.com/schurzi))
+
+## [2.5.11](https://github.com/dev-sec/ssh-baseline/tree/2.5.11) (2020-07-16)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.10...2.5.11)
+
+**Implemented enhancements:**
+
+- add control for CRYPTO\_POLICY on RedHat [\#176](https://github.com/dev-sec/ssh-baseline/pull/176) ([schurzi](https://github.com/schurzi))
+
+## [2.5.10](https://github.com/dev-sec/ssh-baseline/tree/2.5.10) (2020-07-16)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.9...2.5.10)
+
+**Implemented enhancements:**
+
+- use correct kex for RedHat/CentOS/Oracle Linux 8 [\#175](https://github.com/dev-sec/ssh-baseline/pull/175) ([schurzi](https://github.com/schurzi))
+
+## [2.5.9](https://github.com/dev-sec/ssh-baseline/tree/2.5.9) (2020-07-04)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.8...2.5.9)
+
+**Merged pull requests:**
+
+- ssh host keys in a specific directory [\#174](https://github.com/dev-sec/ssh-baseline/pull/174) ([micheelengronne](https://github.com/micheelengronne))
+
+## [2.5.8](https://github.com/dev-sec/ssh-baseline/tree/2.5.8) (2020-06-18)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.7...2.5.8)
+
+**Implemented enhancements:**
+
+- Add support for Archlinux [\#173](https://github.com/dev-sec/ssh-baseline/pull/173) ([mesaguy](https://github.com/mesaguy))
+
+**Closed issues:**
+
+- Support KEX for OpenSSH 8.0+ & quantum resistant KEX [\#144](https://github.com/dev-sec/ssh-baseline/issues/144)
+
+## [2.5.7](https://github.com/dev-sec/ssh-baseline/tree/2.5.7) (2020-05-25)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.6...2.5.7)
+
+**Merged pull requests:**
+
+- OpenSSH 8.0 KEXs support [\#172](https://github.com/dev-sec/ssh-baseline/pull/172) ([sfuerte](https://github.com/sfuerte))
+
 ## [2.5.6](https://github.com/dev-sec/ssh-baseline/tree/2.5.6) (2020-05-20)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.5...2.5.6)
@@ -56,10 +136,6 @@
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.0...2.5.1)
 
-**Merged pull requests:**
-
-- Align versions everywhere in the project [\#159](https://github.com/dev-sec/ssh-baseline/pull/159) ([micheelengronne](https://github.com/micheelengronne))
-
 ## [2.5.0](https://github.com/dev-sec/ssh-baseline/tree/2.5.0) (2020-05-18)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.4.1...2.5.0)
@@ -75,6 +151,7 @@
 
 **Merged pull requests:**
 
+- Align versions everywhere in the project [\#159](https://github.com/dev-sec/ssh-baseline/pull/159) ([micheelengronne](https://github.com/micheelengronne))
 - API rate limiter debug [\#158](https://github.com/dev-sec/ssh-baseline/pull/158) ([micheelengronne](https://github.com/micheelengronne))
 - Release github workflow [\#157](https://github.com/dev-sec/ssh-baseline/pull/157) ([micheelengronne](https://github.com/micheelengronne))
 - In a container, sshd should not run as root [\#152](https://github.com/dev-sec/ssh-baseline/pull/152) ([micheelengronne](https://github.com/micheelengronne))

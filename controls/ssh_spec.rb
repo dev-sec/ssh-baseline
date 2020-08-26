@@ -227,3 +227,18 @@ control 'ssh-21' do
     its('UseRoaming') { should eq('no') }
   end
 end
+
+control 'ssh-22' do
+  impact 1.0
+  title 'Client: CRYPTO_POLICY'
+  desc 'Verifies, that we are not running CRYPTO_POLICY and our settings from ssh_config are effective (affects el8+ and fedora)'
+  only_if('ssh client supports -G option') do
+    bash('ssh -G localhost').exit_status.equal?(0)
+  end
+
+  describe bash('ssh -G localhost') do
+    its('stdout') { should match('ciphers ' + ssh_crypto.valid_ciphers) }
+    its('stdout') { should match('kexalgorithms ' + ssh_crypto.valid_kexs) }
+    its('stdout') { should match('macs ' + ssh_crypto.valid_macs) }
+  end
+end
