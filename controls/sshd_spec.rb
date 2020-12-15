@@ -151,6 +151,7 @@ control 'sshd-10' do
   impact 1.0
   title 'Server: Specify protocol version 2'
   desc "Only SSH protocol version 2 connections should be permitted. Version 1 of the protocol contains security vulnerabilities. Don't use legacy insecure SSHv1 connections anymore."
+  only_if { ssh_crypto.ssh_version < 7.6 }
   describe sshd_config(sshd_custom_path + '/sshd_config') do
     its('Protocol') { should eq('2') }
   end
