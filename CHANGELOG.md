@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.6.1](https://github.com/dev-sec/ssh-baseline/tree/2.6.1) (2020-12-16)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.6.0...2.6.1)
+
+**Closed issues:**
+
+- Ubuntu 20.04 fails [\#183](https://github.com/dev-sec/ssh-baseline/issues/183)
+
+**Merged pull requests:**
+
+- Legacy Protocol statement is removed from version 7.6 and above, sinc… [\#184](https://github.com/dev-sec/ssh-baseline/pull/184) ([joubbi](https://github.com/joubbi))
+
 ## [2.6.0](https://github.com/dev-sec/ssh-baseline/tree/2.6.0) (2020-08-22)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.14...2.6.0)
@@ -136,6 +148,10 @@
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.0...2.5.1)
 
+**Merged pull requests:**
+
+- Align versions everywhere in the project [\#159](https://github.com/dev-sec/ssh-baseline/pull/159) ([micheelengronne](https://github.com/micheelengronne))
+
 ## [2.5.0](https://github.com/dev-sec/ssh-baseline/tree/2.5.0) (2020-05-18)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.4.1...2.5.0)
@@ -151,7 +167,6 @@
 
 **Merged pull requests:**
 
-- Align versions everywhere in the project [\#159](https://github.com/dev-sec/ssh-baseline/pull/159) ([micheelengronne](https://github.com/micheelengronne))
 - API rate limiter debug [\#158](https://github.com/dev-sec/ssh-baseline/pull/158) ([micheelengronne](https://github.com/micheelengronne))
 - Release github workflow [\#157](https://github.com/dev-sec/ssh-baseline/pull/157) ([micheelengronne](https://github.com/micheelengronne))
 - In a container, sshd should not run as root [\#152](https://github.com/dev-sec/ssh-baseline/pull/152) ([micheelengronne](https://github.com/micheelengronne))
