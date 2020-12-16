@@ -33,12 +33,6 @@ sshd_custom_path = attribute('sshd_custom_path', value: '/etc/ssh', description:
 sshd_custom_port = attribute('sshd_custom_port', value: '22', description: 'Sometimes the ssh port is not 22. For instance, in a container as another user, 22 is forbidden')
 sshd_custom_hostkeys_path = attribute('sshd_custom_hostkeys_path', value: '/etc/ssh', description: 'Sometimes ssh host keys must be in a particular path, in a clustered environment for instance')
 
-sshd_valid_privseparation = if sshd_custom_user != 'root'
-                              'no'
-                            else
-                              ssh_crypto.valid_privseparation
-                            end
-
 only_if do
   command('sshd').exist?
 end
@@ -209,9 +203,9 @@ end
 control 'sshd-16' do
   impact 1.0
   title 'Server: Use privilege separation'
-  desc 'UsePrivilegeSeparation is an option, when enabled will allow the OpenSSH server to run a small (necessary) amount of code as root and the of the code in a chroot jail environment. This enables ssh to deal incoming network traffic in an unprivileged child process to avoid privilege escalation by an attacker.'
+  desc 'UsePrivilegeSeparation is deprecated.'
   describe sshd_config(sshd_custom_path + '/sshd_config') do
-    its('UsePrivilegeSeparation') { should eq(sshd_valid_privseparation) }
+    its('UsePrivilegeSeparation') { should eq nil }
   end
 end
 
