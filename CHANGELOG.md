@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.6.2](https://github.com/dev-sec/ssh-baseline/tree/2.6.2) (2020-12-16)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.6.1...2.6.2)
+
+**Merged pull requests:**
+
+- Legacy Protocol statement is removed from version 7.6 and above, sinc… [\#185](https://github.com/dev-sec/ssh-baseline/pull/185) ([joubbi](https://github.com/joubbi))
+
 ## [2.6.1](https://github.com/dev-sec/ssh-baseline/tree/2.6.1) (2020-12-16)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.6.0...2.6.1)
