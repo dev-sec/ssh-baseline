@@ -257,7 +257,7 @@ control 'sshd-21' do
   title 'Server: Specify maximum startups'
   desc 'Limit the number of concurrent unauthenticated sessions to prevent Denial of Service (DoS) against a running SSH daemon.'
   describe sshd_config(sshd_custom_path + '/sshd_config') do
-    its('MaxStartups') { should eq('10:30:100') }
+    its('MaxStartups') { should eq('10:30:60') }
   end
 end
 
