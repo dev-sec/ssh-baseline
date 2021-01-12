@@ -1,8 +1,12 @@
 # Changelog
 
-## [2.6.2](https://github.com/dev-sec/ssh-baseline/tree/2.6.2) (2020-12-16)
+## [2.6.2](https://github.com/dev-sec/ssh-baseline/tree/2.6.2) (2021-01-12)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.6.1...2.6.2)
+
+**Implemented enhancements:**
+
+- reduce max startups in accordance with current cis benchmark [\#186](https://github.com/dev-sec/ssh-baseline/pull/186) ([schurzi](https://github.com/schurzi))
 
 **Merged pull requests:**
 
