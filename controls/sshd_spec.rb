@@ -273,7 +273,7 @@ end
 
 control 'sshd-23' do
   impact 1.0
-  title 'Server: Disable IgnoreRhosts'
+  title 'Server: Enable IgnoreRhosts'
   desc 'Ignore legacy .rhosts configuration, because rhosts are a weak way to authenticate systems and provide attacker more ways to enter the system.'
   describe sshd_config(sshd_custom_path + '/sshd_config') do
     its('IgnoreRhosts') { should eq('yes') }
