@@ -520,3 +520,18 @@ control 'sshd-49' do
     its('commands.first') { should_not match(/-oHostKeyAlgorithms/) }
   end
 end
+
+control 'sshd-50' do
+  impact 1.0
+  title 'Server: RSA HostKey size'
+  desc 'Verifies, that RSA HostKey is not smaller than 4096 bit'
+  only_if('RSA HostKey is readable') do
+    File.readable?("#{sshd_custom_hostkeys_path}/ssh_host_rsa_key")
+  end
+
+  describe bash("test $(ssh-keygen -l -f #{sshd_custom_hostkeys_path}/ssh_host_rsa_key | awk '$1 < 4096 { print $1 }' | wc -l) -eq 0") do
+    its('exit_status') { should eq 0 }
+    its('stdout') { should eq '' }
+    its('stderr') { should eq '' }
+  end
+end
