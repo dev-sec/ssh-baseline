@@ -1,11 +1,12 @@
 # Changelog
 
-## [2.6.3](https://github.com/dev-sec/ssh-baseline/tree/2.6.3) (2021-01-13)
+## [2.6.3](https://github.com/dev-sec/ssh-baseline/tree/2.6.3) (2021-01-20)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.6.2...2.6.3)
 
 **Merged pull requests:**
 
+- add control for small RSA HostKey [\#188](https://github.com/dev-sec/ssh-baseline/pull/188) ([schurzi](https://github.com/schurzi))
 - Change "Disable IgnoreRhosts" to "Enable IgnoreRhosts" [\#187](https://github.com/dev-sec/ssh-baseline/pull/187) ([JosephDillon](https://github.com/JosephDillon))
 
 ## [2.6.2](https://github.com/dev-sec/ssh-baseline/tree/2.6.2) (2021-01-12)
