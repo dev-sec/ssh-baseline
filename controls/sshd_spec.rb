@@ -524,7 +524,7 @@ end
 control 'sshd-50' do
   impact 1.0
   title 'Server: RSA HostKey size'
-  desc 'Verifies if RSA HostKey size >= 4096'
+  desc 'Verifies, that RSA HostKey is not smaller than 4096 bit'
   only_if('RSA HostKey is readable') do
     File.readable?("#{sshd_custom_hostkeys_path}/ssh_host_rsa_key")
   end
