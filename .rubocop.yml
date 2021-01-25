@@ -4,13 +4,15 @@ AllCops:
   - vendor/**/*
 Documentation:
   Enabled: false
-AlignParameters:
+Layout/ParameterAlignment:
   Enabled: true
 HashSyntax:
   Enabled: true
 LineLength:
   Enabled: false
 EmptyLinesAroundBlockBody:
+  Enabled: false
+Style/Encoding:
   Enabled: false
 MethodLength:
   Max: 40
@@ -23,4 +25,4 @@ Metrics/CyclomaticComplexity:
 Metrics/PerceivedComplexity:
   Max: 10
 Metrics/AbcSize:
-  Max: 31
+  Max: 30
