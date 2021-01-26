@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.6.4](https://github.com/dev-sec/ssh-baseline/tree/2.6.4) (2021-01-26)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.6.3...2.6.4)
+
+**Merged pull requests:**
+
+- GitHub action [\#189](https://github.com/dev-sec/ssh-baseline/pull/189) ([rndmh3ro](https://github.com/rndmh3ro))
+
 ## [2.6.3](https://github.com/dev-sec/ssh-baseline/tree/2.6.3) (2021-01-20)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.6.2...2.6.3)
