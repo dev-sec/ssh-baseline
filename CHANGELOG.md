@@ -1,8 +1,12 @@
 # Changelog
 
-## [2.6.4](https://github.com/dev-sec/ssh-baseline/tree/2.6.4) (2021-01-26)
+## [2.6.4](https://github.com/dev-sec/ssh-baseline/tree/2.6.4) (2021-01-28)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.6.3...2.6.4)
+
+**Implemented enhancements:**
+
+- update code to conform to new linting rules [\#190](https://github.com/dev-sec/ssh-baseline/pull/190) ([schurzi](https://github.com/schurzi))
 
 **Merged pull requests:**
 
@@ -294,7 +298,6 @@
 - Fix check for os.darwin [\#83](https://github.com/dev-sec/ssh-baseline/pull/83) ([techraf](https://github.com/techraf))
 - Add openssh definitions for macos [\#82](https://github.com/dev-sec/ssh-baseline/pull/82) ([artem-sidorenko](https://github.com/artem-sidorenko))
 - Add support for oracle [\#80](https://github.com/dev-sec/ssh-baseline/pull/80) ([artem-sidorenko](https://github.com/artem-sidorenko))
-- Algorithm/Hostkey tests for different platforms [\#79](https://github.com/dev-sec/ssh-baseline/pull/79) ([artem-sidorenko](https://github.com/artem-sidorenko))
 - Test the strong DH primes [\#77](https://github.com/dev-sec/ssh-baseline/pull/77) ([artem-sidorenko](https://github.com/artem-sidorenko))
 - Removal of DSA key [\#76](https://github.com/dev-sec/ssh-baseline/pull/76) ([artem-sidorenko](https://github.com/artem-sidorenko))
 - Ignore inspec.lock file [\#73](https://github.com/dev-sec/ssh-baseline/pull/73) ([techraf](https://github.com/techraf))
@@ -311,6 +314,7 @@
 
 **Merged pull requests:**
 
+- Algorithm/Hostkey tests for different platforms [\#79](https://github.com/dev-sec/ssh-baseline/pull/79) ([artem-sidorenko](https://github.com/artem-sidorenko))
 - update profile metadata & tooling [\#71](https://github.com/dev-sec/ssh-baseline/pull/71) ([chris-rock](https://github.com/chris-rock))
 - update Gemfile and remove ruby 1.9.3 support [\#69](https://github.com/dev-sec/ssh-baseline/pull/69) ([arlimus](https://github.com/arlimus))
 - Test server config for Banner and DebianBanner [\#67](https://github.com/dev-sec/ssh-baseline/pull/67) ([tsenart](https://github.com/tsenart))
