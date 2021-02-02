@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.6.4](https://github.com/dev-sec/ssh-baseline/tree/2.6.4) (2021-01-28)
+## [2.6.4](https://github.com/dev-sec/ssh-baseline/tree/2.6.4) (2021-02-02)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.6.3...2.6.4)
 
@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- use version tag for changelog action [\#191](https://github.com/dev-sec/ssh-baseline/pull/191) ([schurzi](https://github.com/schurzi))
 - GitHub action [\#189](https://github.com/dev-sec/ssh-baseline/pull/189) ([rndmh3ro](https://github.com/rndmh3ro))
 
 ## [2.6.3](https://github.com/dev-sec/ssh-baseline/tree/2.6.3) (2021-01-20)
@@ -298,6 +299,7 @@
 - Fix check for os.darwin [\#83](https://github.com/dev-sec/ssh-baseline/pull/83) ([techraf](https://github.com/techraf))
 - Add openssh definitions for macos [\#82](https://github.com/dev-sec/ssh-baseline/pull/82) ([artem-sidorenko](https://github.com/artem-sidorenko))
 - Add support for oracle [\#80](https://github.com/dev-sec/ssh-baseline/pull/80) ([artem-sidorenko](https://github.com/artem-sidorenko))
+- Algorithm/Hostkey tests for different platforms [\#79](https://github.com/dev-sec/ssh-baseline/pull/79) ([artem-sidorenko](https://github.com/artem-sidorenko))
 - Test the strong DH primes [\#77](https://github.com/dev-sec/ssh-baseline/pull/77) ([artem-sidorenko](https://github.com/artem-sidorenko))
 - Removal of DSA key [\#76](https://github.com/dev-sec/ssh-baseline/pull/76) ([artem-sidorenko](https://github.com/artem-sidorenko))
 - Ignore inspec.lock file [\#73](https://github.com/dev-sec/ssh-baseline/pull/73) ([techraf](https://github.com/techraf))
@@ -314,7 +316,6 @@
 
 **Merged pull requests:**
 
-- Algorithm/Hostkey tests for different platforms [\#79](https://github.com/dev-sec/ssh-baseline/pull/79) ([artem-sidorenko](https://github.com/artem-sidorenko))
 - update profile metadata & tooling [\#71](https://github.com/dev-sec/ssh-baseline/pull/71) ([chris-rock](https://github.com/chris-rock))
 - update Gemfile and remove ruby 1.9.3 support [\#69](https://github.com/dev-sec/ssh-baseline/pull/69) ([arlimus](https://github.com/arlimus))
 - Test server config for Banner and DebianBanner [\#67](https://github.com/dev-sec/ssh-baseline/pull/67) ([tsenart](https://github.com/tsenart))
