@@ -114,13 +114,13 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     # https://src.fedoraproject.org/rpms/openssh
     when 'fedora'
       release = inspec.os[:release].to_i
-      if release >= 35
-        kex = kex85
-      elsif release >= 30
-        kex = kex80
-      else
-        kex = kex66
-      end
+      kex = if release >= 35
+              kex85
+            elsif release >= 30
+              kex80
+            else
+              kex66
+            end
     # https://software.opensuse.org/package/openssh
     when 'opensuse'
       kex = inspec.os[:release] >= '15.2' ? kex80 : kex66
