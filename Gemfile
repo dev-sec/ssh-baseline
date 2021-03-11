@@ -8,7 +8,6 @@ gem 'rake'
 gem 'rubocop'
 
 group :tools do
-  gem 'github_changelog_generator'
   gem 'pry-coolline'
 end
 
