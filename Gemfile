@@ -12,6 +12,6 @@ group :tools do
   gem 'pry-coolline'
 end
 
-source 'https://packagecloud.io/cinc-project/unstable' do
+source 'https://packagecloud.io/cinc-project/stable/' do
   gem 'cinc-auditor-bin'
 end
