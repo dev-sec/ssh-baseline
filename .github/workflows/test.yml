@@ -22,5 +22,6 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Run tests
-      run: gem install -V 9 -s https://packagecloud.io/cinc-project/stable cinc-auditor-bin
+      run: bundle exec rake

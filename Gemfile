@@ -8,9 +8,10 @@ gem 'rake'
 gem 'rubocop'
 
 group :tools do
+  gem 'github_changelog_generator'
   gem 'pry-coolline'
 end
 
-source 'https://packagecloud.io/cinc-project/stable' do
+source 'https://packagecloud.io/cinc-project/unstable' do
   gem 'cinc-auditor-bin'
 end
