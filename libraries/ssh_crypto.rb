@@ -105,25 +105,18 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
         kex = kex80
       end
     # https://pkgs.alpinelinux.org/packages?name=openssh
-    when 'arch'
-      kex = ssh_version >= 8.5 ? kex85 : kex80
-    when 'alpine'
-      kex = inspec.os[:release].split('.')[1] >= '10' ? kex80 : kex66
+    # https://src.fedoraproject.org/rpms/openssh
+    # https://software.opensuse.org/package/openssh
+    when 'alpine', 'arch', 'fedora', 'opensuse'
+      kex = if ssh_version >= 8.5
+        kex85
+      elsif ssh_version >= 8.0
+        kex80
+      elsif ssh_version >= 6.6
+        kex66
+      end
     when 'amazon'
       kex = kex66
-    # https://src.fedoraproject.org/rpms/openssh
-    when 'fedora'
-      release = inspec.os[:release]
-      kex = if release >= '35'
-              kex85
-            elsif release >= '30'
-              kex80
-            else
-              kex66
-            end
-    # https://software.opensuse.org/package/openssh
-    when 'opensuse'
-      kex = inspec.os[:release] >= '15.2' ? kex80 : kex66
     when 'mac_os_x'
       case inspec.os[:release]
       when /^10.9\./
