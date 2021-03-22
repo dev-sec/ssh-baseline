@@ -14,4 +14,5 @@ end
 
 source 'https://packagecloud.io/cinc-project/stable' do
   gem 'cinc-auditor-bin'
+  gem 'chef-config'
 end
