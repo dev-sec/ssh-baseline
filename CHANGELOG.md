@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.6.4](https://github.com/dev-sec/ssh-baseline/tree/2.6.4) (2021-02-02)
+## [2.6.4](https://github.com/dev-sec/ssh-baseline/tree/2.6.4) (2021-03-22)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.6.3...2.6.4)
 
@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- add dependency to chef-config for CI [\#194](https://github.com/dev-sec/ssh-baseline/pull/194) ([schurzi](https://github.com/schurzi))
 - use version tag for changelog action [\#191](https://github.com/dev-sec/ssh-baseline/pull/191) ([schurzi](https://github.com/schurzi))
 - GitHub action [\#189](https://github.com/dev-sec/ssh-baseline/pull/189) ([rndmh3ro](https://github.com/rndmh3ro))
 
@@ -182,10 +183,6 @@
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.0...2.5.1)
 
-**Merged pull requests:**
-
-- Align versions everywhere in the project [\#159](https://github.com/dev-sec/ssh-baseline/pull/159) ([micheelengronne](https://github.com/micheelengronne))
-
 ## [2.5.0](https://github.com/dev-sec/ssh-baseline/tree/2.5.0) (2020-05-18)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.4.1...2.5.0)
@@ -201,6 +198,7 @@
 
 **Merged pull requests:**
 
+- Align versions everywhere in the project [\#159](https://github.com/dev-sec/ssh-baseline/pull/159) ([micheelengronne](https://github.com/micheelengronne))
 - API rate limiter debug [\#158](https://github.com/dev-sec/ssh-baseline/pull/158) ([micheelengronne](https://github.com/micheelengronne))
 - Release github workflow [\#157](https://github.com/dev-sec/ssh-baseline/pull/157) ([micheelengronne](https://github.com/micheelengronne))
 - In a container, sshd should not run as root [\#152](https://github.com/dev-sec/ssh-baseline/pull/152) ([micheelengronne](https://github.com/micheelengronne))
@@ -393,6 +391,7 @@
 
 **Merged pull requests:**
 
+- changed GIS to DTAG SEC [\#30](https://github.com/dev-sec/ssh-baseline/pull/30) ([atomic111](https://github.com/atomic111))
 - bugfix: unlock user accounts during chef runs [\#28](https://github.com/dev-sec/ssh-baseline/pull/28) ([arlimus](https://github.com/arlimus))
 - test for UsePAM disabled [\#27](https://github.com/dev-sec/ssh-baseline/pull/27) ([arlimus](https://github.com/arlimus))
 - bugfix sed command location [\#26](https://github.com/dev-sec/ssh-baseline/pull/26) ([arlimus](https://github.com/arlimus))
