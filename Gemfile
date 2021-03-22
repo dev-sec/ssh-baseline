@@ -13,6 +13,6 @@ group :tools do
 end
 
 source 'https://packagecloud.io/cinc-project/stable' do
-  gem 'cinc-auditor-bin'
   gem 'chef-config'
+  gem 'cinc-auditor-bin'
 end
