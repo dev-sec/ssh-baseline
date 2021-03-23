@@ -72,6 +72,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
 
   def valid_kexs # rubocop:disable Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
     # define a set of default KEXs
+    kex85 = 'sntrup761x25519-sha512@openssh.com,curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256'
     kex80 = 'sntrup4591761x25519-sha512@tinyssh.org,curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256'
     kex66 = 'curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256'
     kex59 = 'diffie-hellman-group-exchange-sha256'
@@ -104,18 +105,18 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
         kex = kex80
       end
     # https://pkgs.alpinelinux.org/packages?name=openssh
-    when 'arch'
-      kex = kex80
-    when 'alpine'
-      kex = inspec.os[:release].split('.')[1] >= '10' ? kex80 : kex66
+    # https://src.fedoraproject.org/rpms/openssh
+    # https://software.opensuse.org/package/openssh
+    when 'alpine', 'arch', 'fedora', 'opensuse'
+      kex = if ssh_version >= 8.5
+              kex85
+            elsif ssh_version >= 8.0
+              kex80
+            elsif ssh_version >= 6.6
+              kex66
+            end
     when 'amazon'
       kex = kex66
-    # https://src.fedoraproject.org/rpms/openssh
-    when 'fedora'
-      kex = inspec.os[:release] >= '30' ? kex80 : kex66
-    # https://software.opensuse.org/package/openssh
-    when 'opensuse'
-      kex = inspec.os[:release] >= '15.2' ? kex80 : kex66
     when 'mac_os_x'
       case inspec.os[:release]
       when /^10.9\./
