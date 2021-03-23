@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.6.4](https://github.com/dev-sec/ssh-baseline/tree/2.6.4) (2021-03-22)
+## [2.6.4](https://github.com/dev-sec/ssh-baseline/tree/2.6.4) (2021-03-23)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.6.3...2.6.4)
 
@@ -11,6 +11,7 @@
 **Merged pull requests:**
 
 - add dependency to chef-config for CI [\#194](https://github.com/dev-sec/ssh-baseline/pull/194) ([schurzi](https://github.com/schurzi))
+- Added OpenSSH 8.5/8.5p1 KexAlgorithms Support [\#192](https://github.com/dev-sec/ssh-baseline/pull/192) ([lonkey](https://github.com/lonkey))
 - use version tag for changelog action [\#191](https://github.com/dev-sec/ssh-baseline/pull/191) ([schurzi](https://github.com/schurzi))
 - GitHub action [\#189](https://github.com/dev-sec/ssh-baseline/pull/189) ([rndmh3ro](https://github.com/rndmh3ro))
 
@@ -63,10 +64,6 @@
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.13...2.5.14)
 
-**Merged pull requests:**
-
-- check for CRYPTO\_POLICY should also work, when not root [\#180](https://github.com/dev-sec/ssh-baseline/pull/180) ([schurzi](https://github.com/schurzi))
-
 ## [2.5.13](https://github.com/dev-sec/ssh-baseline/tree/2.5.13) (2020-07-23)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.12...2.5.13)
@@ -90,6 +87,10 @@
 **Implemented enhancements:**
 
 - add control for CRYPTO\_POLICY on RedHat [\#176](https://github.com/dev-sec/ssh-baseline/pull/176) ([schurzi](https://github.com/schurzi))
+
+**Merged pull requests:**
+
+- check for CRYPTO\_POLICY should also work, when not root [\#180](https://github.com/dev-sec/ssh-baseline/pull/180) ([schurzi](https://github.com/schurzi))
 
 ## [2.5.10](https://github.com/dev-sec/ssh-baseline/tree/2.5.10) (2020-07-16)
 
@@ -183,6 +184,10 @@
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.0...2.5.1)
 
+**Merged pull requests:**
+
+- Align versions everywhere in the project [\#159](https://github.com/dev-sec/ssh-baseline/pull/159) ([micheelengronne](https://github.com/micheelengronne))
+
 ## [2.5.0](https://github.com/dev-sec/ssh-baseline/tree/2.5.0) (2020-05-18)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.4.1...2.5.0)
@@ -198,7 +203,6 @@
 
 **Merged pull requests:**
 
-- Align versions everywhere in the project [\#159](https://github.com/dev-sec/ssh-baseline/pull/159) ([micheelengronne](https://github.com/micheelengronne))
 - API rate limiter debug [\#158](https://github.com/dev-sec/ssh-baseline/pull/158) ([micheelengronne](https://github.com/micheelengronne))
 - Release github workflow [\#157](https://github.com/dev-sec/ssh-baseline/pull/157) ([micheelengronne](https://github.com/micheelengronne))
 - In a container, sshd should not run as root [\#152](https://github.com/dev-sec/ssh-baseline/pull/152) ([micheelengronne](https://github.com/micheelengronne))
@@ -391,7 +395,6 @@
 
 **Merged pull requests:**
 
-- changed GIS to DTAG SEC [\#30](https://github.com/dev-sec/ssh-baseline/pull/30) ([atomic111](https://github.com/atomic111))
 - bugfix: unlock user accounts during chef runs [\#28](https://github.com/dev-sec/ssh-baseline/pull/28) ([arlimus](https://github.com/arlimus))
 - test for UsePAM disabled [\#27](https://github.com/dev-sec/ssh-baseline/pull/27) ([arlimus](https://github.com/arlimus))
 - bugfix sed command location [\#26](https://github.com/dev-sec/ssh-baseline/pull/26) ([arlimus](https://github.com/arlimus))
