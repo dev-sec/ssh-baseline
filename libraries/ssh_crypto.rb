@@ -109,12 +109,12 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     # https://software.opensuse.org/package/openssh
     when 'alpine', 'arch', 'fedora', 'opensuse'
       kex = if ssh_version >= 8.5
-        kex85
-      elsif ssh_version >= 8.0
-        kex80
-      elsif ssh_version >= 6.6
-        kex66
-      end
+              kex85
+            elsif ssh_version >= 8.0
+              kex80
+            elsif ssh_version >= 6.6
+              kex66
+            end
     when 'amazon'
       kex = kex66
     when 'mac_os_x'
