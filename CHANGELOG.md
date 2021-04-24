@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.6.4](https://github.com/dev-sec/ssh-baseline/tree/2.6.4) (2021-03-23)
+## [2.6.4](https://github.com/dev-sec/ssh-baseline/tree/2.6.4) (2021-04-24)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.6.3...2.6.4)
 
@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- fix rubocop error for Rakefile [\#195](https://github.com/dev-sec/ssh-baseline/pull/195) ([schurzi](https://github.com/schurzi))
 - add dependency to chef-config for CI [\#194](https://github.com/dev-sec/ssh-baseline/pull/194) ([schurzi](https://github.com/schurzi))
 - Added OpenSSH 8.5/8.5p1 KexAlgorithms Support [\#192](https://github.com/dev-sec/ssh-baseline/pull/192) ([lonkey](https://github.com/lonkey))
 - use version tag for changelog action [\#191](https://github.com/dev-sec/ssh-baseline/pull/191) ([schurzi](https://github.com/schurzi))
@@ -64,6 +65,10 @@
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.13...2.5.14)
 
+**Merged pull requests:**
+
+- check for CRYPTO\_POLICY should also work, when not root [\#180](https://github.com/dev-sec/ssh-baseline/pull/180) ([schurzi](https://github.com/schurzi))
+
 ## [2.5.13](https://github.com/dev-sec/ssh-baseline/tree/2.5.13) (2020-07-23)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.5.12...2.5.13)
@@ -87,10 +92,6 @@
 **Implemented enhancements:**
 
 - add control for CRYPTO\_POLICY on RedHat [\#176](https://github.com/dev-sec/ssh-baseline/pull/176) ([schurzi](https://github.com/schurzi))
-
-**Merged pull requests:**
-
-- check for CRYPTO\_POLICY should also work, when not root [\#180](https://github.com/dev-sec/ssh-baseline/pull/180) ([schurzi](https://github.com/schurzi))
 
 ## [2.5.10](https://github.com/dev-sec/ssh-baseline/tree/2.5.10) (2020-07-16)
 
@@ -230,7 +231,7 @@
 
 **Closed issues:**
 
-- need to account for sshd version when checking UseRoaming in `ssh\_config` [\#121](https://github.com/dev-sec/ssh-baseline/issues/121)
+- need to account for sshd version when checking UseRoaming in `ssh_config` [\#121](https://github.com/dev-sec/ssh-baseline/issues/121)
 - profile fails inspec check [\#101](https://github.com/dev-sec/ssh-baseline/issues/101)
 - Deprecated option [\#95](https://github.com/dev-sec/ssh-baseline/issues/95)
 
