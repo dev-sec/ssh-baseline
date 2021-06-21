@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Copyright 2015, Dominik Richter
+# Copyright:: 2015, Dominik Richter
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -227,9 +227,9 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
 
   # return a list of valid algoriths for a current platform
   def valid_algorithms # rubocop:disable Metrics/CyclomaticComplexity
-    alg53 = %w[rsa]
-    alg60 = %w[rsa ecdsa]
-    alg66 = %w[rsa ecdsa ed25519]
+    alg53 = %w(rsa)
+    alg60 = %w(rsa ecdsa)
+    alg66 = %w(rsa ecdsa ed25519)
     alg = alg66 # probably its a best suitable set for everything unknown
 
     case inspec.os[:name]

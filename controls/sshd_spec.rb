@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Copyright 2015, Patrick Muench
+# Copyright:: 2015, Patrick Muench
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,20 +20,20 @@
 
 title 'SSH server config'
 
-sshd_valid_ciphers = attribute('sshd_valid_ciphers', value: ssh_crypto.valid_ciphers, description: 'Expected value for sshd_config ciphers')
-sshd_valid_kexs = attribute('sshd_valid_kexs', value: ssh_crypto.valid_kexs, description: 'Expected value for sshd_config kexs')
-sshd_valid_macs = attribute('sshd_valid_macs', value: ssh_crypto.valid_macs, description: 'Expected value for sshd_config macs')
-sshd_permittunnel = attribute('sshd_permittunnel', value: 'no', description: 'Expected value for sshd_config PermitTunnel')
-sshd_tcpforwarding = attribute('sshd_tcpforwarding', value: 'no', description: 'Expected value for sshd_config TcpForwarding')
-sshd_agentforwarding = attribute('sshd_agentforwarding', value: 'no', description: 'Expected value for sshd_config AgentForwarding')
-sshd_gatewayports = attribute('sshd_gatewayports', value: 'no', description: 'Expected value for sshd_config GatewayPorts')
-sshd_x11forwarding = attribute('sshd_x11forwarding', value: 'no', description: 'Expected value for sshd_config X11Forwarding')
-sshd_banner = attribute('sshd_banner', value: 'none', description: 'Expected value for sshd_config Banner')
-sshd_max_auth_tries = attribute('sshd_max_auth_tries', value: 2, description: 'Expected value for max_auth_retries')
-sshd_custom_user = attribute('sshd_custom_user', value: 'root', description: 'The SSH user is not always root. It must be an unprivileged user in a container')
-sshd_custom_path = attribute('sshd_custom_path', value: '/etc/ssh', description: 'Sometimes ssh configuration files are present in another location and ssh use them with the -f flag')
-sshd_custom_port = attribute('sshd_custom_port', value: '22', description: 'Sometimes the ssh port is not 22. For instance, in a container as another user, 22 is forbidden')
-sshd_custom_hostkeys_path = attribute('sshd_custom_hostkeys_path', value: '/etc/ssh', description: 'Sometimes ssh host keys must be in a particular path, in a clustered environment for instance')
+sshd_valid_ciphers = input('sshd_valid_ciphers', value: ssh_crypto.valid_ciphers, description: 'Expected value for sshd_config ciphers')
+sshd_valid_kexs = input('sshd_valid_kexs', value: ssh_crypto.valid_kexs, description: 'Expected value for sshd_config kexs')
+sshd_valid_macs = input('sshd_valid_macs', value: ssh_crypto.valid_macs, description: 'Expected value for sshd_config macs')
+sshd_permittunnel = input('sshd_permittunnel', value: 'no', description: 'Expected value for sshd_config PermitTunnel')
+sshd_tcpforwarding = input('sshd_tcpforwarding', value: 'no', description: 'Expected value for sshd_config TcpForwarding')
+sshd_agentforwarding = input('sshd_agentforwarding', value: 'no', description: 'Expected value for sshd_config AgentForwarding')
+sshd_gatewayports = input('sshd_gatewayports', value: 'no', description: 'Expected value for sshd_config GatewayPorts')
+sshd_x11forwarding = input('sshd_x11forwarding', value: 'no', description: 'Expected value for sshd_config X11Forwarding')
+sshd_banner = input('sshd_banner', value: 'none', description: 'Expected value for sshd_config Banner')
+sshd_max_auth_tries = input('sshd_max_auth_tries', value: 2, description: 'Expected value for max_auth_retries')
+sshd_custom_user = input('sshd_custom_user', value: 'root', description: 'The SSH user is not always root. It must be an unprivileged user in a container')
+sshd_custom_path = input('sshd_custom_path', value: '/etc/ssh', description: 'Sometimes ssh configuration files are present in another location and ssh use them with the -f flag')
+sshd_custom_port = input('sshd_custom_port', value: '22', description: 'Sometimes the ssh port is not 22. For instance, in a container as another user, 22 is forbidden')
+sshd_custom_hostkeys_path = input('sshd_custom_hostkeys_path', value: '/etc/ssh', description: 'Sometimes ssh host keys must be in a particular path, in a clustered environment for instance')
 
 sshd_valid_privseparation = if sshd_custom_user != 'root'
                               'no'
