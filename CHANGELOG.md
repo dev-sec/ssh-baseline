@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.6.4](https://github.com/dev-sec/ssh-baseline/tree/2.6.4) (2021-04-24)
+## [2.6.4](https://github.com/dev-sec/ssh-baseline/tree/2.6.4) (2021-11-30)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.6.3...2.6.4)
 
@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- add support for Rocky Linux [\#198](https://github.com/dev-sec/ssh-baseline/pull/198) ([schurzi](https://github.com/schurzi))
 - fix rubocop error for Rakefile [\#195](https://github.com/dev-sec/ssh-baseline/pull/195) ([schurzi](https://github.com/schurzi))
 - add dependency to chef-config for CI [\#194](https://github.com/dev-sec/ssh-baseline/pull/194) ([schurzi](https://github.com/schurzi))
 - Added OpenSSH 8.5/8.5p1 KexAlgorithms Support [\#192](https://github.com/dev-sec/ssh-baseline/pull/192) ([lonkey](https://github.com/lonkey))
