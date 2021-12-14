@@ -1,12 +1,17 @@
 # Changelog
 
-## [2.6.4](https://github.com/dev-sec/ssh-baseline/tree/2.6.4) (2021-11-30)
+## [2.7.0](https://github.com/dev-sec/ssh-baseline/tree/2.7.0) (2021-12-14)
 
-[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.6.3...2.6.4)
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.6.3...2.7.0)
 
 **Implemented enhancements:**
 
+- Add support for AlmaLinux [\#199](https://github.com/dev-sec/ssh-baseline/pull/199) ([rickhlx](https://github.com/rickhlx))
 - update code to conform to new linting rules [\#190](https://github.com/dev-sec/ssh-baseline/pull/190) ([schurzi](https://github.com/schurzi))
+
+**Closed issues:**
+
+- Add support for AlmaLinux [\#200](https://github.com/dev-sec/ssh-baseline/issues/200)
 
 **Merged pull requests:**
 
