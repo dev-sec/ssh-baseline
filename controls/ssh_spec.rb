@@ -24,8 +24,8 @@ only_if do
   command('ssh').exist?
 end
 
-ssh_custom_user = attribute('ssh_custom_user', value: 'root', description: 'The SSH user is not always root. It must be an unprivileged user in a container')
-ssh_custom_path = attribute('ssh_custom_path', value: '/etc/ssh', description: 'Sometimes ssh configuration files are present in another location and ssh use them with the -f flag')
+ssh_custom_user = input('ssh_custom_user', value: 'root', description: 'The SSH user is not always root. It must be an unprivileged user in a container')
+ssh_custom_path = input('ssh_custom_path', value: '/etc/ssh', description: 'Sometimes ssh configuration files are present in another location and ssh use them with the -f flag')
 
 control 'ssh-01' do
   impact 1.0
