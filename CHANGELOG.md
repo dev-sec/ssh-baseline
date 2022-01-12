@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.7.0](https://github.com/dev-sec/ssh-baseline/tree/2.7.0) (2021-12-14)
+## [2.7.0](https://github.com/dev-sec/ssh-baseline/tree/2.7.0) (2022-01-12)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.6.3...2.7.0)
 
@@ -15,6 +15,7 @@
 
 **Merged pull requests:**
 
+- use input instead of attribute [\#201](https://github.com/dev-sec/ssh-baseline/pull/201) ([micheelengronne](https://github.com/micheelengronne))
 - add support for Rocky Linux [\#198](https://github.com/dev-sec/ssh-baseline/pull/198) ([schurzi](https://github.com/schurzi))
 - fix rubocop error for Rakefile [\#195](https://github.com/dev-sec/ssh-baseline/pull/195) ([schurzi](https://github.com/schurzi))
 - add dependency to chef-config for CI [\#194](https://github.com/dev-sec/ssh-baseline/pull/194) ([schurzi](https://github.com/schurzi))
