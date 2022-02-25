@@ -42,7 +42,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /^8\./, /^9\./, /^10\./
         ciphers = ciphers66
       end
-    when 'redhat', 'centos', 'oracle', 'rocky', 'almalinux'
+    when 'redhat', 'centos', 'oracle', 'rocky', 'almalinux', 'scientific'
       case inspec.os[:release]
       when /^6\./
         ciphers = ciphers53
@@ -95,7 +95,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /^11\./
         kex = kex80
       end
-    when 'redhat', 'centos', 'oracle', 'rocky', 'almalinux'
+    when 'redhat', 'centos', 'oracle', 'rocky', 'almalinux', 'scientific'
       case inspec.os[:release]
       when /^6\./
         kex = nil
@@ -152,7 +152,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /^8\./, /^9\./, /^10\./
         macs = macs66
       end
-    when 'redhat', 'centos', 'oracle', 'rocky', 'almalinux'
+    when 'redhat', 'centos', 'oracle', 'rocky', 'almalinux', 'scientific'
       case inspec.os[:release]
       when /^6\./
         # RedHat Enterprise Linux (and family) backported SHA2 support to their fork of OpenSSH 5.3 in RHEL 6.5.
@@ -203,7 +203,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /^10\./
         ps = ps75
       end
-    when 'redhat', 'centos', 'oracle', 'rocky', 'almalinux'
+    when 'redhat', 'centos', 'oracle', 'rocky', 'almalinux', 'scientific'
       case inspec.os[:release]
       # redhat/centos/oracle 6.x has ssh 5.3
       when /^6\./
@@ -242,7 +242,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
       when /^8\./, /^9\./
         alg = alg66
       end
-    when 'redhat', 'centos', 'oracle', 'rocky', 'almalinux'
+    when 'redhat', 'centos', 'oracle', 'rocky', 'almalinux', 'scientific'
       case inspec.os[:release]
       when /^6\./
         alg = alg53
