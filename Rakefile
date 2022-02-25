@@ -9,6 +9,10 @@ task :rubocop do
   RuboCop::RakeTask.new
 end
 
+RuboCop::RakeTask.new(:cookstyle) do |task|
+  task.options << '--display-cop-names'
+end
+
 # lint the project
 desc 'Run robocop linter'
 task lint: [:rubocop]
