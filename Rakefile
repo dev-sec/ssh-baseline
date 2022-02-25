@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'cookstyle'
 require 'rake/testtask'
 require 'rubocop/rake_task'
 
