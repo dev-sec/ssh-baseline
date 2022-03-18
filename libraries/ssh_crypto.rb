@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Copyright 2015, Dominik Richter
+# Copyright:: 2015, Dominik Richter
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,14 +18,14 @@
 # author: Dominik Richter
 # author: Patrick Muench
 
-class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
+class SshCrypto < Inspec.resource(1)
   name 'ssh_crypto'
 
   def ssh_version
     inspec.command('ssh -V 2>&1 | cut -f1 -d" " | cut -f2 -d"_"').stdout.to_f
   end
 
-  def valid_ciphers # rubocop:disable Metrics/CyclomaticComplexity
+  def valid_ciphers
     # define a set of default ciphers
     ciphers53 = 'aes256-ctr,aes192-ctr,aes128-ctr'
     ciphers66 = 'chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr'
@@ -70,7 +70,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     ciphers
   end
 
-  def valid_kexs # rubocop:disable Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/MethodLength, Metrics/PerceivedComplexity
+  def valid_kexs
     # define a set of default KEXs
     kex85 = 'sntrup761x25519-sha512@openssh.com,curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256'
     kex80 = 'sntrup4591761x25519-sha512@tinyssh.org,curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256'
@@ -131,7 +131,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     kex
   end
 
-  def valid_macs # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/AbcSize
+  def valid_macs
     # define a set of default MACs
     macs66 = 'hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256'
     macs59 = 'hmac-sha2-512,hmac-sha2-256,hmac-ripemd160'
@@ -185,7 +185,7 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
     macs
   end
 
-  def valid_privseparation # rubocop:disable Metrics/CyclomaticComplexity
+  def valid_privseparation
     # define privilege separation set
     ps53 = 'yes'
     ps59 = 'sandbox'
@@ -226,10 +226,10 @@ class SshCrypto < Inspec.resource(1) # rubocop:disable Metrics/ClassLength
   end
 
   # return a list of valid algoriths for a current platform
-  def valid_algorithms # rubocop:disable Metrics/CyclomaticComplexity
-    alg53 = %w[rsa]
-    alg60 = %w[rsa ecdsa]
-    alg66 = %w[rsa ecdsa ed25519]
+  def valid_algorithms
+    alg53 = %w(rsa)
+    alg60 = %w(rsa ecdsa)
+    alg66 = %w(rsa ecdsa ed25519)
     alg = alg66 # probably its a best suitable set for everything unknown
 
     case inspec.os[:name]
