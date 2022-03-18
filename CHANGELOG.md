@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.7.1](https://github.com/dev-sec/ssh-baseline/tree/2.7.1) (2022-03-18)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.7.0...2.7.1)
+
+**Merged pull requests:**
+
+- Change linting to Cookstyle [\#203](https://github.com/dev-sec/ssh-baseline/pull/203) ([schurzi](https://github.com/schurzi))
+
 ## [2.7.0](https://github.com/dev-sec/ssh-baseline/tree/2.7.0) (2022-01-12)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.6.3...2.7.0)
