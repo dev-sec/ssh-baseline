@@ -82,7 +82,13 @@ class SshCrypto < Inspec.resource(1)
     case inspec.os[:name]
     # https://packages.ubuntu.com/search?keywords=openssh-server
     when 'ubuntu'
-      kex = inspec.os[:release][0, 2] >= '19' ? kex80 : kex66
+      kex = if inspec.os[:release][0, 2] >= '22'
+        kex85
+      elsif inspec.os[:release][0, 2] >= '19'
+        kex80
+      else
+        kex66
+      end
     # https://packages.debian.org/search?keywords=openssh-server
     when 'debian'
       case inspec.os[:release]
@@ -215,7 +221,7 @@ class SshCrypto < Inspec.resource(1)
       end
     when 'ubuntu'
       case inspec.os[:release]
-      when /^18\./, /^20\./
+      when /^18\./, /^20\./, /^22\./
         ps = ps75
       end
     when 'fedora', 'alpine', 'arch'
