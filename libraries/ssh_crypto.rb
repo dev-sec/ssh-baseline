@@ -39,7 +39,7 @@ class SshCrypto < Inspec.resource(1)
       case inspec.os[:release]
       when /^6\./, /^7\./
         ciphers = ciphers53
-      when /^8\./, /^9\./, /^10\./
+      when /^8\./, /^9\./, /^10\./, /^11\./
         ciphers = ciphers66
       end
     when 'redhat', 'centos', 'oracle', 'rocky', 'almalinux'
@@ -155,7 +155,7 @@ class SshCrypto < Inspec.resource(1)
         macs = macs53
       when /^7\./
         macs = macs59
-      when /^8\./, /^9\./, /^10\./
+      when /^8\./, /^9\./, /^10\./, /^11\./
         macs = macs66
       end
     when 'redhat', 'centos', 'oracle', 'rocky', 'almalinux'
@@ -206,7 +206,7 @@ class SshCrypto < Inspec.resource(1)
       case inspec.os[:release]
       when /^6\./
         ps = ps53
-      when /^10\./
+      when /^10\./, /^11\./
         ps = ps75
       end
     when 'redhat', 'centos', 'oracle', 'rocky', 'almalinux'
@@ -245,7 +245,7 @@ class SshCrypto < Inspec.resource(1)
       case inspec.os[:release]
       when /^7\./
         alg = alg60
-      when /^8\./, /^9\./
+      when /^8\./, /^9\./, /^10\./, /^11\./
         alg = alg66
       end
     when 'redhat', 'centos', 'oracle', 'rocky', 'almalinux'
