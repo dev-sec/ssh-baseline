@@ -46,7 +46,7 @@ class SshCrypto < Inspec.resource(1)
       case inspec.os[:release]
       when /^6\./
         ciphers = ciphers53
-      when /^7\./, /^8\./, /^9\./
+      when /^7.*/, /^8.*/, /^9.*/
         ciphers = ciphers66
       end
     when 'amazon', 'fedora', 'alpine', 'arch'
@@ -107,7 +107,7 @@ class SshCrypto < Inspec.resource(1)
         kex = nil
       when /^7\./
         kex = kex66
-      when /^8\./, /^9\./
+      when /^8.*/, /^9.*/
         kex = kex80
       end
     # https://pkgs.alpinelinux.org/packages?name=openssh
@@ -167,7 +167,7 @@ class SshCrypto < Inspec.resource(1)
         # Because extended support (EUS) updates for 6.x minor releases is no longer available,
         # only the settings available for the supported (latest) 6.x release are recommended.
         macs = macs53_el65
-      when /^7\./, /^8\./, /^9/
+      when /^7.*/, /^8.*/, /^9.*/
         macs = macs66
       end
     when 'amazon', 'fedora', 'alpine', 'arch'
@@ -216,7 +216,7 @@ class SshCrypto < Inspec.resource(1)
         ps = ps53
       when /^7\./
         ps = ps59
-      when /^8\./, /^9\./
+      when /^8.*/, /^9.*/
         ps = ps75
       end
     when 'ubuntu'
@@ -252,7 +252,7 @@ class SshCrypto < Inspec.resource(1)
       case inspec.os[:release]
       when /^6\./
         alg = alg53
-      when /^7\./, /^8\./, /^9\./
+      when /^7.*/, /^8.*/, /^9.*/
         alg = alg66
       end
     when 'amazon', 'fedora', 'alpine', 'arch'
