@@ -271,6 +271,8 @@ class SshCrypto < Inspec.resource(1)
       when /^10.10\./, /^10.11\./, /^10.12\./
         alg66
       end
+    when 'amazon'
+      alg = alg53
     end
 
     alg
