@@ -1,11 +1,18 @@
 # Changelog
 
-## [2.7.1](https://github.com/dev-sec/ssh-baseline/tree/2.7.1) (2022-03-18)
+## [2.8.0](https://github.com/dev-sec/ssh-baseline/tree/2.8.0) (2022-09-29)
 
-[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.7.0...2.7.1)
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.7.0...2.8.0)
+
+**Implemented enhancements:**
+
+- add support for EL9 [\#207](https://github.com/dev-sec/ssh-baseline/pull/207) ([rndmh3ro](https://github.com/rndmh3ro))
+- add basic support for Ubuntu 22 [\#204](https://github.com/dev-sec/ssh-baseline/pull/204) ([schurzi](https://github.com/schurzi))
 
 **Merged pull requests:**
 
+- fix detection for centos stream [\#208](https://github.com/dev-sec/ssh-baseline/pull/208) ([rndmh3ro](https://github.com/rndmh3ro))
+- add more support for debian 11 [\#206](https://github.com/dev-sec/ssh-baseline/pull/206) ([rndmh3ro](https://github.com/rndmh3ro))
 - Change linting to Cookstyle [\#203](https://github.com/dev-sec/ssh-baseline/pull/203) ([schurzi](https://github.com/schurzi))
 
 ## [2.7.0](https://github.com/dev-sec/ssh-baseline/tree/2.7.0) (2022-01-12)
