@@ -33,13 +33,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           future_release: ${{ steps.version.outputs.next-version }}
 
-      - name: Generate changelog for the release
-        uses: charmixer/auto-changelog-action@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          since_tag: ${{ steps.previoustag.outputs.tag }}
-          future_release: ${{ steps.version.outputs.next-version }}
-          output: CHANGELOGRELEASE.md
 
       - name: update inspec.yml
         uses: mikefarah/yq@3.2.1
@@ -60,6 +53,7 @@ jobs:
       - name: Generate changelog for the release
         run: |
           sed '/## \[${{ steps.previoustag.outputs.tag }}\]/Q' CHANGELOG.md > CHANGELOGRELEASE.md
+
       - name: Read CHANGELOG.md
         id: package
         uses: juliangruber/read-file-action@v1
