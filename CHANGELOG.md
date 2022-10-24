@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.8.1](https://github.com/dev-sec/ssh-baseline/tree/2.8.1) (2022-10-24)
+
+[Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.8.0...2.8.1)
+
+**Closed issues:**
+
+- Update detection of applicable ciphers/kex/mac to use OpenSSH version instead of OS version [\#205](https://github.com/dev-sec/ssh-baseline/issues/205)
+
+**Merged pull requests:**
+
+- simplify crypto library [\#209](https://github.com/dev-sec/ssh-baseline/pull/209) ([rndmh3ro](https://github.com/rndmh3ro))
+
 ## [2.8.0](https://github.com/dev-sec/ssh-baseline/tree/2.8.0) (2022-09-29)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.7.0...2.8.0)
