@@ -1,8 +1,12 @@
 # Changelog
 
-## [2.8.1](https://github.com/dev-sec/ssh-baseline/tree/2.8.1) (2022-10-24)
+## [2.8.1](https://github.com/dev-sec/ssh-baseline/tree/2.8.1) (2022-12-05)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.8.0...2.8.1)
+
+**Implemented enhancements:**
+
+- use centralised issue templates and workflows [\#210](https://github.com/dev-sec/ssh-baseline/pull/210) ([schurzi](https://github.com/schurzi))
 
 **Closed issues:**
 
