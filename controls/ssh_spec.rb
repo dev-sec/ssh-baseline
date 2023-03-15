@@ -36,7 +36,7 @@ control 'ssh-01' do
     it { should exist }
     it { should be_file }
     it { should be_owned_by ssh_custom_user }
-    it { should be_grouped_into os.darwin? ? 'wheel' : ssh_custom_user }
+    it { should be_grouped_into os.bsd? ? 'wheel' : ssh_custom_user }
     it { should_not be_executable }
     it { should be_readable.by('owner') }
     it { should be_readable.by('group') }

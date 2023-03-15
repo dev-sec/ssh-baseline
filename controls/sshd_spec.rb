@@ -80,7 +80,7 @@ control 'sshd-04' do
     it { should exist }
     it { should be_directory }
     it { should be_owned_by sshd_custom_user }
-    it { should be_grouped_into os.darwin? ? 'wheel' : sshd_custom_user }
+    it { should be_grouped_into os.bsd? ? 'wheel' : sshd_custom_user }
     it { should be_executable }
     it { should be_readable.by('owner') }
     it { should be_readable.by('group') }
@@ -100,7 +100,7 @@ control 'sshd-05' do
     it { should exist }
     it { should be_file }
     it { should be_owned_by sshd_custom_user }
-    it { should be_grouped_into os.darwin? ? 'wheel' : sshd_custom_user }
+    it { should be_grouped_into os.bsd? ? 'wheel' : sshd_custom_user }
     it { should_not be_executable }
     it { should be_readable.by('owner') }
     it { should_not be_readable.by('group') }
