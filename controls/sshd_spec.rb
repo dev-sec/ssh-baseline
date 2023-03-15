@@ -500,7 +500,8 @@ control 'sshd-48' do
   impact 1.0
   title 'Server: DH primes'
   desc 'Verifies if strong DH primes are used in /etc/ssh/moduli'
-  describe bash("test $(awk '$5 < 2047 && $5 ~ /^[0-9]+$/ { print $5 }' #{sshd_custom_path}/moduli | uniq | wc -c) -eq 0") do
+  sshd_moduli = (os.name == 'openbsd') ? '/etc/moduli' : "#{sshd_custom_path}/moduli"
+  describe bash("test $(awk '$5 < 2047 && $5 ~ /^[0-9]+$/ { print $5 }' #{sshd_moduli} | uniq | wc -c) -eq 0") do
     its('exit_status') { should eq 0 }
     its('stdout') { should eq '' }
     its('stderr') { should eq '' }
