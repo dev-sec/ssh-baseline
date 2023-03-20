@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.8.1](https://github.com/dev-sec/ssh-baseline/tree/2.8.1) (2022-12-05)
+## [2.8.1](https://github.com/dev-sec/ssh-baseline/tree/2.8.1) (2023-03-20)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.8.0...2.8.1)
 
@@ -14,6 +14,7 @@
 
 **Merged pull requests:**
 
+- extend BSD Support [\#212](https://github.com/dev-sec/ssh-baseline/pull/212) ([schurzi](https://github.com/schurzi))
 - simplify crypto library [\#209](https://github.com/dev-sec/ssh-baseline/pull/209) ([rndmh3ro](https://github.com/rndmh3ro))
 
 ## [2.8.0](https://github.com/dev-sec/ssh-baseline/tree/2.8.0) (2022-09-29)
