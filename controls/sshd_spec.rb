@@ -80,7 +80,7 @@ control 'sshd-04' do
     it { should exist }
     it { should be_directory }
     it { should be_owned_by sshd_custom_user }
-    it { should be_grouped_into os.darwin? ? 'wheel' : sshd_custom_user }
+    it { should be_grouped_into os.bsd? ? 'wheel' : sshd_custom_user }
     it { should be_executable }
     it { should be_readable.by('owner') }
     it { should be_readable.by('group') }
@@ -100,7 +100,7 @@ control 'sshd-05' do
     it { should exist }
     it { should be_file }
     it { should be_owned_by sshd_custom_user }
-    it { should be_grouped_into os.darwin? ? 'wheel' : sshd_custom_user }
+    it { should be_grouped_into os.bsd? ? 'wheel' : sshd_custom_user }
     it { should_not be_executable }
     it { should be_readable.by('owner') }
     it { should_not be_readable.by('group') }
@@ -500,7 +500,8 @@ control 'sshd-48' do
   impact 1.0
   title 'Server: DH primes'
   desc 'Verifies if strong DH primes are used in /etc/ssh/moduli'
-  describe bash("test $(awk '$5 < 2047 && $5 ~ /^[0-9]+$/ { print $5 }' #{sshd_custom_path}/moduli | uniq | wc -c) -eq 0") do
+  sshd_moduli = (os.name == 'openbsd') ? '/etc/moduli' : "#{sshd_custom_path}/moduli"
+  describe bash("test $(awk '$5 < 2047 && $5 ~ /^[0-9]+$/ { print $5 }' #{sshd_moduli} | uniq | wc -c) -eq 0") do
     its('exit_status') { should eq 0 }
     its('stdout') { should eq '' }
     its('stderr') { should eq '' }
