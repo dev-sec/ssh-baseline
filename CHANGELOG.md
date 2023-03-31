@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.8.1](https://github.com/dev-sec/ssh-baseline/tree/2.8.1) (2023-03-20)
+## [2.8.1](https://github.com/dev-sec/ssh-baseline/tree/2.8.1) (2023-03-31)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.8.0...2.8.1)
 
@@ -14,6 +14,7 @@
 
 **Merged pull requests:**
 
+- Configure Renovate [\#213](https://github.com/dev-sec/ssh-baseline/pull/213) ([renovate[bot]](https://github.com/apps/renovate))
 - extend BSD Support [\#212](https://github.com/dev-sec/ssh-baseline/pull/212) ([schurzi](https://github.com/schurzi))
 - simplify crypto library [\#209](https://github.com/dev-sec/ssh-baseline/pull/209) ([rndmh3ro](https://github.com/rndmh3ro))
 
