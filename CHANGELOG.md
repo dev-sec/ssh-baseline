@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.8.1](https://github.com/dev-sec/ssh-baseline/tree/2.8.1) (2023-03-31)
+## [2.8.1](https://github.com/dev-sec/ssh-baseline/tree/2.8.1) (2023-05-02)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.8.0...2.8.1)
 
@@ -14,6 +14,7 @@
 
 **Merged pull requests:**
 
+- add spellchecking with codespell [\#214](https://github.com/dev-sec/ssh-baseline/pull/214) ([schurzi](https://github.com/schurzi))
 - Configure Renovate [\#213](https://github.com/dev-sec/ssh-baseline/pull/213) ([renovate[bot]](https://github.com/apps/renovate))
 - extend BSD Support [\#212](https://github.com/dev-sec/ssh-baseline/pull/212) ([schurzi](https://github.com/schurzi))
 - simplify crypto library [\#209](https://github.com/dev-sec/ssh-baseline/pull/209) ([rndmh3ro](https://github.com/rndmh3ro))
@@ -219,7 +220,7 @@
 
 - changelog only triggered when release [\#162](https://github.com/dev-sec/ssh-baseline/pull/162) ([micheelengronne](https://github.com/micheelengronne))
 - sshd\_config custom path [\#161](https://github.com/dev-sec/ssh-baseline/pull/161) ([micheelengronne](https://github.com/micheelengronne))
-- Continously updated changelog [\#160](https://github.com/dev-sec/ssh-baseline/pull/160) ([micheelengronne](https://github.com/micheelengronne))
+- Continuously updated changelog [\#160](https://github.com/dev-sec/ssh-baseline/pull/160) ([micheelengronne](https://github.com/micheelengronne))
 
 ## [2.5.1](https://github.com/dev-sec/ssh-baseline/tree/2.5.1) (2020-05-18)
 
@@ -250,11 +251,11 @@
 - ubuntu versions [\#151](https://github.com/dev-sec/ssh-baseline/pull/151) ([micheelengronne](https://github.com/micheelengronne))
 - Use SHA2 HMACs in OpenSSH for RHEL family 6.5+ [\#146](https://github.com/dev-sec/ssh-baseline/pull/146) ([foonix](https://github.com/foonix))
 - Support of CentOS 8 [\#143](https://github.com/dev-sec/ssh-baseline/pull/143) ([artem-sidorenko](https://github.com/artem-sidorenko))
-- Move atribute to spec as local var [\#142](https://github.com/dev-sec/ssh-baseline/pull/142) ([kiwivogel](https://github.com/kiwivogel))
+- Move attribute to spec as local var [\#142](https://github.com/dev-sec/ssh-baseline/pull/142) ([kiwivogel](https://github.com/kiwivogel))
 - Fix deprecations [\#141](https://github.com/dev-sec/ssh-baseline/pull/141) ([kiwivogel](https://github.com/kiwivogel))
 - Issue 139 - Use cmp instead of be matcher to allow string matching  [\#140](https://github.com/dev-sec/ssh-baseline/pull/140) ([chbiel](https://github.com/chbiel))
 - Issue 137 - MaxAuthTries Parameter. [\#138](https://github.com/dev-sec/ssh-baseline/pull/138) ([monobaila](https://github.com/monobaila))
-- Debian 10 has Openssh 7.9 with deperecated UsePrivilegeSeparation [\#135](https://github.com/dev-sec/ssh-baseline/pull/135) ([artem-sidorenko](https://github.com/artem-sidorenko))
+- Debian 10 has Openssh 7.9 with deprecated UsePrivilegeSeparation [\#135](https://github.com/dev-sec/ssh-baseline/pull/135) ([artem-sidorenko](https://github.com/artem-sidorenko))
 - Debian 10 support for ciphers, kex, macs [\#134](https://github.com/dev-sec/ssh-baseline/pull/134) ([artem-sidorenko](https://github.com/artem-sidorenko))
 
 ## [2.4.1](https://github.com/dev-sec/ssh-baseline/tree/2.4.1) (2019-05-16)
@@ -405,7 +406,7 @@
 
 - 1.2.0 [\#57](https://github.com/dev-sec/ssh-baseline/pull/57) ([chris-rock](https://github.com/chris-rock))
 - Symlinks real suite names to "default" [\#55](https://github.com/dev-sec/ssh-baseline/pull/55) ([conorsch](https://github.com/conorsch))
-- complet inspec tests [\#52](https://github.com/dev-sec/ssh-baseline/pull/52) ([atomic111](https://github.com/atomic111))
+- complete inspec tests [\#52](https://github.com/dev-sec/ssh-baseline/pull/52) ([atomic111](https://github.com/atomic111))
 
 ## [1.1.1](https://github.com/dev-sec/ssh-baseline/tree/1.1.1) (2015-01-14)
 
