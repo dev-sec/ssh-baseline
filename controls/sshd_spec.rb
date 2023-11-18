@@ -20,9 +20,9 @@
 
 title 'SSH server config'
 
-sshd_valid_ciphers = input('sshd_valid_ciphers', value: ssh_crypto.valid_ciphers, description: 'Expected value for sshd_config ciphers')
-sshd_valid_kexs = input('sshd_valid_kexs', value: ssh_crypto.valid_kexs, description: 'Expected value for sshd_config kexs')
-sshd_valid_macs = input('sshd_valid_macs', value: ssh_crypto.valid_macs, description: 'Expected value for sshd_config macs')
+sshd_valid_ciphers = input('sshd_valid_ciphers', value: "#{ssh_crypto.valid_ciphers}", description: 'Expected value for sshd_config ciphers')
+sshd_valid_kexs = input('sshd_valid_kexs', value: "#{ssh_crypto.valid_kexs}", description: 'Expected value for sshd_config kexs')
+sshd_valid_macs = input('sshd_valid_macs', value: "#{ssh_crypto.valid_macs}", description: 'Expected value for sshd_config macs')
 sshd_permittunnel = input('sshd_permittunnel', value: 'no', description: 'Expected value for sshd_config PermitTunnel')
 sshd_tcpforwarding = input('sshd_tcpforwarding', value: 'no', description: 'Expected value for sshd_config TcpForwarding')
 sshd_agentforwarding = input('sshd_agentforwarding', value: 'no', description: 'Expected value for sshd_config AgentForwarding')
