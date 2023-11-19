@@ -12,7 +12,7 @@ supports:
     - os-family: unix
 inputs:
     - name: sshd_valid_ciphers
-      description: List of mountpoints where mount option should be set
+      description: Expected value for sshd_config ciphers
     - name: sshd_valid_kexs
       description: Expected value for sshd_config kexs
     - name: sshd_valid_macs
