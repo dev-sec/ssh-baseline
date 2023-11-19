@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.8.1](https://github.com/dev-sec/ssh-baseline/tree/2.8.1) (2023-05-02)
+## [2.8.1](https://github.com/dev-sec/ssh-baseline/tree/2.8.1) (2023-11-19)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.8.0...2.8.1)
 
@@ -14,6 +14,7 @@
 
 **Merged pull requests:**
 
+- ensure compatibility with new inspec version [\#215](https://github.com/dev-sec/ssh-baseline/pull/215) ([schurzi](https://github.com/schurzi))
 - add spellchecking with codespell [\#214](https://github.com/dev-sec/ssh-baseline/pull/214) ([schurzi](https://github.com/schurzi))
 - Configure Renovate [\#213](https://github.com/dev-sec/ssh-baseline/pull/213) ([renovate[bot]](https://github.com/apps/renovate))
 - extend BSD Support [\#212](https://github.com/dev-sec/ssh-baseline/pull/212) ([schurzi](https://github.com/schurzi))
