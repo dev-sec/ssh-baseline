@@ -20,20 +20,20 @@
 
 title 'SSH server config'
 
-sshd_valid_ciphers = input('sshd_valid_ciphers', value: ssh_crypto.valid_ciphers, description: 'Expected value for sshd_config ciphers')
-sshd_valid_kexs = input('sshd_valid_kexs', value: ssh_crypto.valid_kexs, description: 'Expected value for sshd_config kexs')
-sshd_valid_macs = input('sshd_valid_macs', value: ssh_crypto.valid_macs, description: 'Expected value for sshd_config macs')
-sshd_permittunnel = input('sshd_permittunnel', value: 'no', description: 'Expected value for sshd_config PermitTunnel')
-sshd_tcpforwarding = input('sshd_tcpforwarding', value: 'no', description: 'Expected value for sshd_config TcpForwarding')
-sshd_agentforwarding = input('sshd_agentforwarding', value: 'no', description: 'Expected value for sshd_config AgentForwarding')
-sshd_gatewayports = input('sshd_gatewayports', value: 'no', description: 'Expected value for sshd_config GatewayPorts')
-sshd_x11forwarding = input('sshd_x11forwarding', value: 'no', description: 'Expected value for sshd_config X11Forwarding')
-sshd_banner = input('sshd_banner', value: 'none', description: 'Expected value for sshd_config Banner')
-sshd_max_auth_tries = input('sshd_max_auth_tries', value: 2, description: 'Expected value for max_auth_retries')
-sshd_custom_user = input('sshd_custom_user', value: 'root', description: 'The SSH user is not always root. It must be an unprivileged user in a container')
-sshd_custom_path = input('sshd_custom_path', value: '/etc/ssh', description: 'Sometimes ssh configuration files are present in another location and ssh use them with the -f flag')
-sshd_custom_port = input('sshd_custom_port', value: '22', description: 'Sometimes the ssh port is not 22. For instance, in a container as another user, 22 is forbidden')
-sshd_custom_hostkeys_path = input('sshd_custom_hostkeys_path', value: '/etc/ssh', description: 'Sometimes ssh host keys must be in a particular path, in a clustered environment for instance')
+sshd_valid_ciphers = input('sshd_valid_ciphers', value: ssh_crypto.valid_ciphers)
+sshd_valid_kexs = input('sshd_valid_kexs', value: ssh_crypto.valid_kexs)
+sshd_valid_macs = input('sshd_valid_macs', value: ssh_crypto.valid_macs)
+sshd_permittunnel = input('sshd_permittunnel', value: 'no')
+sshd_tcpforwarding = input('sshd_tcpforwarding', value: 'no')
+sshd_agentforwarding = input('sshd_agentforwarding', value: 'no')
+sshd_gatewayports = input('sshd_gatewayports', value: 'no')
+sshd_x11forwarding = input('sshd_x11forwarding', value: 'no')
+sshd_banner = input('sshd_banner', value: 'none')
+sshd_max_auth_tries = input('sshd_max_auth_tries', value: 2)
+sshd_custom_user = input('sshd_custom_user', value: 'root')
+sshd_custom_path = input('sshd_custom_path', value: '/etc/ssh')
+sshd_custom_port = input('sshd_custom_port', value: '22')
+sshd_custom_hostkeys_path = input('sshd_custom_hostkeys_path', value: '/etc/ssh')
 
 sshd_valid_privseparation = if sshd_custom_user != 'root'
                               'no'

@@ -10,3 +10,36 @@ inspec_version: '>= 4.6.3'
 version: 2.8.1
 supports:
     - os-family: unix
+inputs:
+    - name: sshd_valid_ciphers
+      description: Expected value for sshd_config ciphers
+    - name: sshd_valid_kexs
+      description: Expected value for sshd_config kexs
+    - name: sshd_valid_macs
+      description: Expected value for sshd_config macs
+    - name: sshd_permittunnel
+      description: Expected value for sshd_config PermitTunnel
+    - name: sshd_tcpforwarding
+      description: Expected value for sshd_config TcpForwarding
+    - name: sshd_agentforwarding
+      description: Expected value for sshd_config AgentForwarding
+    - name: sshd_gatewayports
+      description: Expected value for sshd_config GatewayPorts
+    - name: sshd_x11forwarding
+      description: Expected value for sshd_config X11Forwarding
+    - name: sshd_banner
+      description: Expected value for sshd_config Banner
+    - name: sshd_max_auth_tries
+      description: Expected value for max_auth_retries
+    - name: sshd_custom_user
+      description: The SSH user is not always root. It must be an unprivileged user in a container
+    - name: sshd_custom_path
+      description: Sometimes ssh configuration files are present in another location and ssh use them with the -f flag
+    - name: sshd_custom_port
+      description: Sometimes the ssh port is not 22. For instance, in a container as another user, 22 is forbidden
+    - name: sshd_custom_hostkeys_path
+      description: Sometimes ssh host keys must be in a particular path, in a clustered environment for instance
+    - name: ssh_custom_user
+      description: The SSH user is not always root. It must be an unprivileged user in a container
+    - name: ssh_custom_path
+      description: Sometimes ssh configuration files are present in another location and ssh use them with the -f flag
