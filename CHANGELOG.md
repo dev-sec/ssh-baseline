@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.8.1](https://github.com/dev-sec/ssh-baseline/tree/2.8.1) (2023-11-19)
+## [2.8.1](https://github.com/dev-sec/ssh-baseline/tree/2.8.1) (2024-08-21)
 
 [Full Changelog](https://github.com/dev-sec/ssh-baseline/compare/2.8.0...2.8.1)
 
