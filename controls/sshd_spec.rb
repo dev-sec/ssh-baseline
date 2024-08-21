@@ -24,7 +24,6 @@ sshd_valid_ciphers = input('sshd_valid_ciphers', value: ssh_crypto.valid_ciphers
 sshd_valid_kexs = input('sshd_valid_kexs', value: ssh_crypto.valid_kexs)
 sshd_valid_macs = input('sshd_valid_macs', value: ssh_crypto.valid_macs)
 sshd_permittunnel = input('sshd_permittunnel', value: 'no')
-sshd_tcpforwarding = input('sshd_tcpforwarding', value: 'no')
 sshd_agentforwarding = input('sshd_agentforwarding', value: 'no')
 sshd_gatewayports = input('sshd_gatewayports', value: 'no')
 sshd_x11forwarding = input('sshd_x11forwarding', value: 'no')
@@ -413,7 +412,7 @@ control 'sshd-39' do
   title 'Server: Disable TCP forwarding'
   desc 'If you use TCP forwarding in an uncontrolled manner then you can bypass the firewalls'
   describe sshd_config("#{sshd_custom_path}/sshd_config") do
-    its('AllowTcpForwarding') { should eq(sshd_tcpforwarding) }
+    its('AllowTcpForwarding') { should match(/^no|local$/) }
   end
 end
 
