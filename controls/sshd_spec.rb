@@ -377,7 +377,8 @@ control 'sshd-35' do
   title 'Server: Disable TCPKeepAlive'
   desc 'Avoid the TCPKeepAlive messages to see if the client is still alive, because they are sent over unencrypted connection and are spoofable.'
   describe sshd_config("#{sshd_custom_path}/sshd_config") do
-    its('TCPKeepAlive') { should eq('no') }
+    # OpenSSH 10.6 accepts "false" for "no" and prints it in `sshd -T`
+    its('TCPKeepAlive') { should match(/^(no|false)$/) }
   end
 end
 
